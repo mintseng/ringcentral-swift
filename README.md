@@ -3,7 +3,7 @@ RingCentral Swift SDK
 
 1. [Overview](#overview)
 2. [Setting Up](#setting-up)
-3. [Initialiation](#initialization)
+3. [Initialization](#initialization)
 4. [Authorization](#authorization)
 5. [Performing RingOut](#ring-out)
 6. [Sending SMS](#sending-sms)
@@ -21,15 +21,21 @@ RingCentral Swift SDK
 
 # Overview
 
+***
+
 # Setting Up
 
-# Initialiation
+# Initialization
 
 # Authorization
+
+***
 
 # Performing RingOut
 
 # Sending SMS
+
+***
 
 # Generic Requests
 
@@ -44,5 +50,7 @@ RingCentral Swift SDK
 ## Dictionary
 
 ## Subscription
+
+***
 
 # SDK Demos
