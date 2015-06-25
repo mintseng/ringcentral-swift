@@ -44,14 +44,14 @@ The RingCentral SDK is initiated in the following ways.
 Sandbox:
 ```swift
 var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_SANDBOX)
-``
+```
 
 or 
 
 Production:
 ```swift
 var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_PRODUCTION)
-``
+```
 
 Depending on the stage of production, either Sdk.RC_SERVER_SANDBOX or Sdk.RC_SERVER_PRODUCTION
 will be used as the 'server' parameter.
@@ -62,9 +62,18 @@ To authorize the platform, extract the 'Platform' object:
 
 ```swift
 var platform = rcsdk.getPlatform()
-``
+```
 
+Once the platform is extracted, call:
 
+```swift
+platform.authorize(username, password: password)
+```
+or (to authorize with extension):
+```swift
+platform.authorize(username, ext: ext, password: password)
+```
+*Caution*: If no extension is specified, it automitically calls extension 101 (default).
 ***
 
 # Performing RingOut
