@@ -113,10 +113,16 @@ For readability of the data
 ```swift
 println(NSString(data: data!, encoding: NSUTF8StringEncoding))
 ```
+*Usability*: Method calls for RingOut or SMS (anything that you dont need information back from)
+can be directly called without setting the 'feedback' to a variable.
 
 # Performing RingOut
 
+RingOut follows a two-legged style telecommunication protocol.
 
+```swift
+
+```
 
 # Sending SMS
 
