@@ -8,12 +8,12 @@ RingCentral Swift SDK
 5. [Performing RingOut](#ringOut)
 6. [Sending SMS](#sms)
 7. [Generic Requests](#requests)
-    a. [Account](#account)
-    b. [Call Log](#callLog)
-    c. [Presence](#presence)
-    d. [Messaging](#messaging)
-    e. [Dictionary](#dictionary)
-    f. [Subscription](#subscription)
+    1. [Account](#account)
+    2. [Call Log](#callLog)
+    3. [Presence](#presence)
+    4. [Messaging](#messaging)
+    5. [Dictionary](#dictionary)
+    6. [Subscription](#subscription)
 8. [SDK Demos](#demos)
 
 
@@ -21,6 +21,28 @@ RingCentral Swift SDK
 
 # Overview
 
+# Setting Up
+
+# Initialiation
+
+# Authorization
+
+# Performing RingOut
+
+# Sending SMS
+
+# Generic Requests
+
 ## Account
 
-# Account
+## Call Log
+
+## Presence
+
+## Messaging
+
+## Dictionary
+
+## Subscription
+
+# SDK Demos
