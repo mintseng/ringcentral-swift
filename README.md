@@ -46,8 +46,6 @@ Sandbox:
 var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_SANDBOX)
 ```
 
-or 
-
 Production:
 ```swift
 var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_PRODUCTION)
@@ -85,10 +83,12 @@ what it returns is limited (based on what developers will likely need most).
 Most method calls will follow this behavior:
 ```swift
 var feedback = platform.methodCall(auth!)
+// feedback.0 -> data
+// feedback.1 -> response
+// feedback.2 -> error
+
 ```
-feedback.0 -> data
-feedback.1 -> response
-feedback.2 -> error
+
 
 Rule of thumb: Always check if 'error' is nil
 ```swift
