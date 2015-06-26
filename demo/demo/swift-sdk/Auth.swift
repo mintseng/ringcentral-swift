@@ -82,9 +82,16 @@ class Auth {
         var error: NSError?
         let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
         
+        if (response as! NSHTTPURLResponse).statusCode / 100 != 2 {
+            return (data, response, error)
+        }
+        
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
 
+        
+        
+        
         // Setting authentication information
         self.authenticated = true
         self.access_token = readdata["access_token"] as? String

@@ -7,7 +7,7 @@
         <!--Log-->
         <scene sceneID="Q4t-yd-5pA">
             <objects>
-                <viewController id="DZ7-Qe-HBO" sceneMemberID="viewController">
+                <viewController id="DZ7-Qe-HBO" customClass="ViewControllerLog" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2d9-hQ-mJT"/>
                         <viewControllerLayoutGuide type="bottom" id="tI4-F3-w2L"/>
@@ -26,7 +26,7 @@
         <!--Phone-->
         <scene sceneID="dXK-2D-rms">
             <objects>
-                <viewController id="DTH-cE-lSU" sceneMemberID="viewController">
+                <viewController id="DTH-cE-lSU" customClass="ViewControllerPhone" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hfa-KX-mLJ"/>
                         <viewControllerLayoutGuide type="bottom" id="9S1-AJ-TeM"/>
@@ -81,7 +81,7 @@
         <!--Login-->
         <scene sceneID="Akr-vq-72E">
             <objects>
-                <viewController id="fTN-uN-3PV" customClass="ViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fTN-uN-3PV" customClass="ViewControllerLogin" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yAS-y7-nCr"/>
                         <viewControllerLayoutGuide type="bottom" id="oER-Dh-yjj"/>

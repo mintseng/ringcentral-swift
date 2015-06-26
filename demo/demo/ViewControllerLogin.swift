@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewControllerLogin: UIViewController {
 
     @IBOutlet var loginButton: UIButton!
     
@@ -22,11 +22,9 @@ class ViewController: UIViewController {
         
         var rcsdk = Sdk(appKey: keyBox.text, appSecret: secretBox.text, server: Sdk.RC_SERVER_SANDBOX)
         var platform = rcsdk.getPlatform()
+        platform.authorize(userBox.text, password: passBox.text)
         
-        var feedback = platform.authorize(userBox.text, password: passBox.text)
-        
-        
-        if (false) {
+        if (platform.auth!.authenticated) {
             performSegueWithIdentifier("loginToMain", sender: nil)
         } else {
             shakeButton(sender)
@@ -60,6 +58,11 @@ class ViewController: UIViewController {
         
         
         
+    }
+    
+    // Hides the keyboard when finished editting
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {

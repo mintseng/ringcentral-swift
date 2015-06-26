@@ -39,7 +39,7 @@ class Platform {
     func authorize(username: String, password: String) {
         auth = Auth(username: username, password: password, server: server)
         let feedback = auth!.login(appKey, secret: appSecret)
-        if (feedback.1 as! NSHTTPURLResponse).statusCode == 2 {
+        if (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2 {
             self.ringOut = RingOut(server: server)
             self.messaging = Messaging(server: server)
             self.callLog = CallLog(server: server)
@@ -58,13 +58,14 @@ class Platform {
     func authorize(username: String, ext: String, password: String) {
         auth = Auth(username: username, ext: ext, password: password, server: self.server)
         let feedback = auth!.login(appKey, secret: appSecret)
-        if (feedback.1 as! NSHTTPURLResponse).statusCode == 2 {
+        if (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2 {
             self.ringOut = RingOut(server: server)
             self.messaging = Messaging(server: server)
             self.callLog = CallLog(server: server)
             self.presence = Presence(server: server)
             self.account = Account(server: server)
             self.dictionary = Dictionary(server: server)
+
         }
     }
     
