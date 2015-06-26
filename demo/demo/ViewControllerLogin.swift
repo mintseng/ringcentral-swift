@@ -35,14 +35,14 @@ class ViewControllerLogin: UIViewController {
     func shakeButton(sender: AnyObject) {
         let anim = CAKeyframeAnimation( keyPath:"transform" )
         anim.values = [
-            NSValue( CATransform3D:CATransform3DMakeTranslation(-5, 0, 0 ) ),
-            NSValue( CATransform3D:CATransform3DMakeTranslation( 5, 0, 0 ) )
+            NSValue(CATransform3D:CATransform3DMakeTranslation(-5, 0, 0)),
+            NSValue(CATransform3D:CATransform3DMakeTranslation(5, 0, 0))
         ]
         anim.autoreverses = true
         anim.repeatCount = 2
         anim.duration = 7/100
         
-        sender.layer.addAnimation( anim, forKey:nil )
+        sender.layer.addAnimation(anim, forKey: nil)
     }
     
     @IBAction func setValues() {

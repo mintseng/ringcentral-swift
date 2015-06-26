@@ -12,7 +12,17 @@ import Foundation
 import UIKit
 
 class ViewControllerPhone: UIViewController {
-
+    
+    
+    @IBAction func numberPressed(sender: AnyObject) {
+        println(sender.titleLabel!!.text!)
+    }
+    
+    @IBAction func backspace() {
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
