@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E02156111B3CA15D0078040A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02156101B3CA15D0078040A /* main.swift */; };
 		E02156211B3CA1750078040A /* Sdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02156171B3CA1750078040A /* Sdk.swift */; };
 		E02156221B3CA1750078040A /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02156181B3CA1750078040A /* Subscription.swift */; };
 		E02156231B3CA1750078040A /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02156191B3CA1750078040A /* Platform.swift */; };
@@ -18,6 +17,7 @@
 		E02156281B3CA1750078040A /* Presence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021561E1B3CA1750078040A /* Presence.swift */; };
 		E02156291B3CA1750078040A /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021561F1B3CA1750078040A /* Account.swift */; };
 		E021562A1B3CA1750078040A /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02156201B3CA1750078040A /* Auth.swift */; };
+		E0B6B2881B3CCC7600C86C17 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2871B3CCC7600C86C17 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +34,6 @@
 
 /* Begin PBXFileReference section */
 		E021560D1B3CA15D0078040A /* swift-sdk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-sdk"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E02156101B3CA15D0078040A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E02156171B3CA1750078040A /* Sdk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sdk.swift; sourceTree = "<group>"; };
 		E02156181B3CA1750078040A /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		E02156191B3CA1750078040A /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
@@ -45,6 +44,7 @@
 		E021561E1B3CA1750078040A /* Presence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presence.swift; sourceTree = "<group>"; };
 		E021561F1B3CA1750078040A /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		E02156201B3CA1750078040A /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		E0B6B2871B3CCC7600C86C17 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +77,7 @@
 		E021560F1B3CA15D0078040A /* swift-sdk */ = {
 			isa = PBXGroup;
 			children = (
-				E02156101B3CA15D0078040A /* main.swift */,
+				E0B6B2871B3CCC7600C86C17 /* main.swift */,
 				E02156171B3CA1750078040A /* Sdk.swift */,
 				E02156181B3CA1750078040A /* Subscription.swift */,
 				E02156191B3CA1750078040A /* Platform.swift */,
@@ -155,10 +155,10 @@
 				E02156281B3CA1750078040A /* Presence.swift in Sources */,
 				E02156291B3CA1750078040A /* Account.swift in Sources */,
 				E021562A1B3CA1750078040A /* Auth.swift in Sources */,
+				E0B6B2881B3CCC7600C86C17 /* main.swift in Sources */,
 				E02156251B3CA1750078040A /* CallLog.swift in Sources */,
 				E02156211B3CA1750078040A /* Sdk.swift in Sources */,
 				E02156231B3CA1750078040A /* Platform.swift in Sources */,
-				E02156111B3CA15D0078040A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +276,7 @@
 				E02156161B3CA15D0078040A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
