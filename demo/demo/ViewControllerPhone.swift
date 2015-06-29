@@ -13,19 +13,39 @@ import UIKit
 
 class ViewControllerPhone: UIViewController {
     
+    @IBOutlet var number: UILabel!
+    @IBOutlet var fromNumber: UITextField!
+    
+    var platform: Platform!
     
     @IBAction func numberPressed(sender: AnyObject) {
-        println(sender.titleLabel!!.text!)
+        number.text = number.text! + sender.titleLabel!!.text!
     }
     
     @IBAction func backspace() {
+        if (number.text! != "") {
+            number.text = dropLast(number.text!)
+        }
+    }
+    
+    @IBAction func call() {
+        println(platform.getCallLog(true))
+        
+    }
+    
+    func refreshHistory() {
         
     }
     
     
+    @IBOutlet var labelPassedData: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        fromNumber.text = "14088861168"
+        
+        
         
     }
     

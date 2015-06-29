@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewControllerLogin: UIViewController {
+    
+    
 
     @IBOutlet var loginButton: UIButton!
     
@@ -17,11 +19,14 @@ class ViewControllerLogin: UIViewController {
     @IBOutlet weak var keyBox: UITextField!
     @IBOutlet weak var secretBox: UITextField!
     
+    var platform: Platform?
+    
     @IBAction func login(sender: AnyObject) {
         
         
         var rcsdk = Sdk(appKey: keyBox.text, appSecret: secretBox.text, server: Sdk.RC_SERVER_SANDBOX)
         var platform = rcsdk.getPlatform()
+        self.platform = platform
         platform.authorize(userBox.text, password: passBox.text)
         
         if (platform.auth!.authenticated) {
@@ -68,6 +73,29 @@ class ViewControllerLogin: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBOutlet var textField: UITextField!
+    
+    // Sets variables in another ViewController from the current one
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+//        if (segue.identifier == "loginToMain") {
+//            var svc = segue!.destinationViewController as! ViewControllerPhone;
+//            svc.toPass = textField.text
+//            
+//        }
+        
+        
+        if segue.identifier == "loginToMain" {
+            var tabBarC : UITabBarController = segue.destinationViewController as! UITabBarController
+            var desView: ViewControllerPhone = tabBarC.viewControllers?.first as! ViewControllerPhone
+            if let check = platform {
+                desView.platform = check
+            }
+            
+            
+        }
+        
     }
 
 

@@ -92,7 +92,7 @@ var feedback = platform.methodCall(auth!)
 
 Rule of thumb: Always check if 'error' is nil
 ```swift
-if (let x = error) {
+if (let x = feedback.2) {
     // Handle the error
 } else {
     // Continue doing whatever
@@ -107,6 +107,8 @@ For simple checking of a successful status code:
 For turning 'data' into a Dictionary (JSON):
 ```swift
 NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
+or 
+NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
 ```
 
 For readability of the data

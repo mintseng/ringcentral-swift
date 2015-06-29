@@ -11,12 +11,12 @@ class Platform {
     var version: String = "0"
     
     // Platform tools
-    var ringOut: RingOut?
-    var messaging: Messaging?
-    var callLog: CallLog?
-    var presence: Presence?
-    var account: Account?
-    var dictionary: Dictionary?
+    var ringOut: RingOut!
+    var messaging: Messaging!
+    var callLog: CallLog!
+    var presence: Presence!
+    var account: Account!
+    var dictionary: Dictionary!
     
     
     /// Constructor for the platform of the SDK
@@ -133,12 +133,26 @@ class Platform {
         self.version = readdata["serverVersion"] as! String
     }
     
+    // Call Log Methods
     
-    func getAccountInfo() -> Bool {
-        var test: Bool = false
-        Account(server: self.server).getAccountIdExtensionId(self.auth!)
-        test = true
-        return test
+    func getCallLog() -> (NSData?, NSURLResponse?, NSError?) {
+        return self.callLog!.callLog(self.auth!)
+    }
+    
+    func getCallLogExt() -> (NSData?, NSURLResponse?, NSError?) {
+        return self.callLog!.callLogExt(self.auth!)
+    }
+    
+    func getActiveCalls() -> (NSData?, NSURLResponse?, NSError?) {
+        return self.callLog!.activeCalls(self.auth!)
+    }
+    
+    func getActiveCallsExt() -> (NSData?, NSURLResponse?, NSError?) {
+        return self.callLog!.activeCallsExt(self.auth!)
+    }
+    
+    func getCallLog(parser: Bool) -> NSDictionary {
+        return NSJSONSerialization.JSONObjectWithData(self.callLog!.activeCalls(self.auth!).0!, options: nil, error: nil) as! NSDictionary
     }
     
     func test() {
