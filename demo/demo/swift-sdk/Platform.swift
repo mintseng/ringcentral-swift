@@ -151,9 +151,23 @@ class Platform {
         return self.callLog!.activeCallsExt(self.auth!)
     }
     
+        // Parsers
+    
     func getCallLog(parser: Bool) -> NSDictionary {
-        return NSJSONSerialization.JSONObjectWithData(self.callLog!.activeCalls(self.auth!).0!, options: nil, error: nil) as! NSDictionary
+        let feedback = self.callLog!.callLog(self.auth!)
+        println("FeedBack")
+        println(feedback.1)
+        println("Data")
+        return NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary
     }
+    
+    // RingOut Methods
+    
+    func postRingOut(from: String, to: String) -> Bool {
+        let feedback = ringOut.ringOut(self.auth!, from: from, to: to)
+        return (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2
+    }
+    
     
     func test() {
         CallLog(server: self.server).callLog(self.auth!)
@@ -173,7 +187,7 @@ class Platform {
     }
     
     func test4() {
-        RingOut(server: self.server).ringOut(self.auth!, to: "14088861168", from: "14088861168")
+        RingOut(server: self.server).ringOut(self.auth!, from: "14088861168", to: "14088861168")
     }
     
     
