@@ -155,9 +155,6 @@ class Platform {
     
     func getCallLog(parser: Bool) -> NSDictionary {
         let feedback = self.callLog!.callLog(self.auth!)
-        println("FeedBack")
-        println(feedback.1)
-        println("Data")
         return NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary
     }
     

@@ -29,9 +29,11 @@ class ViewControllerPhone: UIViewController {
     }
     
     @IBAction func call() {
+        
+        
         println(platform.getCallLog(true))
-        var secondTab = self.tabBarController?.viewControllers![1] as! ViewControllerLog
-        secondTab.label.text = secondTab.label.text! + "hi"
+//        var secondTab = self.tabBarController?.viewControllers![1] as! ViewControllerLog
+//        secondTab.label.text = secondTab.label.text! + "hi"
         
     }
     
@@ -47,7 +49,8 @@ class ViewControllerPhone: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         fromNumber.text = "14088861168"
         
-        
+        var secondTab = self.tabBarController?.viewControllers![1] as! ViewControllerLog
+        secondTab.platform = self.platform
         
     }
     
@@ -55,5 +58,6 @@ class ViewControllerPhone: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
 }

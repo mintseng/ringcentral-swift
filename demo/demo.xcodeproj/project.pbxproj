@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E004D4EB1B43236000365EA0 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E004D4EA1B43236000365EA0 /* CustomCell.swift */; };
 		E03597BA1B3DC30D0015EC8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03597B91B3DC30D0015EC8C /* Images.xcassets */; };
 		E0B6B2391B3CC95500C86C17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2381B3CC95500C86C17 /* AppDelegate.swift */; };
 		E0B6B23B1B3CC95500C86C17 /* ViewControllerLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B23A1B3CC95500C86C17 /* ViewControllerLogin.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E004D4EA1B43236000365EA0 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		E03597B91B3DC30D0015EC8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E0B6B2331B3CC95500C86C17 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0B6B2371B3CC95500C86C17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				E0B6B23A1B3CC95500C86C17 /* ViewControllerLogin.swift */,
 				E0C1924E1B3E08FC00885234 /* ViewControllerPhone.swift */,
 				E0C192501B3E099000885234 /* ViewControllerLog.swift */,
+				E004D4EA1B43236000365EA0 /* CustomCell.swift */,
 				E0B6B23C1B3CC95500C86C17 /* Main.storyboard */,
 				E0B6B2411B3CC95500C86C17 /* LaunchScreen.xib */,
 				E0B6B2361B3CC95500C86C17 /* Supporting Files */,
@@ -263,6 +266,7 @@
 				E0B6B23B1B3CC95500C86C17 /* ViewControllerLogin.swift in Sources */,
 				E0B6B27E1B3CC9B800C86C17 /* CallLog.swift in Sources */,
 				E0B6B2861B3CC9B800C86C17 /* Subscription.swift in Sources */,
+				E004D4EB1B43236000365EA0 /* CustomCell.swift in Sources */,
 				E0B6B2841B3CC9B800C86C17 /* RingOut.swift in Sources */,
 				E0B6B2391B3CC95500C86C17 /* AppDelegate.swift in Sources */,
 				E0B6B27C1B3CC9B800C86C17 /* Account.swift in Sources */,
