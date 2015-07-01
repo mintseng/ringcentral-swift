@@ -139,6 +139,10 @@ class Platform {
         return self.callLog!.callLog(self.auth!)
     }
     
+    func getCallLog(query: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return self.callLog!.callLog(self.auth!, query: query)
+    }
+    
     func getCallLogExt() -> (NSData?, NSURLResponse?, NSError?) {
         return self.callLog!.callLogExt(self.auth!)
     }
@@ -164,6 +168,89 @@ class Platform {
         let feedback = ringOut.ringOut(self.auth!, from: from, to: to)
         return (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2
     }
+    
+    func getRingOut(ringId: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return ringOut.getRingOut(self.auth!, ringId: ringId)
+    }
+    
+    func deleteRingOut(ringId: String) -> Bool {
+        let feedback = ringOut.deleteRingOut(self.auth!, ringId: ringId)
+        return (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2
+    }
+    
+    // Messaging/SMS Methods
+    func postSms(text: String, to: String) -> Bool {
+        let feedback = messaging.sms(auth!, text: text, to: to)
+        return (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2
+    }
+    
+    func getMessage(msgId: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return messaging.getMessage(auth!, msgId: msgId)
+    }
+    
+    func getMessages() -> (NSData?, NSURLResponse?, NSError?) {
+        return messaging.getMessages(auth!)
+    }
+    
+//    func deleteMessage(msgId: String) -> (NSData?, NSURLResponse?, NSError?) {
+//        return messaging.deleteMessage(auth!, msgId: msgId)
+//    }
+    func deleteMessage(msgId: String) -> Bool {
+        let feedback = messaging.deleteMessage(auth!, msgId: msgId)
+        return (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2
+    }
+    
+//    func deleteMessaages(convoId: String) -> (NSData?, NSURLResponse?, NSError?) {
+//        return messaging.deleteMessages(auth!, convoId: convoId)
+//    }
+    func deleteMessaages(convoId: String) -> Bool {
+        let feedback = messaging.deleteMessages(auth!, convoId: convoId)
+        return (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2
+    }
+    
+    
+//    func postMessage(msgId: String, text: String) -> (NSData?, NSURLResponse?, NSError?) {
+//        return messaging.modifyMessage(auth!, msgId: msgId, text: text)
+//    }
+    func postMessage(msgId: String, text: String) -> Bool {
+        let feedback = messaging.modifyMessage(auth!, msgId: msgId, text: text)
+        return (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2
+    }
+    
+    func getAttachment(msgId: String, attachId: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return messaging.getAttachment(auth!, msgId: msgId, attachId: attachId)
+    }
+    
+    
+    // Presence Methods
+    func getPresence() -> (NSData?, NSURLResponse?, NSError?) {
+        return presence.getPresence(auth!)
+    }
+    
+    
+    // Account Methods
+    func getAccountId() -> (NSData?, NSURLResponse?, NSError?) {
+        return account.getAccountId(auth!)
+    }
+    
+    func getAccountIdExtensionId() -> (NSData?, NSURLResponse?, NSError?) {
+        return account.getAccountIdExtensionId(auth!)
+    }
+    
+    func getExtensions() -> (NSData?, NSURLResponse?, NSError?) {
+        return account.getExtensions(auth!)
+    }
+    
+    
+    // Dictionary Methods
+    func getCountry() -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getCountry(auth!)
+    }
+    
+    
+    
+    
+    
     
     
     func test() {

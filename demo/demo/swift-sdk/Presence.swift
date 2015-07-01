@@ -23,8 +23,8 @@ class Presence {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        println(response)
-        println(NSString(data: data!, encoding: NSUTF8StringEncoding))
+//        println(response)
+//        println(NSString(data: data!, encoding: NSUTF8StringEncoding))
         
         return (data!, response!, error!)
     }
