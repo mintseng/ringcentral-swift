@@ -52,7 +52,7 @@ var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_PR
 ```
 
 Depending on the stage of production, either                                        
-Sdk.RC_SERVER_SANDBOX or Sdk.RC_SERVER_PRODUCTION                                   
+**Sdk.RC_SERVER_SANDBOX** or **Sdk.RC_SERVER_PRODUCTION**                                   
 will be used as the 'server' parameter.
 
 # Authorization
@@ -81,7 +81,7 @@ Currently, all method calls support a standard (DATA, RESPONSE, ERROR) return pr
 A parsing class will be provided to use at your disposal, however the functionality of
 what it returns is limited (based on what developers will likely need most).
 
-Most method calls will follow this behavior:
+**Most method calls will follow this behavior:**
 ```swift
 var feedback = platform.methodCall(auth!)
 // feedback.0 -> data
