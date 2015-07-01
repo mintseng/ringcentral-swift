@@ -243,9 +243,43 @@ class Platform {
     
     
     // Dictionary Methods
-    func getCountry() -> (NSData?, NSURLResponse?, NSError?) {
-        return dictionary.getCountry(auth!)
+    func getCountry(countryId: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getCountry(auth!, countryId: countryId)
     }
+    
+    func getCountries() -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getCountries(auth!)
+    }
+    
+    func getState(stateId: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getState(auth!, stateId: stateId)
+    }
+    
+    func getStates(countryId: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getStates(auth!, countryId: countryId)
+    }
+    
+    func getLocations(stateId: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getLocations(auth!, stateId: stateId)
+    }
+    
+    func getTimezone(zoneId: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getTimezone(auth!, zoneId: zoneId)
+    }
+    
+    func getTimezones() -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getTimezones(auth!)
+    }
+    
+    func getLanguage(langId: String) -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getLanguage(auth!, langId: langId)
+    }
+    
+    func getLanguages() -> (NSData?, NSURLResponse?, NSError?) {
+        return dictionary.getLanguages(auth!)
+    }
+    
+    
     
     
     

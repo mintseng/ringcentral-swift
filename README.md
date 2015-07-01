@@ -122,8 +122,22 @@ can be directly called without setting the 'feedback' to a variable.
 
 RingOut follows a two-legged style telecommunication protocol.
 
+The following method call is used to send a Ring Out.
+If successful it will return true, if not it will return false.
 ```swift
+postRingOut(from: "14088861168", to: "1408861168") // true
+```
 
+The following method call is used to obtain the status of a Ring Out.
+Returns the generic (data, response, error) return type specified above.
+```swift
+getRingOut(ringId: "14088861168", to: "14088861168")
+```
+
+The following method call is used to delete a ring out object.
+Returns true if successful, false if not.
+```swift
+deleteRingOut(ringId: "1408861168") // true
 ```
 
 # Sending SMS
