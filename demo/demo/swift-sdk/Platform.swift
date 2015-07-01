@@ -328,6 +328,7 @@ class Platform {
         Dictionary(server: self.server).getState(auth!)
         Dictionary(server: self.server).getTimezone(auth!)
         Dictionary(server: self.server).getTimezones(auth!)
+        
     }
     
     

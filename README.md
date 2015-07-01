@@ -41,12 +41,12 @@ Currently this SDK supports most functionalities, with the exception of:
 
 The RingCentral SDK is initiated in the following ways.
 
-Sandbox:
+**Sandbox:**
 ```swift
 var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_SANDBOX)
 ```
 
-Production:
+**Production:**
 ```swift
 var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_PRODUCTION)
 ```
@@ -126,7 +126,7 @@ RingOut follows a two-legged style telecommunication protocol.
 The following method call is used to send a Ring Out.                           
 If successful it will return true, if not it will return false.
 ```swift
-postRingOut(from: "14088861168", to: "1408861168") // true
+platform.postRingOut(from: "12345678912", to: "12345678912") // true
 ```
 
 **Additional Features**:
@@ -134,16 +134,38 @@ postRingOut(from: "14088861168", to: "1408861168") // true
 The following method call is used to obtain the status of a Ring Out.           
 Returns the generic (data, response, error) return type specified above.        
 ```swift
-getRingOut(ringId: "14088861168", to: "14088861168")
+platform.getRingOut(ringId: "12345678912", to: "12345678912")
 ```
                                                                                 
 The following method call is used to delete a ring out object.                  
 Returns true if successful, false if not.
+The parameter given is the "ringId" of the Ring Out object.
 ```swift
-deleteRingOut(ringId: "1408861168") // true
+platform.deleteRingOut("123") // true
 ```
 
 # Sending SMS
+
+The follow method call is used to send a SMS.
+If successful it will return true, false if not.
+```swift
+platform.postSms("hi i'm min", to: "12345678912") // true
+```
+
+**Additional Features**:
+
+The following call is used to obtain a message that was sent.
+Follows (data, response, error) return
+```swift
+let feedback = platform.getMessage("123")
+```
+
+The following call is used to delete a message object that was sent.
+(Does not "UNSEND" the text message, simply removes from database.)
+A boolean is returned to indicate success or failure.
+```swift
+platform.deleteMessage("123")
+```
 
 ***
 
