@@ -1,6 +1,7 @@
 RingCentral Swift SDK
 =====================
 
+
 ***
 
 1. [Overview](#overview)
@@ -42,9 +43,8 @@ Currently this SDK supports most functionalities, with the exception of:
 The RingCentral SDK is initiated in the following ways.
 
 **Sandbox:**
-```swift
-var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_SANDBOX)
-```
+<!-- language: swift -->
+    var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_SANDBOX)
 
 **Production:**
 ```swift
@@ -159,7 +159,6 @@ Follows (data, response, error) return
 ```swift
 let feedback = platform.getMessage("123")
 ```
-                                                                                        <br/>
 
 The following call is used to delete a message object that was sent.
 (Does not "UNSEND" the text message, simply removes from database.)
