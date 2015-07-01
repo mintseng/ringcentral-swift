@@ -43,7 +43,7 @@ Currently this SDK supports most functionalities, with the exception of:
 The RingCentral SDK is initiated in the following ways.
 
 **Sandbox:**
-<!-- language: swift -->
+<!-- language: lang-swift -->
     var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_SANDBOX)
 
 **Production:**
