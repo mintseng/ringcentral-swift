@@ -161,8 +161,7 @@ let feedback = platform.getMessage("123")
 ```
                                                                                         <br/>
                                                                                         <br/>
-                                                                                        <br/>
-                                                                                        <br/>                                                                                        <br/>                                                                                        <br/>                                                                                        <br/>                                                                                        <br/>                                                                                        <br/>                                                                                        <br/>
+
 The following call is used to delete a message object that was sent.
 (Does not "UNSEND" the text message, simply removes from database.)
 A boolean is returned to indicate success or failure.
