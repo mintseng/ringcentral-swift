@@ -137,7 +137,11 @@ Returns the generic (data, response, error) return type specified above.
 platform.getRingOut(ringId: "12345678912", to: "12345678912")
 ```
                                                                                 
-The following method call is used to delete a ring out object.                  
+The following method call is used to delete a ring out object.
+
+
+
+
 Returns true if successful, false if not.
 The parameter given is the "ringId" of the Ring Out object.
 ```swift
