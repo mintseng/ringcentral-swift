@@ -13,6 +13,11 @@ class CallLog {
         return httpRequest(auth, url: url!)
     }
     
+    func callLog(auth: Auth, query: String) -> (NSData?, NSURLResponse?, NSError?) {
+        let url = NSURL(string: server + "/v1.0/account/~/call-log?" + query)
+        return httpRequest(auth, url: url!)
+    }
+    
     func httpRequest(auth: Auth, url: NSURL) -> (NSData?, NSURLResponse?, NSError?) {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -26,7 +31,8 @@ class CallLog {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        println((response as! NSHTTPURLResponse).statusCode)
+//        println((response as! NSHTTPURLResponse).statusCode)
+        
 //        println(response)
 //        println(NSString(data: data!, encoding: NSUTF8StringEncoding))
 //        println(error)

@@ -13,6 +13,7 @@ import UIKit
 
 class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet var filter: UITextField!
     @IBOutlet var callHistory: UITableView!
     var platform: Platform!
     
@@ -39,7 +40,12 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBAction func press(sender: AnyObject) {
         self.textArray.addObject("Hi")
+        filter(filter.text)
         self.callHistory.reloadData()
+    }
+    
+    func filter(filter: String) {
+        
     }
     
     override func didReceiveMemoryWarning() {

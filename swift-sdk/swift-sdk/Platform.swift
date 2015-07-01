@@ -11,12 +11,12 @@ class Platform {
     var version: String = "0"
     
     // Platform tools
-    var ringOut: RingOut?
-    var messaging: Messaging?
-    var callLog: CallLog?
-    var presence: Presence?
-    var account: Account?
-    var dictionary: Dictionary?
+    var ringOut: RingOut!
+    var messaging: Messaging!
+    var callLog: CallLog!
+    var presence: Presence!
+    var account: Account!
+    var dictionary: Dictionary!
     
     
     /// Constructor for the platform of the SDK
@@ -39,7 +39,7 @@ class Platform {
     func authorize(username: String, password: String) {
         auth = Auth(username: username, password: password, server: server)
         let feedback = auth!.login(appKey, secret: appSecret)
-        if (feedback.1 as! NSHTTPURLResponse).statusCode == 2 {
+        if (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2 {
             self.ringOut = RingOut(server: server)
             self.messaging = Messaging(server: server)
             self.callLog = CallLog(server: server)
@@ -58,13 +58,14 @@ class Platform {
     func authorize(username: String, ext: String, password: String) {
         auth = Auth(username: username, ext: ext, password: password, server: self.server)
         let feedback = auth!.login(appKey, secret: appSecret)
-        if (feedback.1 as! NSHTTPURLResponse).statusCode == 2 {
+        if (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2 {
             self.ringOut = RingOut(server: server)
             self.messaging = Messaging(server: server)
             self.callLog = CallLog(server: server)
             self.presence = Presence(server: server)
             self.account = Account(server: server)
             self.dictionary = Dictionary(server: server)
+
         }
     }
     
@@ -132,13 +133,38 @@ class Platform {
         self.version = readdata["serverVersion"] as! String
     }
     
+    // Call Log Methods
     
-    func getAccountInfo() -> Bool {
-        var test: Bool = false
-        Account(server: self.server).getAccountIdExtensionId(self.auth!)
-        test = true
-        return test
+    func getCallLog() -> (NSData?, NSURLResponse?, NSError?) {
+        return self.callLog!.callLog(self.auth!)
     }
+    
+    func getCallLogExt() -> (NSData?, NSURLResponse?, NSError?) {
+        return self.callLog!.callLogExt(self.auth!)
+    }
+    
+    func getActiveCalls() -> (NSData?, NSURLResponse?, NSError?) {
+        return self.callLog!.activeCalls(self.auth!)
+    }
+    
+    func getActiveCallsExt() -> (NSData?, NSURLResponse?, NSError?) {
+        return self.callLog!.activeCallsExt(self.auth!)
+    }
+    
+        // Parsers
+    
+    func getCallLog(parser: Bool) -> NSDictionary {
+        let feedback = self.callLog!.callLog(self.auth!)
+        return NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary
+    }
+    
+    // RingOut Methods
+    
+    func postRingOut(from: String, to: String) -> Bool {
+        let feedback = ringOut.ringOut(self.auth!, from: from, to: to)
+        return (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2
+    }
+    
     
     func test() {
         CallLog(server: self.server).callLog(self.auth!)
@@ -158,7 +184,7 @@ class Platform {
     }
     
     func test4() {
-        RingOut(server: self.server).ringOut(self.auth!, to: "14088861168", from: "14088861168")
+        RingOut(server: self.server).ringOut(self.auth!, from: "14088861168", to: "14088861168")
     }
     
     

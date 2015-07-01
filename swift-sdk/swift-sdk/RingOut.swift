@@ -7,7 +7,7 @@ class RingOut {
         self.server = server
     }
     
-    func ringOut(auth: Auth, to: String, from: String) -> (NSData?, NSURLResponse?, NSError?) {
+    func ringOut(auth: Auth, from: String, to: String) -> (NSData?, NSURLResponse?, NSError?) {
         let url = NSURL(string: server + "/v1.0/account/~/extension/~/ringout")
         let number: String = auth.getUsername()
         

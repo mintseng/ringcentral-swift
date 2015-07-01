@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iXt-C0-Nqp">
-                                <rect key="frame" x="30" y="68" width="226" height="401"/>
+                                <rect key="frame" x="29" y="99" width="226" height="401"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="U20-N6-5Nu" style="IBUITableViewCellStyleDefault" id="Iwp-YF-EtV">
@@ -40,8 +40,13 @@
                                     <outlet property="delegate" destination="DZ7-Qe-HBO" id="tv0-Cb-cPh"/>
                                 </connections>
                             </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WQp-cj-zJ6">
+                                <rect key="frame" x="38" y="61" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3Y-GR-lvd">
-                                <rect key="frame" x="113" y="487" width="46" height="30"/>
+                                <rect key="frame" x="171" y="61" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -55,6 +60,7 @@
                     <tabBarItem key="tabBarItem" title="Log" image="logIcon" id="NNa-UC-JJo"/>
                     <connections>
                         <outlet property="callHistory" destination="iXt-C0-Nqp" id="h3f-v9-2bs"/>
+                        <outlet property="filter" destination="WQp-cj-zJ6" id="SQo-eT-y9Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M73-TB-Xx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
