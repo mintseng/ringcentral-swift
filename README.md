@@ -43,13 +43,13 @@ Currently this SDK supports most functionalities, with the exception of:
 The RingCentral SDK is initiated in the following ways.
 
 **Sandbox:**
-<!-- language: lang-swift -->
+<!-- language: swift -->
     var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_SANDBOX)
 
 **Production:**
-```swift
-var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_PRODUCTION)
-```
+<!-- language: swift -->
+    var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_PRODUCTION)
+
 
 Depending on the stage of production, either                                        
 **Sdk.RC_SERVER_SANDBOX** or **Sdk.RC_SERVER_PRODUCTION**                                   
@@ -59,19 +59,19 @@ will be used as the 'server' parameter.
 
 To authorize the platform, extract the 'Platform' object:
 
-```swift
-var platform = rcsdk.getPlatform()
-```
+<!-- language: swift -->
+    var platform = rcsdk.getPlatform()
+
 
 Once the platform is extracted, call:
 
-```swift
-platform.authorize(username, password: password)
-```
+<!-- language: swift -->
+    platform.authorize(username, password: password)
+
 or (to authorize with extension):
-```swift
-platform.authorize(username, ext: ext, password: password)
-```
+<!-- language: swift -->
+    platform.authorize(username, ext: ext, password: password)
+
 *Caution*: If no extension is specified, platform automitically refers extension 101 (default).
 ***
 
@@ -82,40 +82,42 @@ A parsing class will be provided to use at your disposal, however the functional
 what it returns is limited (based on what developers will likely need most).
 
 **Most method calls will follow this behavior:**
-```swift
-var feedback = platform.methodCall(auth!)
-// feedback.0 -> data
-// feedback.1 -> response
-// feedback.2 -> error
+<!-- language: swift -->
+    var feedback = platform.methodCall(auth!)
+    // feedback.0 -> data
+    // feedback.1 -> response
+    // feedback.2 -> error
 
-```
+
 
 
 Rule of thumb: Always check if 'error' is nil
-```swift
-if (let x = feedback.2) {
-    // Handle the error
-} else {
-    // Continue doing whatever
-}
-```
+<!-- language: swift -->
+    if (let x = feedback.2) {
+        // Handle the error
+    } else {
+        // Continue doing whatever
+    }
+
 
 For simple checking of a successful status code:
-```swift
-(response as! NSHTTPURLResponse).statusCode / 100 == 2
-```
+<!-- language: swift -->
+    (response as! NSHTTPURLResponse).statusCode / 100 == 2
+
 
 For turning 'data' into a Dictionary (JSON):
-```swift
-NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
-or 
-NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
-```
+<!-- language: swift -->
+    NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
+    
+    // or
+
+    NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
+
 
 For readability of the data
-```swift
-println(NSString(data: data!, encoding: NSUTF8StringEncoding))
-```
+<!-- language: swift -->
+    println(NSString(data: data!, encoding: NSUTF8StringEncoding))
+
 *Usability*: Method calls for RingOut or SMS (anything that you dont need information back from)
 can be directly called without setting the 'feedback' to a variable.
 
@@ -125,47 +127,47 @@ RingOut follows a two-legged style telecommunication protocol.
                                                                                 
 The following method call is used to send a Ring Out.                           
 If successful it will return true, if not it will return false.
-```swift
-platform.postRingOut(from: "12345678912", to: "12345678912") // true
-```
+<!-- language: swift -->
+    platform.postRingOut(from: "12345678912", to: "12345678912") // true
+
 
 **Additional Features**:
                                                                                 
 The following method call is used to obtain the status of a Ring Out.           
 Returns the generic (data, response, error) return type specified above.        
-```swift
-platform.getRingOut(ringId: "12345678912", to: "12345678912")
-```
+<!-- language: swift -->
+    platform.getRingOut(ringId: "12345678912", to: "12345678912")
+
                                                                                 
 The following method call is used to delete a ring out object.
 Returns true if successful, false if not.
 The parameter given is the "ringId" of the Ring Out object.
-```swift
-platform.deleteRingOut("123") // true
-```
+<!-- language: swift -->
+    platform.deleteRingOut("123") // true
+
 
 # Sending SMS
 
 The follow method call is used to send a SMS.
 If successful it will return true, false if not.
-```swift
-platform.postSms("hi i'm min", to: "12345678912") // true
-```
+<!-- language: swift -->
+    platform.postSms("hi i'm min", to: "12345678912") // true
+
 
 **Additional Features**:
 
 The following call is used to obtain a message that was sent.
 Follows (data, response, error) return
-```swift
-let feedback = platform.getMessage("123")
-```
+<!-- language: swift -->
+    let feedback = platform.getMessage("123")
+
 
 The following call is used to delete a message object that was sent.
 (Does not "UNSEND" the text message, simply removes from database.)
 A boolean is returned to indicate success or failure.
-```swift
-platform.deleteMessage("123")
-```
+<!-- language: swift -->
+    platform.deleteMessage("123")
+
 
 ***
 
