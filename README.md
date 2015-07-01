@@ -8,7 +8,7 @@ RingCentral Swift SDK
 3. [Initialization](#initialization)
 4. [Authorization](#authorization)
 5. [Generic Requests](#generic-requests)
-6. [Performing RingOut](#ring-out)
+6. [Performing RingOut](#performing-ringout)
 7. [Sending SMS](#sending-sms)
     1. [Account](#account)
     2. [Call Log](#call-log)
@@ -128,6 +128,8 @@ If successful it will return true, if not it will return false.
 ```swift
 postRingOut(from: "14088861168", to: "1408861168") // true
 ```
+
+**Additional Features**:
                                                                                 
 The following method call is used to obtain the status of a Ring Out.           
 Returns the generic (data, response, error) return type specified above.        
