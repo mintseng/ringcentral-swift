@@ -138,10 +138,6 @@ platform.getRingOut(ringId: "12345678912", to: "12345678912")
 ```
                                                                                 
 The following method call is used to delete a ring out object.
-
-
-
-
 Returns true if successful, false if not.
 The parameter given is the "ringId" of the Ring Out object.
 ```swift
@@ -163,7 +159,7 @@ Follows (data, response, error) return
 ```swift
 let feedback = platform.getMessage("123")
 ```
-
+                                                                                        <br/>
 The following call is used to delete a message object that was sent.
 (Does not "UNSEND" the text message, simply removes from database.)
 A boolean is returned to indicate success or failure.
