@@ -195,7 +195,7 @@ All of the following methods return in the (data, response, error) syntax style.
 All of the following methods return in the (data, response, error) syntax style.
 
 **Get call log (along with applying filters)**:
-<!-- language: Swift -->
+<!-- language: lang-swift -->
     platform.getCallLog()
     
     platform.getCallLog("bunch of random filters") 
