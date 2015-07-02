@@ -259,6 +259,17 @@ Follows (data, response, error) return
 
 ## Subscription
 
+Work in progress. Either implementing a self-made one OR integrating PubNub (it's only avaible for Obj-C)
+
 ***
 
 # SDK Demos
+
+1. Single page graphics UI showcasing the usability of all API function calls.
+
+2. Features Login page transitioning into a pseudo-phone graphics UI, which transitions into a call log.
+
+
+
+
+
