@@ -156,12 +156,6 @@ If successful it will return true, false if not.
 
 **Additional Features**:
 
-The following call is used to obtain a message that was sent.
-Follows (data, response, error) return
-<!-- language: swift -->
-    let feedback = platform.getMessage("123")
-
-
 The following call is used to delete a message object that was sent.
 (Does not "UNSEND" the text message, simply removes from database.)
 A boolean is returned to indicate success or failure.
@@ -204,7 +198,26 @@ All of the following methods return in the (data, response, error) syntax style.
 
 ## Presence
 
+**Gets the presence of any calls on the current account**:
+<!-- language: swift -->
+    platform.getPresence()
+
 ## Messaging
+
+The following call is used to obtain a message that was sent.
+Follows (data, response, error) return
+<!-- language: swift -->
+    let feedback = platform.getMessage("123") // message ID
+    // or
+    let feedback = platform.getMessages("123") //conversation ID
+
+**Changes the message (currently only supports "READ" <--> "UNREAD" switching)**
+<!-- language: swift -->
+    platform.postMessage("123", text:"hi i'm min") // message ID
+
+**Gets the attachment of a message**:
+<!-- language: swift -->
+    platform.getAttachment("123", attachId: "1234") // message ID and attachment ID
 
 ## Dictionary
 
