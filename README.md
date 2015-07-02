@@ -38,6 +38,9 @@ Currently this SDK supports most functionalities, with the exception of:
 
 # Setting Up
 
+For now, drag the "swift-sdk" folder into your directory.
+A better implementation with Pods will be used in future.
+
 # Initialization
 
 The RingCentral SDK is initiated in the following ways.
@@ -223,7 +226,7 @@ Follows (data, response, error) return
 
 **Gets the country**:
 <!-- language: swift -->
-platform.getCountry("1") // country ID
+    platform.getCountry("1") // country ID
 
 **Gets the list of all the countries**:
 <!-- language: swift -->
