@@ -168,12 +168,39 @@ A boolean is returned to indicate success or failure.
 <!-- language: swift -->
     platform.deleteMessage("123")
 
-
 ***
+
+**Caution**:    The following method descriptions will be abbreviated.
+                User may assume syntax will remain the same throughout.
 
 ## Account
 
+All of the following methods return in the (data, response, error) syntax style.
+
+**Get account ID**:
+<!-- language: swift -->
+    platform.getAccountId() 
+
+**Get account and extension ID**:
+<!-- language: swift -->
+    platform.getAccountIdExtensionId() 
+
+**Get extensions of current account**:
+<!-- language: swift -->
+    platform.getExtensions() 
+
+
 ## Call Log
+
+All of the following methods return in the (data, response, error) syntax style.
+
+**Get call log (along with applying filters)**:
+<!-- language: swift -->
+    platform.getCallLog()
+    
+    platform.getCallLog("bunch of random filters") 
+    // filters must be in the format param1=one & param2=two
+    // spacing not as strict
 
 ## Presence
 
