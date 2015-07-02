@@ -221,6 +221,39 @@ Follows (data, response, error) return
 
 ## Dictionary
 
+**Gets the country**:
+<!-- language: swift -->
+platform.getCountry("1") // country ID
+
+**Gets the list of all the countries**:
+<!-- language: swift -->
+    platform.getCountries()
+
+**Gets the state**:
+<!-- language: swift -->
+    platform.getState("123") // state ID
+
+**Gets all of the states within a specified country**:
+<!-- language: swift -->
+    platform.getStates()
+
+**Gets all locations within a state**:
+<!-- language: swift -->
+    platform.getLocations("123") // state ID
+
+**Gets a timezone**:
+<!-- language: swift -->
+    platform.getTimezone("123") // zone ID
+
+**Gets a language**:
+<!-- language: swift -->
+    platform.getLanguage("123") // language ID
+
+**Gets all of the languages**:
+<!-- language: swift -->
+    platform.getLanguages()
+
+
 ## Subscription
 
 ***
