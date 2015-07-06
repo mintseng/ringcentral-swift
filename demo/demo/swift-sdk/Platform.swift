@@ -279,6 +279,11 @@ class Platform {
         return dictionary.getLanguages(auth!)
     }
     
+    
+    
+    
+    // Manual testing
+    
     func test() {
         CallLog(server: self.server).callLog(self.auth!)
         CallLog(server: self.server).callLogExt(self.auth!)

@@ -15,6 +15,7 @@ class ViewControllerPhone: UIViewController {
     
     @IBOutlet var number: UILabel!
     @IBOutlet var fromNumber: UITextField!
+    @IBOutlet var message: UITextField!
     
     var platform: Platform!
     
@@ -41,8 +42,18 @@ class ViewControllerPhone: UIViewController {
         
     }
     
+    @IBAction func pressSMSButton(sender: AnyObject) {
+        if message.text! != "" {
+            platform.postSms(message.text!, to: number.text!)
+        }
+        
+    }
     
     @IBOutlet var labelPassedData: UILabel!
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +62,13 @@ class ViewControllerPhone: UIViewController {
         
         var secondTab = self.tabBarController?.viewControllers![1] as! ViewControllerLog
         secondTab.platform = self.platform
+        
+        var feedback = platform.getMessages()
+        for message in (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray{
+            println(message)
+            println()
+        }
+
         
     }
     

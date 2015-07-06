@@ -17,9 +17,11 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet var callHistory: UITableView!
     var platform: Platform!
     
+    @IBOutlet var messageHistory: UITableView!
 //    @IBOutlet var label: UILabel!
     
     var textArray: NSMutableArray = NSMutableArray()
+    var messageArray: NSMutableArray = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +35,18 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
 
         }
         
+        var feedback = platform.getMessages()
+        for message in (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray{
+            var part0: String = (message["direction"] as! String)
+            var part1: String = (message["subject"] as! String)
+            self.messageArray.addObject(part0 + ": " + part1)
+        }
+        
         self.callHistory.rowHeight = UITableViewAutomaticDimension
         self.callHistory.estimatedRowHeight = 44.0
+        
+        
+        
         
     }
     
@@ -54,25 +66,49 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.textArray.count
+        if tableView == callHistory {
+            return self.textArray.count
+        }
+        return self.messageArray.count
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        var cell: UITableViewCell = self.callHistory.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
-        
-        let cellIdentifier = "Cell"
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: cellIdentifier)
+        if tableView == self.callHistory {
+            let cellIdentifier = "Cell"
+            
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: cellIdentifier)
+            }
+            //        cell.textLabel!.text = "hi"
+            cell!.textLabel?.text = self.textArray.objectAtIndex(indexPath.row) as? String
+            cell!.textLabel?.adjustsFontSizeToFitWidth = true
+            
+            // Setting number of lines to 0 allows for self adaptive lines
+            cell!.textLabel?.numberOfLines = 3
+            return cell!
+        } else {
+            let cellIdentifier = "Message"
+            
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: cellIdentifier)
+            }
+            //        cell.textLabel!.text = "hi"
+            cell!.textLabel?.text = self.messageArray.objectAtIndex(indexPath.row) as? String
+            cell!.textLabel?.adjustsFontSizeToFitWidth = true
+            
+            // Setting number of lines to 0 allows for self adaptive lines
+            cell!.textLabel?.numberOfLines = 3
+            
+            return cell!
         }
-//        cell.textLabel!.text = "hi"
-        cell!.textLabel?.text = self.textArray.objectAtIndex(indexPath.row) as? String
-        cell!.textLabel?.adjustsFontSizeToFitWidth = true
         
-        // Setting number of lines to 0 allows for self adaptive lines
-        cell!.textLabel?.numberOfLines = 3
-        return cell!
     }
     
     
