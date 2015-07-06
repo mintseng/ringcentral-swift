@@ -37,9 +37,16 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
         
         var feedback = platform.getMessages()
         for message in (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray{
-            var part0: String = (message["direction"] as! String)
+            let direction = message["direction"] as! String
+            var part0: String = direction
+            let number: String
+            if direction == "Outbound" {
+                number = (message["to"] as! NSArray)[0]["phoneNumber"] as! String
+            } else {
+                number = (message["from"] as! NSDictionary) ["phoneNumber"] as! String
+            }
             var part1: String = (message["subject"] as! String)
-            self.messageArray.addObject(part0 + ": " + part1)
+            self.messageArray.addObject(part0 + ": " + number + "\n" + part1)
         }
         
         self.callHistory.rowHeight = UITableViewAutomaticDimension
@@ -104,7 +111,7 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
             cell!.textLabel?.adjustsFontSizeToFitWidth = true
             
             // Setting number of lines to 0 allows for self adaptive lines
-            cell!.textLabel?.numberOfLines = 3
+            cell!.textLabel?.numberOfLines = 0
             
             return cell!
         }
