@@ -14,6 +14,9 @@ class Sdk {
     
     let server: String
     
+    var serverVersion: String!
+    var versionString: String!
+    
     /// Constructor for making the SDK object.
     ///
     /// Example:
@@ -42,28 +45,17 @@ class Sdk {
         request.HTTPMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
 
+        var response: NSURLResponse?
+        var error: NSError?
+        let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
         
-        // Sending HTTP request
-        var task: NSURLSessionDataTask = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            (data, response, error) in
-            if error != nil {
-                println(error)
-            } else {
-                if ((response as! NSHTTPURLResponse).statusCode / 100 != 2) {
-                    println(response)
-                    println(NSString(data: data, encoding: NSUTF8StringEncoding))
-                    return
-                }
-                
-                var errors: NSError?
-                let readdata = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errors) as! NSDictionary
-                                
-            }
-            
-            
-        }
+        var errors: NSError?
+        let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        task.resume()
+        let dict = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
+        self.serverVersion = dict["serverVersion"] as! String
+        self.versionString = (dict["apiVersions"] as! NSArray)[0]["versionString"] as! String
+        
     }
     
     /// Returns the Platform with the specified appKey and appSecret.

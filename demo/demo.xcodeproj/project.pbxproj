@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		E004D4EB1B43236000365EA0 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E004D4EA1B43236000365EA0 /* CustomCell.swift */; };
 		E03597BA1B3DC30D0015EC8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03597B91B3DC30D0015EC8C /* Images.xcassets */; };
+		E0B399D61B4B36B8007C73E7 /* Sdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B27A1B3CC9B800C86C17 /* Sdk.swift */; };
+		E0B399D71B4B36D7007C73E7 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2711B3CC9B800C86C17 /* Account.swift */; };
+		E0B399D81B4B36D7007C73E7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2721B3CC9B800C86C17 /* Auth.swift */; };
+		E0B399D91B4B36D7007C73E7 /* CallLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2731B3CC9B800C86C17 /* CallLog.swift */; };
+		E0B399DA1B4B36D7007C73E7 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2741B3CC9B800C86C17 /* Dictionary.swift */; };
+		E0B399DB1B4B36D7007C73E7 /* Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2761B3CC9B800C86C17 /* Messaging.swift */; };
+		E0B399DC1B4B36D7007C73E7 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2771B3CC9B800C86C17 /* Platform.swift */; };
+		E0B399DD1B4B36D7007C73E7 /* Presence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2781B3CC9B800C86C17 /* Presence.swift */; };
+		E0B399DE1B4B36D7007C73E7 /* RingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2791B3CC9B800C86C17 /* RingOut.swift */; };
+		E0B399DF1B4B36E2007C73E7 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B27B1B3CC9B800C86C17 /* Subscription.swift */; };
 		E0B6B2391B3CC95500C86C17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2381B3CC95500C86C17 /* AppDelegate.swift */; };
 		E0B6B23B1B3CC95500C86C17 /* ViewControllerLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B23A1B3CC95500C86C17 /* ViewControllerLogin.swift */; };
 		E0B6B23E1B3CC95500C86C17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0B6B23C1B3CC95500C86C17 /* Main.storyboard */; };
@@ -281,7 +291,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0B399D61B4B36B8007C73E7 /* Sdk.swift in Sources */,
+				E0B399DB1B4B36D7007C73E7 /* Messaging.swift in Sources */,
+				E0B399D91B4B36D7007C73E7 /* CallLog.swift in Sources */,
 				E0B6B24F1B3CC95500C86C17 /* demoTests.swift in Sources */,
+				E0B399DF1B4B36E2007C73E7 /* Subscription.swift in Sources */,
+				E0B399DE1B4B36D7007C73E7 /* RingOut.swift in Sources */,
+				E0B399DD1B4B36D7007C73E7 /* Presence.swift in Sources */,
+				E0B399D71B4B36D7007C73E7 /* Account.swift in Sources */,
+				E0B399D81B4B36D7007C73E7 /* Auth.swift in Sources */,
+				E0B399DC1B4B36D7007C73E7 /* Platform.swift in Sources */,
+				E0B399DA1B4B36D7007C73E7 /* Dictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
