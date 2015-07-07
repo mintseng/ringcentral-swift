@@ -26,6 +26,6 @@ class Presence {
 //        println(response)
 //        println(NSString(data: data!, encoding: NSUTF8StringEncoding))
         
-        return (data!, response!, error!)
+        return (data, response, error)
     }
 }

@@ -49,8 +49,8 @@ class Dictionary {
         
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
-        
-        println((response as! NSHTTPURLResponse).statusCode)
+//        
+//        println((response as! NSHTTPURLResponse).statusCode)
         
         return (data, response, error)
     }
@@ -75,7 +75,7 @@ class Dictionary {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        println((response as! NSHTTPURLResponse).statusCode)
+//        println((response as! NSHTTPURLResponse).statusCode)
         
         return (data, response, error)
     }
@@ -100,7 +100,7 @@ class Dictionary {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        println((response as! NSHTTPURLResponse).statusCode)
+//        println((response as! NSHTTPURLResponse).statusCode)
         
         return (data, response, error)
     }
@@ -125,7 +125,7 @@ class Dictionary {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        println((response as! NSHTTPURLResponse).statusCode)
+//        println((response as! NSHTTPURLResponse).statusCode)
         
         return (data!, response!, error!)
     }
@@ -150,7 +150,7 @@ class Dictionary {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        println((response as! NSHTTPURLResponse).statusCode)
+//        println((response as! NSHTTPURLResponse).statusCode)
         
         return (data, response, error)
     }
@@ -171,7 +171,7 @@ class Dictionary {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        println((response as! NSHTTPURLResponse).statusCode)
+//        println((response as! NSHTTPURLResponse).statusCode)
         
         return (data, response, error)
     }
@@ -196,7 +196,7 @@ class Dictionary {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        println((response as! NSHTTPURLResponse).statusCode)
+//        println((response as! NSHTTPURLResponse).statusCode)
         
         return (data, response, error)
     }
@@ -217,7 +217,7 @@ class Dictionary {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        println((response as! NSHTTPURLResponse).statusCode)
+//        println((response as! NSHTTPURLResponse).statusCode)
         
         return (data, response, error)
     }

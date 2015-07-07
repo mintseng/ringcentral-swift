@@ -56,22 +56,22 @@ class demoTests: XCTestCase {
     }
     
     func testD_RingOut() {
-        
+        XCTAssertEqual(platform.postRingOut("13464448343", to: "13464448343"), true)
     }
     
-    func testE_SMS() {
-        platform.postSms("testing " + (Int(NSDate().timeIntervalSince1970) / 100).description, to: "13464448343")
+    func testE_Presence() {
+        var feedback = platform.getPresence()
+        let check = (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary)
+        XCTAssertEqual(check["presenceStatus"] as! String, "Busy")
+        XCTAssertEqual(check["telephonyStatus"] as! String, "CallConnected")
+        XCTAssertEqual(check["userStatus"] as! String, "Available")
     }
     
-    func testF_CallLog() {
-        platform.getCallLog(true)["records"] as! NSArray
+    func testF_SMS() {
+        XCTAssertEqual(platform.postSms("testing " + (Int(NSDate().timeIntervalSince1970) / 100).description, to: "13464448343"), true)
     }
     
-    func testG_Account() {
-        
-    }
-    
-    func testH_Messaging() {
+    func testG_Messaging() {
         var feedback = platform.getMessages()
         var message = ((NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)[0]
         
@@ -86,12 +86,34 @@ class demoTests: XCTestCase {
         XCTAssertEqual(message["subject"] as! String, "testing " + (Int(NSDate().timeIntervalSince1970) / 100).description)
     }
     
-    func testI_Presence() {
-        
+    func testH_Account() {
+        var feedback = platform.getAccountId()
+        let check = (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary)["id"] as! NSNumber
+        XCTAssertEqual(check, 131069004)
     }
     
-    func testJ_Dictionary() {
+    func testI_Dictionary() {
+        var feedback = platform.getCountries()
+        var data = NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary
+        var check = ((data["records"] as! NSArray)[0] as! NSDictionary)["name"] as! String
+        XCTAssertEqual(check, "Afghanistan")
+    }
+    
+    func testJ_CallLog() {
+        var feedback = platform.getCallLog(true)["records"] as! NSArray
+        XCTAssertEqual(feedback[0]["result"] as! String, "Missed")
+        XCTAssertEqual(feedback[0]["direction"] as! String, "Inbound")
+        let check1 = (feedback[0]["to"] as! NSDictionary)["phoneNumber"] as! String
+        XCTAssertEqual(check1, "+13464448343")
+        let check2 = (feedback[0]["from"] as! NSDictionary)["phoneNumber"] as! String
+        XCTAssertEqual(check2, "+13464448343")
         
+        XCTAssertEqual(feedback[1]["result"] as! String, "Call connected")
+        XCTAssertEqual(feedback[1]["direction"] as! String, "Outbound")
+        let check3 = (feedback[1]["to"] as! NSDictionary)["phoneNumber"] as! String
+        XCTAssertEqual(check3, "+13464448343")
+        let check4 = (feedback[1]["from"] as! NSDictionary)["phoneNumber"] as! String
+        XCTAssertEqual(check4, "+13464448343")
     }
     
     func testK_Subscription() {
