@@ -20,8 +20,7 @@ class demoTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let appKey = "eI3RKs1oSBSY2kReFnviIw"
         let appSecret = "Gv9DgBZVTkaQNbbyEx-SQQBsnUKECmT5GrmGXbHTmpUQ"
-        let username = "13464448343"
-        let password = "P@ssw0rd"
+        
         rcsdk = Sdk(appKey: appKey, appSecret: appSecret, server: Sdk.RC_SERVER_SANDBOX)
         platform = rcsdk.getPlatform()
     }
@@ -42,6 +41,50 @@ class demoTests: XCTestCase {
         XCTAssertEqual(platform.server, "https://platform.devtest.ringcentral.com/restapi")
         XCTAssertEqual(platform.appKey, "eI3RKs1oSBSY2kReFnviIw")
         XCTAssertEqual(platform.appSecret, "Gv9DgBZVTkaQNbbyEx-SQQBsnUKECmT5GrmGXbHTmpUQ")
+    }
+    
+    func test3_Auth() {
+        let username = "13464448343"
+        let password = "P@ssw0rd"
+        platform.authorize(username, password: password)
+        var auth = platform.auth
+        XCTAssertEqual(auth!.authenticated, true)
+        XCTAssertNotEqual(auth!.expires_in, 0)
+        XCTAssertNotEqual(auth!.expire_time, 0)
+        XCTAssertNotEqual(auth!.refresh_token_expires_in, 0)
+        XCTAssertNotEqual(auth!.refresh_token_expire_time, 0)
+        XCTAssertEqual(auth!.ext, "101")
+    }
+    
+    func test4_RingOut() {
+        
+    }
+    
+    func test5_SMS() {
+        
+    }
+    
+    func test6_CallLog() {
+        
+    }
+    
+    func test7_Account() {
+        
+    }
+    
+    func test8_Messaging() {
+        
+    }
+    
+    func test9_Presence() {
+        
+    }
+    
+    func test10_Dictionary() {
+        
+    }
+    
+    func test11_Subscription() {
         
     }
     
