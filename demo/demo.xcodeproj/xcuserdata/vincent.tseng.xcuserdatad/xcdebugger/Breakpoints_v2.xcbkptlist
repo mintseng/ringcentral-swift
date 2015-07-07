@@ -41,14 +41,202 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "demoTests/demoTests.swift"
-            timestampString = "457921892.484078"
+            filePath = "demo/swift-sdk/Platform.swift"
+            timestampString = "457984606.432171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "test3_Auth()"
+            startingLineNumber = "4"
+            endingLineNumber = "4"
+            landmarkName = "Platform"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "demoTests/demoTests.swift"
+            timestampString = "457984620.720035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "demoTests"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demoTests.demoTests.rcsdk.getter : Swift.ImplicitlyUnwrappedOptional&lt;demoTests.Sdk&gt;"
+                  moduleName = "demoTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincent.tseng/Desktop/ringcentral/demo/demoTests/demoTests.swift"
+                  timestampString = "457994649.712221"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demoTests.demoTests.rcsdk.setter : Swift.ImplicitlyUnwrappedOptional&lt;demoTests.Sdk&gt;"
+                  moduleName = "demoTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincent.tseng/Desktop/ringcentral/demo/demoTests/demoTests.swift"
+                  timestampString = "457994649.712553"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demoTests.demoTests.rcsdk.materializeForSet : Swift.ImplicitlyUnwrappedOptional&lt;demoTests.Sdk&gt;"
+                  moduleName = "demoTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincent.tseng/Desktop/ringcentral/demo/demoTests/demoTests.swift"
+                  timestampString = "457994649.713058"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demoTests.demoTests.init (demoTests.demoTests.Type)(invocation : Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSInvocation&gt;) -&gt; Swift.ImplicitlyUnwrappedOptional&lt;demoTests.demoTests&gt;"
+                  moduleName = "demoTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincent.tseng/Desktop/ringcentral/demo/demoTests/demoTests.swift"
+                  timestampString = "457994649.713464"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demoTests.demoTests.init (demoTests.demoTests.Type)(selector : ObjectiveC.Selector) -&gt; Swift.ImplicitlyUnwrappedOptional&lt;demoTests.demoTests&gt;"
+                  moduleName = "demoTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincent.tseng/Desktop/ringcentral/demo/demoTests/demoTests.swift"
+                  timestampString = "457994649.71381"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demoTests.demoTests.init (demoTests.demoTests.Type)() -&gt; demoTests.demoTests"
+                  moduleName = "demoTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincent.tseng/Desktop/ringcentral/demo/demoTests/demoTests.swift"
+                  timestampString = "457994649.714254"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "demoTests/demoTests.swift"
+            timestampString = "458001283.76303"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "testH_Messaging()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "demoTests/demoTests.swift"
+            timestampString = "458001283.76303"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "testH_Messaging()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "demo/swift-sdk/Platform.swift"
+            timestampString = "457996244.407982"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "authorize(_:password:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demo.Platform.authorize (demo.Platform)(Swift.String, password : Swift.String) -&gt; ()"
+                  moduleName = "demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincent.tseng/Desktop/ringcentral/demo/demo/swift-sdk/Platform.swift"
+                  timestampString = "457996248.856868"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "1027">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "demoTests.Platform.authorize (demoTests.Platform)(Swift.String, password : Swift.String) -&gt; ()"
+                  moduleName = "demoTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincent.tseng/Desktop/ringcentral/demo/demo/swift-sdk/Platform.swift"
+                  timestampString = "457996249.249496"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "1027">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -20,33 +20,32 @@ class demoTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let appKey = "eI3RKs1oSBSY2kReFnviIw"
         let appSecret = "Gv9DgBZVTkaQNbbyEx-SQQBsnUKECmT5GrmGXbHTmpUQ"
-        
         rcsdk = Sdk(appKey: appKey, appSecret: appSecret, server: Sdk.RC_SERVER_SANDBOX)
         platform = rcsdk.getPlatform()
+        let username = "13464448343"
+        let password = "P@ssw0rd"
+        platform.authorize(username, password: password)
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        sleep(10)
     }
     
-    func test1_Sdk() {
+    func testA_Sdk() {
         XCTAssertEqual(rcsdk.serverVersion, "7.2.0.1781")
         XCTAssertEqual(rcsdk.versionString, "1.0.18")
         XCTAssertEqual(rcsdk.server, "https://platform.devtest.ringcentral.com/restapi")
-        
     }
     
-    func test2_Platform() {
+    func testB_Platform() {
         XCTAssertEqual(platform.server, "https://platform.devtest.ringcentral.com/restapi")
         XCTAssertEqual(platform.appKey, "eI3RKs1oSBSY2kReFnviIw")
         XCTAssertEqual(platform.appSecret, "Gv9DgBZVTkaQNbbyEx-SQQBsnUKECmT5GrmGXbHTmpUQ")
     }
     
-    func test3_Auth() {
-        let username = "13464448343"
-        let password = "P@ssw0rd"
-        platform.authorize(username, password: password)
+    func testC_Auth() {
         var auth = platform.auth
         XCTAssertEqual(auth!.authenticated, true)
         XCTAssertNotEqual(auth!.expires_in, 0)
@@ -56,43 +55,49 @@ class demoTests: XCTestCase {
         XCTAssertEqual(auth!.ext, "101")
     }
     
-    func test4_RingOut() {
+    func testD_RingOut() {
         
     }
     
-    func test5_SMS() {
+    func testE_SMS() {
+        platform.postSms("testing " + (Int(NSDate().timeIntervalSince1970) / 100).description, to: "13464448343")
+    }
+    
+    func testF_CallLog() {
+        platform.getCallLog(true)["records"] as! NSArray
+    }
+    
+    func testG_Account() {
         
     }
     
-    func test6_CallLog() {
+    func testH_Messaging() {
+        var feedback = platform.getMessages()
+        var message = ((NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)[0]
+        
+        XCTAssertEqual((message["from"] as! NSDictionary) ["phoneNumber"] as! String, "+13464448343")
+        XCTAssertEqual(message["direction"] as! String, "Inbound")
+        XCTAssertEqual(message["subject"] as! String, "testing " + (Int(NSDate().timeIntervalSince1970) / 100).description)
+        
+        message = ((NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)[1]
+        
+        XCTAssertEqual((message["to"] as! NSArray)[0]["phoneNumber"] as! String, "+13464448343")
+        XCTAssertEqual(message["direction"] as! String, "Outbound")
+        XCTAssertEqual(message["subject"] as! String, "testing " + (Int(NSDate().timeIntervalSince1970) / 100).description)
+    }
+    
+    func testI_Presence() {
         
     }
     
-    func test7_Account() {
+    func testJ_Dictionary() {
         
     }
     
-    func test8_Messaging() {
+    func testK_Subscription() {
         
     }
     
-    func test9_Presence() {
-        
-    }
-    
-    func test10_Dictionary() {
-        
-    }
-    
-    func test11_Subscription() {
-        
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-        
-    }
     
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.

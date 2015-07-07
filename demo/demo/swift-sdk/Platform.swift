@@ -37,8 +37,8 @@ class Platform {
     /// :param: username    The username of the RingCentral account
     /// :param: password    The password of the RingCentral account
     func authorize(username: String, password: String) {
-        auth = Auth(username: username, password: password, server: server)
-        let feedback = auth!.login(appKey, secret: appSecret)
+        let authHolder = Auth(username: username, password: password, server: server)
+        let feedback = authHolder.login(appKey, secret: appSecret)
         if (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2 {
             self.ringOut = RingOut(server: server)
             self.messaging = Messaging(server: server)
@@ -46,6 +46,7 @@ class Platform {
             self.presence = Presence(server: server)
             self.account = Account(server: server)
             self.dictionary = Dictionary(server: server)
+            self.auth = authHolder
         }
     }
     
@@ -56,8 +57,8 @@ class Platform {
     /// :param: password    The password of the RingCentral account
     /// :param: ext         The extension of the RingCentral account
     func authorize(username: String, ext: String, password: String) {
-        auth = Auth(username: username, ext: ext, password: password, server: self.server)
-        let feedback = auth!.login(appKey, secret: appSecret)
+        let authHolder = Auth(username: username, ext: ext, password: password, server: self.server)
+        let feedback = authHolder.login(appKey, secret: appSecret)
         if (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2 {
             self.ringOut = RingOut(server: server)
             self.messaging = Messaging(server: server)
@@ -65,7 +66,7 @@ class Platform {
             self.presence = Presence(server: server)
             self.account = Account(server: server)
             self.dictionary = Dictionary(server: server)
-
+            self.auth = authHolder
         }
     }
     
