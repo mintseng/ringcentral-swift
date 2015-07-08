@@ -1,11 +1,3 @@
-//
-//  demoTests.swift
-//  demoTests
-//
-//  Created by Vincent Tseng on 6/25/15.
-//  Copyright (c) 2015 Vincent Tseng. All rights reserved.
-//
-
 import UIKit
 import XCTest
 

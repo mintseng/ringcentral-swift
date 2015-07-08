@@ -1,6 +1,5 @@
 import Foundation
 
-
 import UIKit
 
 class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDelegate {
