@@ -68,35 +68,35 @@ class demoTests: XCTestCase {
     }
     
     func testF_SMS() {
-        XCTAssertEqual(platform.postSms("testing " + (Int(NSDate().timeIntervalSince1970) / 100).description, to: "13464448343"), true)
+        XCTAssertEqual(platform.postSms("testing " + (Int(NSDate().timeIntervalSince1970) / 10000).description, to: "13464448343"), true)
     }
     
-    func testG_Messaging() {
-        var feedback = platform.getMessages()
-        var message = ((NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)[0]
-        
-        XCTAssertEqual((message["from"] as! NSDictionary) ["phoneNumber"] as! String, "+13464448343")
-        XCTAssertEqual(message["direction"] as! String, "Inbound")
-        XCTAssertEqual(message["subject"] as! String, "testing " + (Int(NSDate().timeIntervalSince1970) / 100).description)
-        
-        message = ((NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)[1]
-        
-        XCTAssertEqual((message["to"] as! NSArray)[0]["phoneNumber"] as! String, "+13464448343")
-        XCTAssertEqual(message["direction"] as! String, "Outbound")
-        XCTAssertEqual(message["subject"] as! String, "testing " + (Int(NSDate().timeIntervalSince1970) / 100).description)
-    }
-    
-    func testH_Account() {
+    func testG_Account() {
         var feedback = platform.getAccountId()
         let check = (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary)["id"] as! NSNumber
         XCTAssertEqual(check, 131069004)
     }
     
-    func testI_Dictionary() {
+    func testH_Dictionary() {
         var feedback = platform.getCountries()
         var data = NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary
         var check = ((data["records"] as! NSArray)[0] as! NSDictionary)["name"] as! String
         XCTAssertEqual(check, "Afghanistan")
+    }
+    
+    func testI_Messaging() {
+        var feedback = platform.getMessages()
+        var message = ((NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)[0]
+        
+        XCTAssertEqual((message["from"] as! NSDictionary) ["phoneNumber"] as! String, "+13464448343")
+        XCTAssertEqual(message["direction"] as! String, "Inbound")
+        XCTAssertEqual(message["subject"] as! String, "testing " + (Int(NSDate().timeIntervalSince1970) / 10000).description)
+        
+        message = ((NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)[1]
+        
+        XCTAssertEqual((message["to"] as! NSArray)[0]["phoneNumber"] as! String, "+13464448343")
+        XCTAssertEqual(message["direction"] as! String, "Outbound")
+        XCTAssertEqual(message["subject"] as! String, "testing " + (Int(NSDate().timeIntervalSince1970) / 10000).description)
     }
     
     func testJ_CallLog() {
