@@ -10,15 +10,14 @@ class Platform {
     let server: String
     let appKey: String
     let appSecret: String
-    var version: String = "0"
     
     // Platform tools
-    var ringOut: RingOut!
-    var messaging: Messaging!
-    var callLog: CallLog!
-    var presence: Presence!
-    var account: Account!
-    var dictionary: Dictionary!
+    private var ringOut: RingOut!
+    private var messaging: Messaging!
+    private var callLog: CallLog!
+    private var presence: Presence!
+    private var account: Account!
+    private var dictionary: Dictionary!
     
     
     /// Constructor for the platform of the SDK
@@ -30,7 +29,6 @@ class Platform {
         self.appKey = appKey
         self.appSecret = appSecret
         self.server = server
-        setVersion()
     }
     
     
@@ -38,7 +36,7 @@ class Platform {
     ///
     /// :param: username    The username of the RingCentral account
     /// :param: password    The password of the RingCentral account
-    func authorize(username: String, password: String) {
+    func authorize(username: String, password: String, remember: Bool = true) {
         let authHolder = Auth(username: username, password: password, server: server)
         let feedback = authHolder.login(appKey, secret: appSecret)
         if (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2 {
@@ -116,26 +114,7 @@ class Platform {
     func notAuthorized() {
         
     }
-    
-    /// Sets the version of the current API
-    ///
-    ///
-    func setVersion() {
-        let url = NSURL(string: server + "/")
-        
-        // Sets up the request
-        let request = NSMutableURLRequest(URL: url!)
-        request.HTTPMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
 
-        var response: NSURLResponse?
-        var error: NSError?
-        let data: NSData! = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
-        
-        var errors: NSError?
-        let readdata = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errors) as! NSDictionary
-        self.version = readdata["serverVersion"] as! String
-    }
     
     // Call Log Methods
     
