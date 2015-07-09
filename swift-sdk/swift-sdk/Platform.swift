@@ -1,5 +1,7 @@
 import Foundation
 
+// delete setversion
+
 /// Platform used to call HTTP request methods.
 class Platform {
     
@@ -49,6 +51,7 @@ class Platform {
             self.auth = authHolder
         }
     }
+    
     
     
     /// Authorizes the user with the correct credentials (with extra ext)
@@ -285,49 +288,49 @@ class Platform {
     
     // Manual testing
     
-    func test() {
-        CallLog(server: self.server).callLog(self.auth!)
-        CallLog(server: self.server).callLogExt(self.auth!)
-        CallLog(server: self.server).activeCalls(self.auth!)
-        CallLog(server: self.server).activeCallsExt(self.auth!)
-        
-    }
-    
-    func test2() {
-        Messaging(server: self.server).sms(self.auth!, text: "testing", to: "14089406669")
-    }
-    
-    func test3() {
-        Messaging(server: self.server).getMessages(self.auth!)
-        Messaging(server: self.server).getMessage(self.auth!, msgId: "2394843412560562429")
-    }
-    
-    func test4() {
-        RingOut(server: self.server).ringOut(self.auth!, from: "14088861168", to: "14088861168")
-    }
-    
-    
-    // Faulty
-    func test5() {
-        RingOut(server: self.server).getRingOut(self.auth!, ringId: "131069004")
-    }
-    
-    func test6() {
-        Presence(server: self.server).getPresence(self.auth!)
-    }
-    
-    // Note to self, ADDRESS BOOK DOES NOT WORK
-    
-    func test7() {
-        Dictionary(server: self.server).getCountry(auth!)
-        Dictionary(server: self.server).getCountries(auth!)
-        Dictionary(server: self.server).getLanguage(auth!)
-        Dictionary(server: self.server).getLanguages(auth!)
-        Dictionary(server: self.server).getState(auth!)
-        Dictionary(server: self.server).getTimezone(auth!)
-        Dictionary(server: self.server).getTimezones(auth!)
-        
-    }
-    
+//    func test() {
+//        CallLog(server: self.server).callLog(self.auth!)
+//        CallLog(server: self.server).callLogExt(self.auth!)
+//        CallLog(server: self.server).activeCalls(self.auth!)
+//        CallLog(server: self.server).activeCallsExt(self.auth!)
+//        
+//    }
+//    
+//    func test2() {
+//        Messaging(server: self.server).sms(self.auth!, text: "testing", to: "14089406669")
+//    }
+//    
+//    func test3() {
+//        Messaging(server: self.server).getMessages(self.auth!)
+//        Messaging(server: self.server).getMessage(self.auth!, msgId: "2394843412560562429")
+//    }
+//    
+//    func test4() {
+//        RingOut(server: self.server).ringOut(self.auth!, from: "14088861168", to: "14088861168")
+//    }
+//    
+//    
+//    // Faulty
+//    func test5() {
+//        RingOut(server: self.server).getRingOut(self.auth!, ringId: "131069004")
+//    }
+//    
+//    func test6() {
+//        Presence(server: self.server).getPresence(self.auth!)
+//    }
+//    
+//    // Note to self, ADDRESS BOOK DOES NOT WORK
+//    
+//    func test7() {
+//        Dictionary(server: self.server).getCountry(auth!)
+//        Dictionary(server: self.server).getCountries(auth!)
+//        Dictionary(server: self.server).getLanguage(auth!)
+//        Dictionary(server: self.server).getLanguages(auth!)
+//        Dictionary(server: self.server).getState(auth!)
+//        Dictionary(server: self.server).getTimezone(auth!)
+//        Dictionary(server: self.server).getTimezones(auth!)
+//        
+//    }
+//    
     
 }

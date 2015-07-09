@@ -4,7 +4,7 @@ import XCTest
 
 class demoTests: XCTestCase {
     
-    var rcsdk: Sdk!
+    var rcsdk: SDK!
     var platform: Platform!
     
     override func setUp() {
@@ -12,7 +12,7 @@ class demoTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let appKey = "eI3RKs1oSBSY2kReFnviIw"
         let appSecret = "Gv9DgBZVTkaQNbbyEx-SQQBsnUKECmT5GrmGXbHTmpUQ"
-        rcsdk = Sdk(appKey: appKey, appSecret: appSecret, server: Sdk.RC_SERVER_SANDBOX)
+        rcsdk = SDK(appKey: appKey, appSecret: appSecret, server: SDK.RC_SERVER_SANDBOX)
         platform = rcsdk.getPlatform()
         let username = "13464448343"
         let password = "P@ssw0rd"

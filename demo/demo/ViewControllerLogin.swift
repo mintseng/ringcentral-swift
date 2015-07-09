@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Vincent Tseng. All rights reserved.
 //
 
+// SDK Demo requires config file for app_key and app_secret and server
+
 import UIKit
 
 class ViewControllerLogin: UIViewController {
@@ -24,12 +26,12 @@ class ViewControllerLogin: UIViewController {
     @IBAction func login(sender: AnyObject) {
         
         
-        var rcsdk = Sdk(appKey: keyBox.text, appSecret: secretBox.text, server: Sdk.RC_SERVER_SANDBOX)
+        var rcsdk = SDK(appKey: keyBox.text, appSecret: secretBox.text, server: SDK.RC_SERVER_SANDBOX)
         var platform = rcsdk.getPlatform()
         self.platform = platform
         platform.authorize(userBox.text, password: passBox.text)
         
-        if (platform.auth!.authenticated) {
+        if platform.auth != nil && platform.auth!.authenticated {
             performSegueWithIdentifier("loginToMain", sender: nil)
         } else {
             shakeButton(sender)
@@ -61,7 +63,18 @@ class ViewControllerLogin: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        NSLog("view did load")
+        let yourString = "String contents go here"
+        let f = NSFileManager()
+        if let u = f.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil){
+            println(u)
+            let fileUrl = u.URLByAppendingPathComponent("FileName.txt")
+            if yourString.writeToURL(fileUrl, atomically: true, encoding: NSUTF8StringEncoding, error: nil){
+                println("Successfully wrote the file to \(fileUrl)")
+            } else {
+                println("Failed")
+            }
+        }
         
     }
     

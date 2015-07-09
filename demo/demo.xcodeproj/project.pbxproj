@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E004D4EB1B43236000365EA0 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E004D4EA1B43236000365EA0 /* CustomCell.swift */; };
 		E03597BA1B3DC30D0015EC8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03597B91B3DC30D0015EC8C /* Images.xcassets */; };
-		E0B399D61B4B36B8007C73E7 /* Sdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B27A1B3CC9B800C86C17 /* Sdk.swift */; };
+		E0B399D61B4B36B8007C73E7 /* SDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B27A1B3CC9B800C86C17 /* SDK.swift */; };
 		E0B399D71B4B36D7007C73E7 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2711B3CC9B800C86C17 /* Account.swift */; };
 		E0B399D81B4B36D7007C73E7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2721B3CC9B800C86C17 /* Auth.swift */; };
 		E0B399D91B4B36D7007C73E7 /* CallLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2731B3CC9B800C86C17 /* CallLog.swift */; };
@@ -32,7 +32,7 @@
 		E0B6B2821B3CC9B800C86C17 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2771B3CC9B800C86C17 /* Platform.swift */; };
 		E0B6B2831B3CC9B800C86C17 /* Presence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2781B3CC9B800C86C17 /* Presence.swift */; };
 		E0B6B2841B3CC9B800C86C17 /* RingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2791B3CC9B800C86C17 /* RingOut.swift */; };
-		E0B6B2851B3CC9B800C86C17 /* Sdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B27A1B3CC9B800C86C17 /* Sdk.swift */; };
+		E0B6B2851B3CC9B800C86C17 /* SDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B27A1B3CC9B800C86C17 /* SDK.swift */; };
 		E0B6B2861B3CC9B800C86C17 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B27B1B3CC9B800C86C17 /* Subscription.swift */; };
 		E0C1924F1B3E08FC00885234 /* ViewControllerPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C1924E1B3E08FC00885234 /* ViewControllerPhone.swift */; };
 		E0C192511B3E099000885234 /* ViewControllerLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C192501B3E099000885234 /* ViewControllerLog.swift */; };
@@ -68,7 +68,7 @@
 		E0B6B2771B3CC9B800C86C17 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		E0B6B2781B3CC9B800C86C17 /* Presence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presence.swift; sourceTree = "<group>"; };
 		E0B6B2791B3CC9B800C86C17 /* RingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingOut.swift; sourceTree = "<group>"; };
-		E0B6B27A1B3CC9B800C86C17 /* Sdk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sdk.swift; sourceTree = "<group>"; };
+		E0B6B27A1B3CC9B800C86C17 /* SDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDK.swift; sourceTree = "<group>"; };
 		E0B6B27B1B3CC9B800C86C17 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		E0C1924E1B3E08FC00885234 /* ViewControllerPhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerPhone.swift; sourceTree = "<group>"; };
 		E0C192501B3E099000885234 /* ViewControllerLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLog.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				E0B6B2771B3CC9B800C86C17 /* Platform.swift */,
 				E0B6B2781B3CC9B800C86C17 /* Presence.swift */,
 				E0B6B2791B3CC9B800C86C17 /* RingOut.swift */,
-				E0B6B27A1B3CC9B800C86C17 /* Sdk.swift */,
+				E0B6B27A1B3CC9B800C86C17 /* SDK.swift */,
 				E0B6B27B1B3CC9B800C86C17 /* Subscription.swift */,
 			);
 			path = "swift-sdk";
@@ -271,7 +271,7 @@
 			files = (
 				E0B6B2821B3CC9B800C86C17 /* Platform.swift in Sources */,
 				E0B6B2811B3CC9B800C86C17 /* Messaging.swift in Sources */,
-				E0B6B2851B3CC9B800C86C17 /* Sdk.swift in Sources */,
+				E0B6B2851B3CC9B800C86C17 /* SDK.swift in Sources */,
 				E0B6B2831B3CC9B800C86C17 /* Presence.swift in Sources */,
 				E0B6B23B1B3CC95500C86C17 /* ViewControllerLogin.swift in Sources */,
 				E0B6B27E1B3CC9B800C86C17 /* CallLog.swift in Sources */,
@@ -291,7 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0B399D61B4B36B8007C73E7 /* Sdk.swift in Sources */,
+				E0B399D61B4B36B8007C73E7 /* SDK.swift in Sources */,
 				E0B399DB1B4B36D7007C73E7 /* Messaging.swift in Sources */,
 				E0B399D91B4B36D7007C73E7 /* CallLog.swift in Sources */,
 				E0B6B24F1B3CC95500C86C17 /* demoTests.swift in Sources */,

@@ -47,15 +47,15 @@ The RingCentral SDK is initiated in the following ways.
 
 **Sandbox:**
 <!-- language: swift -->
-    var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_SANDBOX)
+    var rcsdk = SDK(appKey: app_key, appSecret: app_secret, server: SDK.RC_SERVER_SANDBOX)
 
 **Production:**
 <!-- language: swift -->
-    var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_PRODUCTION)
+    var rcsdk = SDK(appKey: app_key, appSecret: app_secret, server: SDK.RC_SERVER_PRODUCTION)
 
 
 Depending on the stage of production, either                                        
-**Sdk.RC_SERVER_SANDBOX** or **Sdk.RC_SERVER_PRODUCTION**                                   
+**SDK.RC_SERVER_SANDBOX** or **SDK.RC_SERVER_PRODUCTION**                                   
 will be used as the 'server' parameter.
 
 # Authorization

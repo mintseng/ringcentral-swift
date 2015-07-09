@@ -63,11 +63,19 @@ class ViewControllerPhone: UIViewController {
         var secondTab = self.tabBarController?.viewControllers![1] as! ViewControllerLog
         secondTab.platform = self.platform
         
-        var feedback = platform.getMessages()
-        for message in (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray{
-            println(message)
-            println()
-        }
+//        var url = NSURL(string: "https://platform.ringcentral.com/soap/" + "/ags/ws?wsdl")
+//        
+//        var request = NSMutableURLRequest(URL: url!)
+//        request.HTTPMethod = "GET"
+//        request.addValue("Bearer " + platform.auth!.getAccessToken(), forHTTPHeaderField: "Authorization")
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        
+//        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+//            println(NSString(data: data, encoding: NSUTF8StringEncoding))
+//            println(response)
+//            println(error)
+//            println("End")
+//        }
 
         
     }

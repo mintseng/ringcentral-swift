@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "demo/ViewControllerLog.swift"
-            timestampString = "457909441.089894"
+            timestampString = "458071273.829256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "demo/ViewControllerLog.swift"
-            timestampString = "457909441.089894"
+            timestampString = "458071273.829256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -46,9 +46,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4"
-            endingLineNumber = "4"
-            landmarkName = "Platform"
-            landmarkType = "3">
+            endingLineNumber = "4">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "demoTests/demoTests.swift"
-            timestampString = "457984620.720035"
+            timestampString = "458071273.829256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "6"
+            endingLineNumber = "6"
             landmarkName = "demoTests"
             landmarkType = "3">
             <Locations>
@@ -166,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "demoTests/demoTests.swift"
-            timestampString = "458006326.656475"
+            timestampString = "458071273.829256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "testF_SMS()"
             landmarkType = "5">
          </BreakpointContent>

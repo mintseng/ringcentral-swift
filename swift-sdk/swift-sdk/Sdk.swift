@@ -1,7 +1,7 @@
 import Foundation
 
 /// Object representation of a Standard Development Kit for RingCentral
-class Sdk {
+class SDK {
     
     
     // Set constants for SANDBOX and PRODUCTION servers.
@@ -37,7 +37,7 @@ class Sdk {
     
     
     /// Sets version to the version of the current SDK
-    func setVersion() {
+    private func setVersion() {
         let url = NSURL(string: server + "/")
         
         // Sets up the request
@@ -57,6 +57,12 @@ class Sdk {
         self.versionString = (dict["apiVersions"] as! NSArray)[0]["versionString"] as! String
         
     }
+    
+    func getServerVersion() -> String {
+        return serverVersion
+    }
+    
+    
     
     /// Returns the Platform with the specified appKey and appSecret.
     ///

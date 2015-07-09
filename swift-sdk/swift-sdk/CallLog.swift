@@ -40,6 +40,9 @@ class CallLog {
         return (data, response, error)
     }
     
+    // httpRequest("GET", "https//ringcentral.com/restapi/")
+    // .get("https//ringcentral.com/restapi/")
+    
     func callRecordIds(auth: Auth, id: String) -> (NSData?, NSURLResponse?, NSError?) {
         let url = NSURL(string: server + "/v1.0/account/~/call-log/" + id)
         return httpRequest(auth, url: url!)
