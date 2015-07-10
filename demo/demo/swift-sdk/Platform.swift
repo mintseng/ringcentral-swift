@@ -262,7 +262,25 @@ class Platform {
         return dictionary.getLanguages(auth!)
     }
     
+    func get() {
+        
+    }
     
+    func put() {
+        
+    }
+    
+    func post() {
+        
+    }
+    
+    func delete() {
+        
+    }
+    
+    func apiCall() {
+        
+    }
     
     
     // Manual testing

@@ -16,31 +16,42 @@ class Headers {
     var urlencodedContentType = "application/x-www-form-urlencoded;"
     var utf8ContentType = "charset=UTF-8;"
     
-    var values: [String: String] = [String:String]()
+    var headers: [String: String] = [String:String]()
     
-    init(options: [String: String]) {
-        
+    init() {
+        headers["Content-Type"] = urlencodedContentType
+        headers["Accept"] = jsonContentType
+    }
+    
+    convenience init(options: [String: String]) {
+        self.init()
+        for key in options.keys {
+            headers[key] = options[key]
+        }
     }
     
     func getHeader(name: String) -> String! {
         if hasHeader(name) {
-            return values[name]
+            return headers[name]
         } else {
             return ""
         }
     }
     
+    func getHeaders() -> [String: String]! {
+        return headers
+    }
+    
     func hasHeader(name: String) -> Bool {
-        if let x = values[name] {
+        if let x = headers[name] {
             return true
         } else {
             return false
         }
-        
     }
     
     func setHeader(name: String!, value: String!) {
-        values[name] = value
+        headers[name] = value
     }
     
     func setHeaders(headers: [String: String]) {
@@ -59,7 +70,7 @@ class Headers {
     }
     
     func getContentType() -> String! {
-        if let x = values["Content-Type"] {
+        if let x = headers["Content-Type"] {
             return x
         } else {
             return ""
