@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Request {
+class Request: Headers {
     
     var async = true
     
@@ -70,18 +70,6 @@ class Request {
     
     func setQuery(query: String) {
         self.query = query
-    }
-    
-    func getHeaders() -> [String: String]! {
-        return header.getHeaders()
-    }
-    
-    func getHeader(name: String) -> String! {
-        return header.getHeader(name)
-    }
-    
-    func setHeader(name: String!, value: String!) {
-        header.setHeader(name, value: value)
     }
     
     func send() {
