@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E02156211B3CA1750078040A /* Sdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02156171B3CA1750078040A /* Sdk.swift */; };
-		E02156221B3CA1750078040A /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02156181B3CA1750078040A /* Subscription.swift */; };
-		E02156231B3CA1750078040A /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02156191B3CA1750078040A /* Platform.swift */; };
-		E02156241B3CA1750078040A /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021561A1B3CA1750078040A /* Dictionary.swift */; };
-		E02156251B3CA1750078040A /* CallLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021561B1B3CA1750078040A /* CallLog.swift */; };
-		E02156261B3CA1750078040A /* Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021561C1B3CA1750078040A /* Messaging.swift */; };
-		E02156271B3CA1750078040A /* RingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021561D1B3CA1750078040A /* RingOut.swift */; };
-		E02156281B3CA1750078040A /* Presence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021561E1B3CA1750078040A /* Presence.swift */; };
-		E02156291B3CA1750078040A /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021561F1B3CA1750078040A /* Account.swift */; };
-		E021562A1B3CA1750078040A /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02156201B3CA1750078040A /* Auth.swift */; };
+		E00A2F311B55B608009CEAE5 /* SDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A2F301B55B608009CEAE5 /* SDK.swift */; };
+		E08287701B55B4FE00C5ADBD /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E082876F1B55B4FE00C5ADBD /* Subscription.swift */; };
+		E08287781B55B50B00C5ADBD /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08287741B55B50B00C5ADBD /* Headers.swift */; };
+		E08287791B55B50B00C5ADBD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08287751B55B50B00C5ADBD /* Request.swift */; };
+		E082877A1B55B50B00C5ADBD /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08287761B55B50B00C5ADBD /* Response.swift */; };
+		E08287851B55B51200C5ADBD /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E082877C1B55B51200C5ADBD /* Auth.swift */; };
+		E08287861B55B51200C5ADBD /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E082877E1B55B51200C5ADBD /* Account.swift */; };
+		E08287871B55B51200C5ADBD /* CallLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E082877F1B55B51200C5ADBD /* CallLog.swift */; };
+		E08287881B55B51200C5ADBD /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08287801B55B51200C5ADBD /* Dictionary.swift */; };
+		E08287891B55B51200C5ADBD /* Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08287811B55B51200C5ADBD /* Messaging.swift */; };
+		E082878A1B55B51200C5ADBD /* Presence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08287821B55B51200C5ADBD /* Presence.swift */; };
+		E082878B1B55B51200C5ADBD /* RingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08287831B55B51200C5ADBD /* RingOut.swift */; };
+		E082878C1B55B51200C5ADBD /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08287841B55B51200C5ADBD /* Platform.swift */; };
 		E0B6B2881B3CCC7600C86C17 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6B2871B3CCC7600C86C17 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,17 +36,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E00A2F301B55B608009CEAE5 /* SDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDK.swift; sourceTree = "<group>"; };
 		E021560D1B3CA15D0078040A /* swift-sdk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-sdk"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E02156171B3CA1750078040A /* Sdk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sdk.swift; sourceTree = "<group>"; };
-		E02156181B3CA1750078040A /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
-		E02156191B3CA1750078040A /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
-		E021561A1B3CA1750078040A /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		E021561B1B3CA1750078040A /* CallLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLog.swift; sourceTree = "<group>"; };
-		E021561C1B3CA1750078040A /* Messaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messaging.swift; sourceTree = "<group>"; };
-		E021561D1B3CA1750078040A /* RingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingOut.swift; sourceTree = "<group>"; };
-		E021561E1B3CA1750078040A /* Presence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presence.swift; sourceTree = "<group>"; };
-		E021561F1B3CA1750078040A /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		E02156201B3CA1750078040A /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		E082876F1B55B4FE00C5ADBD /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		E08287741B55B50B00C5ADBD /* Headers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
+		E08287751B55B50B00C5ADBD /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		E08287761B55B50B00C5ADBD /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		E082877C1B55B51200C5ADBD /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		E082877E1B55B51200C5ADBD /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		E082877F1B55B51200C5ADBD /* CallLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLog.swift; sourceTree = "<group>"; };
+		E08287801B55B51200C5ADBD /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		E08287811B55B51200C5ADBD /* Messaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messaging.swift; sourceTree = "<group>"; };
+		E08287821B55B51200C5ADBD /* Presence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presence.swift; sourceTree = "<group>"; };
+		E08287831B55B51200C5ADBD /* RingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingOut.swift; sourceTree = "<group>"; };
+		E08287841B55B51200C5ADBD /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		E0B6B2871B3CCC7600C86C17 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,18 +84,61 @@
 			isa = PBXGroup;
 			children = (
 				E0B6B2871B3CCC7600C86C17 /* main.swift */,
-				E02156171B3CA1750078040A /* Sdk.swift */,
-				E02156181B3CA1750078040A /* Subscription.swift */,
-				E02156191B3CA1750078040A /* Platform.swift */,
-				E021561A1B3CA1750078040A /* Dictionary.swift */,
-				E021561B1B3CA1750078040A /* CallLog.swift */,
-				E021561C1B3CA1750078040A /* Messaging.swift */,
-				E021561D1B3CA1750078040A /* RingOut.swift */,
-				E021561E1B3CA1750078040A /* Presence.swift */,
-				E021561F1B3CA1750078040A /* Account.swift */,
-				E02156201B3CA1750078040A /* Auth.swift */,
+				E082878D1B55B51B00C5ADBD /* core */,
+				E082877B1B55B51200C5ADBD /* platform */,
+				E08287711B55B50B00C5ADBD /* http */,
+				E082876E1B55B4FE00C5ADBD /* subscription */,
 			);
 			path = "swift-sdk";
+			sourceTree = "<group>";
+		};
+		E082876E1B55B4FE00C5ADBD /* subscription */ = {
+			isa = PBXGroup;
+			children = (
+				E082876F1B55B4FE00C5ADBD /* Subscription.swift */,
+			);
+			path = subscription;
+			sourceTree = "<group>";
+		};
+		E08287711B55B50B00C5ADBD /* http */ = {
+			isa = PBXGroup;
+			children = (
+				E08287741B55B50B00C5ADBD /* Headers.swift */,
+				E08287751B55B50B00C5ADBD /* Request.swift */,
+				E08287761B55B50B00C5ADBD /* Response.swift */,
+			);
+			path = http;
+			sourceTree = "<group>";
+		};
+		E082877B1B55B51200C5ADBD /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				E082877C1B55B51200C5ADBD /* Auth.swift */,
+				E082877D1B55B51200C5ADBD /* helpers */,
+				E08287841B55B51200C5ADBD /* Platform.swift */,
+			);
+			path = platform;
+			sourceTree = "<group>";
+		};
+		E082877D1B55B51200C5ADBD /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E082877E1B55B51200C5ADBD /* Account.swift */,
+				E082877F1B55B51200C5ADBD /* CallLog.swift */,
+				E08287801B55B51200C5ADBD /* Dictionary.swift */,
+				E08287811B55B51200C5ADBD /* Messaging.swift */,
+				E08287821B55B51200C5ADBD /* Presence.swift */,
+				E08287831B55B51200C5ADBD /* RingOut.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		E082878D1B55B51B00C5ADBD /* core */ = {
+			isa = PBXGroup;
+			children = (
+				E00A2F301B55B608009CEAE5 /* SDK.swift */,
+			);
+			path = core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,17 +197,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E02156271B3CA1750078040A /* RingOut.swift in Sources */,
-				E02156221B3CA1750078040A /* Subscription.swift in Sources */,
-				E02156261B3CA1750078040A /* Messaging.swift in Sources */,
-				E02156241B3CA1750078040A /* Dictionary.swift in Sources */,
-				E02156281B3CA1750078040A /* Presence.swift in Sources */,
-				E02156291B3CA1750078040A /* Account.swift in Sources */,
-				E021562A1B3CA1750078040A /* Auth.swift in Sources */,
+				E082878C1B55B51200C5ADBD /* Platform.swift in Sources */,
+				E082878B1B55B51200C5ADBD /* RingOut.swift in Sources */,
+				E08287781B55B50B00C5ADBD /* Headers.swift in Sources */,
+				E08287881B55B51200C5ADBD /* Dictionary.swift in Sources */,
+				E08287871B55B51200C5ADBD /* CallLog.swift in Sources */,
+				E00A2F311B55B608009CEAE5 /* SDK.swift in Sources */,
+				E08287791B55B50B00C5ADBD /* Request.swift in Sources */,
+				E08287891B55B51200C5ADBD /* Messaging.swift in Sources */,
+				E08287701B55B4FE00C5ADBD /* Subscription.swift in Sources */,
+				E08287851B55B51200C5ADBD /* Auth.swift in Sources */,
+				E08287861B55B51200C5ADBD /* Account.swift in Sources */,
+				E082877A1B55B50B00C5ADBD /* Response.swift in Sources */,
+				E082878A1B55B51200C5ADBD /* Presence.swift in Sources */,
 				E0B6B2881B3CCC7600C86C17 /* main.swift in Sources */,
-				E02156251B3CA1750078040A /* CallLog.swift in Sources */,
-				E02156211B3CA1750078040A /* Sdk.swift in Sources */,
-				E02156231B3CA1750078040A /* Platform.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,8 @@ class SDK {
     var serverVersion: String!
     var versionString: String!
     
+    var logger: Bool = false
+    
     /// Constructor for making the SDK object.
     ///
     /// Example:

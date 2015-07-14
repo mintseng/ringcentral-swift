@@ -88,7 +88,7 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
             cell!.textLabel?.adjustsFontSizeToFitWidth = true
             
             // Setting number of lines to 0 allows for self adaptive lines
-            cell!.textLabel?.numberOfLines = 3
+            cell!.textLabel?.numberOfLines = 0
             return cell!
         } else {
             let cellIdentifier = "Message"

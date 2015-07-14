@@ -12,18 +12,54 @@ class Request: Headers {
     
     var async = true
     
-    var method: String
-    var url: String
-    var query: String
-    var body: String
+    var method: String = ""
+    var url: String = ""
+    var query: String = ""
+    var body: String = ""
     
-    init(method: String, url: String, query: String = "", body: String = "") {
+//    init(method: String, url: String, query: [String: String] = ["": ""], body: String = "") {
+//        self.method = method
+//        self.url = url
+//        
+//        for key in query.keys {
+//            self.query = self.query + key + "=" + query[key]! + "&"
+//        }
+//        
+//        self.body = body
+//        super.init()
+//    }
+//    
+//    init(method: String, url: String, query: [String: String] = ["": ""], body: String = "") {
+//        self.method = method
+//        self.url = url
+//        
+//        for key in query.keys {
+//            self.query = self.query + key + "=" + query[key]! + "&"
+//        }
+//        
+//        self.body = body
+//        super.init()
+//    }
+    
+    init(method: String, url: String, headers: [String: String], query: [String: String]?, body: String) {
+        super.init()
         self.method = method
         self.url = url
-        self.query = query
+        for header in headers.keys {
+            setHeader(header, value: headers[header])
+        }
+        if let q = query {
+            self.query = "?"
+            for key in q.keys {
+                self.query = self.query + key + "=" + q[key]! + "&"
+            }
+        }
+        
         self.body = body
-        super.init()
+        
     }
+    
+    
     
     func getEncodedBody() -> NSData! {
         return body.dataUsingEncoding(NSUTF8StringEncoding)
@@ -72,7 +108,7 @@ class Request: Headers {
     }
     
     func send() {
-        if let nsurl = NSURL(string: url) {
+        if let nsurl = NSURL(string: url + self.query) {
             let request = NSMutableURLRequest(URL: nsurl)
             request.HTTPMethod = method
             request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
@@ -85,8 +121,8 @@ class Request: Headers {
         }
     }
     
-    func send(completion: (data: NSData, response: NSURLResponse, error: NSError) -> Void) {
-        if let nsurl = NSURL(string: url) {
+    func send(completion: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
+        if let nsurl = NSURL(string: url + self.query) {
             let request = NSMutableURLRequest(URL: nsurl)
             request.HTTPMethod = method
             request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)

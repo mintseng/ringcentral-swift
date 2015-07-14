@@ -264,33 +264,130 @@ class Platform {
     
     // Generic Method Calls
     
-    func get(url: String, query: String = "") {
-        var request = Request(method: "GET", url: url, query: query)
-        request.send()
+    func get(url: String, query: [String: String] = ["": ""]) {
+        apiCall([
+            "method": "GET",
+            "url": url,
+            "query": query
+            ])
     }
     
     func put(url: String, body: String = "") {
-        var request = Request(method: "PUT", url: url, body: body)
-        request.send()
+        apiCall([
+            "method": "PUT",
+            "url": url,
+            "body": body
+            ])
     }
     
     func post(url: String, body: String = "") {
-        var request = Request(method: "POST", url: url, body: body)
-        request.send()
+        apiCall([
+            "method": "POST",
+            "url": url,
+            "body": body
+            ])
     }
     
     func delete(url: String) {
-        var request = Request(method: "DELETE", url: url)
-        request.send()
+        apiCall([
+            "method": "DELETE",
+            "url": url,
+            ])
     }
     
-    func apiCall(verb: String, url: String, query: String = "", body: String = "") {
-        var request = Request(method: verb, url: url, query: query, body: body)
+//    func apiCall(verb: String, url: String, query: [String: String] = ["": ""], body: String = "") {
+//        var request = Request(method: verb, url: url, query: query, body: body, auth: auth)
+//        request.send()
+//    }
+    
+    func apiCall(options: [String: AnyObject]) {
+        var method = ""
+        var url = ""
+        var headers: [String: String] = ["": ""]
+        var query: [String: String]?
+        var body: String = ""
+        if let m = options["method"] as? String {
+            method = m
+        }
+        if let u = options["url"] as? String {
+            url = self.server + u
+        }
+        if let h = options["headers"] as? [String: String] {
+            headers = h
+        }
+        if let q = options["query"] as? [String: String] {
+            query = q
+        }
+        if let b = options["body"] as? String {
+            body = b
+        }
+        var request = Request(method: method, url: url, headers: headers, query: query, body: body)
+        
+        request.setHeader("Content-Type", value: "application/json;charset=UTF-8")
+        request.setHeader("Accept", value: "application/json")
+        request.setHeader("Authorization", value: "Bearer" + " " + auth!.getAccessToken())
         request.send()
+        
+//        var request = Request(method: options["method"] as! String, url: options["url"] as! String, headers: options["headers"] as! [String: String], query: options["query"] as! [String: String], body: options["body"] as! String)
+        
+    }
+    
+    func apiCall(options: [String: AnyObject], completion: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
+        var method = ""
+        var url = ""
+        var headers: [String: String] = ["": ""]
+        var query: [String: String]?
+        var body: String = ""
+        if let m = options["method"] as? String {
+            method = m
+        }
+        if let u = options["url"] as? String {
+            url = self.server + u
+        }
+        if let h = options["headers"] as? [String: String] {
+            headers = h
+        }
+        if let q = options["query"] as? [String: String] {
+            query = q
+        }
+        if let b = options["body"] as? String {
+            body = b
+        }
+        var request = Request(method: method, url: url, headers: headers, query: query, body: body)
+        
+        request.setHeader("Content-Type", value: "application/json;charset=UTF-8")
+        request.setHeader("Accept", value: "application/json")
+        request.setHeader("Authorization", value: "Bearer" + " " + auth!.getAccessToken())
+        request.send() {
+            (data, response, error) in
+                completion(data: data, response: response, error: error)
+        }
+        
+        //        var request = Request(method: options["method"] as! String, url: options["url"] as! String, headers: options["headers"] as! [String: String], query: options["query"] as! [String: String], body: options["body"] as! String)
+        
     }
     
     func testApiCall() {
-        apiCall("POST", url: "/v1.0/account/~/extension/~/ringout", body: <#String#>)
+        apiCall([
+            "method": "POST",
+            "url": "/v1.0/account/~/extension/~/ringout",
+            "body": ringOutSyntax("4088861168", from: "4088861168")
+        ])
+    }
+    
+    func ringOutSyntax(to: String, from: String) -> String {
+        return "{" +
+            "\"to\": {\"phoneNumber\": \"" +
+            to +
+            "\"}," +
+            "\"from\": {\"phoneNumber\": \"" +
+            from +
+            "\"}," +
+            "\"callerId\": {\"phoneNumber\": \"" +
+            auth!.getUsername() +
+            "\"}," +
+            "\"playPrompt\": true" +
+        "}"
     }
     
     

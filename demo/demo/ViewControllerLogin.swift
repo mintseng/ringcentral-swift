@@ -63,18 +63,19 @@ class ViewControllerLogin: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        NSLog("view did load")
-        let yourString = "String contents go here"
-        let f = NSFileManager()
-        if let u = f.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil){
-            println(u)
-            let fileUrl = u.URLByAppendingPathComponent("FileName.txt")
-            if yourString.writeToURL(fileUrl, atomically: true, encoding: NSUTF8StringEncoding, error: nil){
-                println("Successfully wrote the file to \(fileUrl)")
-            } else {
-                println("Failed")
-            }
-        }
+        // code below is made for NSLog stuff, writes out to text
+//        NSLog("view did load")
+//        let yourString = "String contents go here"
+//        let f = NSFileManager()
+//        if let u = f.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil){
+//            println(u)
+//            let fileUrl = u.URLByAppendingPathComponent("FileName.txt")
+//            if yourString.writeToURL(fileUrl, atomically: true, encoding: NSUTF8StringEncoding, error: nil){
+//                println("Successfully wrote the file to \(fileUrl)")
+//            } else {
+//                println("Failed")
+//            }
+//        }
         
     }
     

@@ -112,6 +112,39 @@ class demoTests: XCTestCase {
         
     }
     
+    func testL_ApiCall() {
+        platform.apiCall([
+            "method": "POST",
+            "url": "/v1.0/account/~/extension/~/ringout",
+            "body": platform.ringOutSyntax("4088861168", from: "4088861168")
+            ])
+    }
+    
+    func testM_ApiCallResponse() {
+        platform.apiCall([
+            "method": "POST",
+            "url": "/v1.0/account/~/extension/~/ringout",
+            "body": platform.ringOutSyntax("4088861168", from: "4088861168")
+            ]) { (data, response, error) in
+                
+                
+                println("start")
+                println(NSString(data: data!, encoding: NSUTF8StringEncoding))
+                println(response)
+                println(error)
+                println("success!")
+                
+                println("part2")
+                var feedback = Response(data: data, response: response!, error: error)
+                println(feedback.getBody())
+                println(feedback.getStatus())
+                let testError: String? = feedback.getError()
+                println(testError)
+                println("end")
+                
+        }
+    }
+    
     
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.

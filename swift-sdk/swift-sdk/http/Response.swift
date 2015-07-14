@@ -16,13 +16,13 @@ class Response: Headers {
     
     var status: Int!
     var statusText: String!
-    var body: String!
+    var body: String?
     
     var data: NSData?
     var response: NSURLResponse?
     var error: NSError?
     
-    init(data: NSData, response: NSURLResponse, error: NSError?) {
+    init(data: NSData?, response: NSURLResponse, error: NSError?) {
         if let check = error {
             super.init()
         } else {
@@ -32,14 +32,18 @@ class Response: Headers {
         }
 
         statusText = ""
-        body = NSString(data: data, encoding: NSUTF8StringEncoding)! as String
+        
+        if let check = data {
+            body = NSString(data: check, encoding: NSUTF8StringEncoding)! as String
+        }
+        
     }
     
     func checkStatus() -> Bool {
         return status >= 200 && status < 300
     }
     
-    func getBody() -> String {
+    func getBody() -> String? {
         return body
     }
     
@@ -51,7 +55,7 @@ class Response: Headers {
         return data
     }
     
-    func getData() -> String {
+    func getData() -> String? {
         return body
     }
     

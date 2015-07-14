@@ -7,14 +7,14 @@ var username = "13464448343"
 var password = "P@ssw0rd"
 
 
-var rcsdk = Sdk(appKey: app_key, appSecret: app_secret, server: Sdk.RC_SERVER_SANDBOX)
+var rcsdk = SDK(appKey: app_key, appSecret: app_secret, server: SDK.RC_SERVER_SANDBOX)
 
 var platform = rcsdk.getPlatform()
 
 platform.authorize(username, password: password)
 println(platform.auth!.getAccessToken())
 sleep(2)
-platform.test7()
+
 
 
 //usleep(2000000)
@@ -63,7 +63,7 @@ platform.test7()
 //
 //sleep(1)
 //
-println(platform.version)
+
 //
 //sleep(1)
 
