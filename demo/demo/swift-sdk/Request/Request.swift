@@ -16,14 +16,13 @@ class Request: Headers {
     var url: String
     var query: String
     var body: String
-    var header: Headers
     
     init(method: String, url: String, query: String = "", body: String = "") {
         self.method = method
         self.url = url
         self.query = query
         self.body = body
-        self.header = Headers()
+        super.init()
     }
     
     func getEncodedBody() -> NSData! {

@@ -23,10 +23,9 @@ class Headers {
         headers["Accept"] = jsonContentType
     }
     
-    convenience init(options: [String: String]) {
-        self.init()
-        for key in options.keys {
-            headers[key] = options[key]
+    init(options: [NSObject: AnyObject]) {
+        for key in (options as! [String: String]).keys {
+            headers[key] = options[key] as? String
         }
     }
     

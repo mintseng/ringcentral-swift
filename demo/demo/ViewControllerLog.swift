@@ -105,6 +105,7 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
             cell!.textLabel?.numberOfLines = 0
             
             return cell!
+            
         }
         
     }

@@ -262,24 +262,35 @@ class Platform {
         return dictionary.getLanguages(auth!)
     }
     
-    func get() {
-        
+    // Generic Method Calls
+    
+    func get(url: String, query: String = "") {
+        var request = Request(method: "GET", url: url, query: query)
+        request.send()
     }
     
-    func put() {
-        
+    func put(url: String, body: String = "") {
+        var request = Request(method: "PUT", url: url, body: body)
+        request.send()
     }
     
-    func post() {
-        
+    func post(url: String, body: String = "") {
+        var request = Request(method: "POST", url: url, body: body)
+        request.send()
     }
     
-    func delete() {
-        
+    func delete(url: String) {
+        var request = Request(method: "DELETE", url: url)
+        request.send()
     }
     
-    func apiCall() {
-        
+    func apiCall(verb: String, url: String, query: String = "", body: String = "") {
+        var request = Request(method: verb, url: url, query: query, body: body)
+        request.send()
+    }
+    
+    func testApiCall() {
+        apiCall("POST", url: "/v1.0/account/~/extension/~/ringout", body: <#String#>)
     }
     
     
