@@ -127,13 +127,13 @@ what it returns is limited (based on what developers will likely need most).
         "method": "POST",
         "url": "/v1.0/account/~/extension/~/ringout",
         "body": platform.ringOutSyntax("4088861168", from: "4088861168")
-        ]) { (data, response, error) in
+        ]) {(data, response, error) in
             // insert code within this callback section
         }
 
 Rule of thumb: Always check if 'error' is nil
 <!-- language: swift -->
-    { (data, response, error) in
+    {(data, response, error) in
         if (error) {
             // do something for error
         } else {
@@ -234,8 +234,7 @@ All of the following methods return in the (data, response, error) syntax style.
     platform.getCallLog()
     
     platform.getCallLog("bunch of random filters") 
-    // filters must be in the format param1=one & param2=two
-    // spacing not as strict
+    // filters must be in the format param1=one&param2=two
 
 ## Presence
 
