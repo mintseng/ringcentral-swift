@@ -48,7 +48,7 @@ To set up CocoaPods:
 The same line is used to update cocoapods accordingly.
 Set up a new Xcode project, and navigate to it within Terminal.
 
-Type:
+Within Terminal, type:
 <!-- language: cmd -->
     $ pod init
     $ open -a Xcode Podfile
@@ -128,18 +128,18 @@ what it returns is limited (based on what developers will likely need most).
         "url": "/v1.0/account/~/extension/~/ringout",
         "body": platform.ringOutSyntax("4088861168", from: "4088861168")
         ]) { (data, response, error) in
-    }
-
-
+            // insert code within this callback section
+        }
 
 Rule of thumb: Always check if 'error' is nil
 <!-- language: swift -->
-    if (let x = feedback.2) {
-        // Handle the error
-    } else {
-        // Continue doing whatever
+    { (data, response, error) in
+        if (error) {
+            // do something for error
+        } else {
+            // continue with code
+        }
     }
-
 
 For simple checking of a successful status code:
 <!-- language: swift -->
@@ -297,7 +297,9 @@ Follows (data, response, error) return
 
 ## Subscription
 
-Work in progress. Either implementing a self-made one OR integrating PubNub (it's only avaible for Obj-C)
+Currently in progress.
+As of now, responses to console can be obtained, however not as actaul objects.
+Can visibly see real time responses for subscription.
 
 ***
 
