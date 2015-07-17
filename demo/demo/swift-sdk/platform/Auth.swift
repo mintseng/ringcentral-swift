@@ -26,6 +26,8 @@ class Auth {
     let ext: String
     let server: String
     
+    var remember: Bool = true
+    
     var authenticated: Bool = false
 
     
@@ -34,8 +36,8 @@ class Auth {
     ///
     /// :param: username RingCentral phone number
     /// :param: password Password to the RingCentral account
-    convenience init(username: String, password: String, server: String) {
-        self.init(username: username, ext: Auth.MAINCOMPANY, password: password, server: server)
+    convenience init(username: String, password: String, server: String, remember: Bool = true) {
+        self.init(username: username, ext: Auth.MAINCOMPANY, password: password, server: server, remember: remember)
     }
     
     
@@ -43,7 +45,7 @@ class Auth {
     ///
     /// :param: username RingCentral phone number
     /// :param: password Password to the RingCentral account
-    init(username: String, ext: String, password: String, server: String) {
+    init(username: String, ext: String, password: String, server: String, remember: Bool = true) {
         self.server = server
         self.username = username
         self.password = password
@@ -210,8 +212,6 @@ class Auth {
         self.refresh_token = nil
         self.refresh_token_expires_in = 0
         self.refresh_token_expire_time = 0
-        
-        println(response)
         
         return (data, response, error)
     

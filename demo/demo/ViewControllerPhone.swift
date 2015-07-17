@@ -31,8 +31,8 @@ class ViewControllerPhone: UIViewController {
     
     @IBAction func call() {
         
-        
-        println(platform.getCallLog(true))
+        platform.postRingOut(fromNumber.text, to: number.text!)
+//        println(platform.getCallLog(true))
 //        var secondTab = self.tabBarController?.viewControllers![1] as! ViewControllerLog
 //        secondTab.label.text = secondTab.label.text! + "hi"
         

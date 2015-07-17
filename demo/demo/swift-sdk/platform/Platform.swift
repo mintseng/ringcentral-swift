@@ -37,7 +37,7 @@ class Platform {
     /// :param: username    The username of the RingCentral account
     /// :param: password    The password of the RingCentral account
     func authorize(username: String, password: String, remember: Bool = true) {
-        let authHolder = Auth(username: username, password: password, server: server)
+        let authHolder = Auth(username: username, password: password, server: server, remember: remember)
         let feedback = authHolder.login(appKey, secret: appSecret)
         if (feedback.1 as! NSHTTPURLResponse).statusCode / 100 == 2 {
             self.ringOut = RingOut(server: server)

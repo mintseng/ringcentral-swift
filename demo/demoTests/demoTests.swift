@@ -69,14 +69,7 @@ class demoTests: XCTestCase {
         XCTAssertEqual(check, 131069004)
     }
     
-    func testH_Dictionary() {
-        var feedback = platform.getCountries()
-        var data = NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary
-        var check = ((data["records"] as! NSArray)[0] as! NSDictionary)["name"] as! String
-        XCTAssertEqual(check, "Afghanistan")
-    }
-    
-    func testI_Messaging() {
+    func testH_Messaging() {
         var feedback = platform.getMessages()
         var message = ((NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)[0]
         
@@ -89,6 +82,13 @@ class demoTests: XCTestCase {
         XCTAssertEqual((message["to"] as! NSArray)[0]["phoneNumber"] as! String, "+13464448343")
         XCTAssertEqual(message["direction"] as! String, "Outbound")
         XCTAssertEqual(message["subject"] as! String, "testing " + (Int(NSDate().timeIntervalSince1970) / 10000).description)
+    }
+    
+    func testI_Dictionary() {
+        var feedback = platform.getCountries()
+        var data = NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary
+        var check = ((data["records"] as! NSArray)[0] as! NSDictionary)["name"] as! String
+        XCTAssertEqual(check, "Afghanistan")
     }
     
     func testJ_CallLog() {
