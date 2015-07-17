@@ -41,6 +41,42 @@ Currently this SDK supports most functionalities, with the exception of:
 For now, drag the "swift-sdk" folder into your directory.
 A better implementation with Pods will be used in future.
 
+To set up CocoaPods:
+<!-- language: cmd -->
+    $ sudo gem install cocoapods
+
+The same line is used to update cocoapods accordingly.
+Set up a new Xcode project, and navigate to it within Terminal.
+
+Type:
+<!-- language: cmd -->
+    $ pod init
+    $ open -a Xcode Podfile
+
+That will set up a Podfile and open it.
+Add the following code into the newly created Podfile
+<!-- language: cmd -->
+    platform :ios, '8.0'
+    target 'YourProject' do
+    source 'https://github.com/CocoaPods/Specs.git'
+    pod 'PubNub', '~>4.0'
+    end
+    target 'YourProjectTests' do
+    end
+
+Go back into terminal and type the following:
+<!-- language: cmd -->
+    $ pod update
+    $ pod install
+
+Next you will need to add an Objective-C bridging header.
+Create a new File (File -> New -> File) of type Objective-C.
+You will be promped "Would you like to configure an Objective-C bridging header?".
+Select Yes, and insert the following into the Bridging Header file (.h).
+<!-- language: swift -->
+    #import <PubNub/PubNub.h>
+You will now be able to use the PubNub SDK written in Objective-C.
+
 # Initialization
 
 The RingCentral SDK is initiated in the following ways.
@@ -80,17 +116,19 @@ or (to authorize with extension):
 
 # Generic Requests
 
-Currently, all method calls support a standard (DATA, RESPONSE, ERROR) return protocal.
+Currently, all method calls support a standard (DATA, RESPONSE, ERROR) return protocal
+or returns a Response object containing the same things.
 A parsing class will be provided to use at your disposal, however the functionality of
 what it returns is limited (based on what developers will likely need most).
 
 **Most method calls will follow this behavior:**
 <!-- language: swift -->
-    var feedback = platform.methodCall(auth!)
-    // feedback.0 -> data
-    // feedback.1 -> response
-    // feedback.2 -> error
-
+    platform.apiCall([
+        "method": "POST",
+        "url": "/v1.0/account/~/extension/~/ringout",
+        "body": platform.ringOutSyntax("4088861168", from: "4088861168")
+        ]) { (data, response, error) in
+    }
 
 
 
