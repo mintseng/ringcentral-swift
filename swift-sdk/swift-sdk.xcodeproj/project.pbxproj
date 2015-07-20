@@ -148,8 +148,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E02156141B3CA15D0078040A /* Build configuration list for PBXNativeTarget "swift-sdk" */;
 			buildPhases = (
-				E02156091B3CA15D0078040A /* Sources */,
 				E021560A1B3CA15D0078040A /* Frameworks */,
+				E02156091B3CA15D0078040A /* Sources */,
 				E021560B1B3CA15D0078040A /* CopyFiles */,
 			);
 			buildRules = (

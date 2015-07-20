@@ -76,6 +76,7 @@ class ViewControllerPhone: UIViewController {
 //            println(error)
 //            println("End")
 //        }
+        
 
         
     }
