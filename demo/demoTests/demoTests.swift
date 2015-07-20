@@ -26,7 +26,7 @@ class demoTests: XCTestCase {
     }
     
     func testA_Sdk() {
-        XCTAssertEqual(rcsdk.serverVersion, "7.2.0.1781")
+        XCTAssertEqual(rcsdk.serverVersion, "7.2.0.1787")
         XCTAssertEqual(rcsdk.versionString, "1.0.18")
         XCTAssertEqual(rcsdk.server, "https://platform.devtest.ringcentral.com/restapi")
     }
@@ -113,11 +113,16 @@ class demoTests: XCTestCase {
     }
     
     func testL_ApiCall() {
-        platform.apiCall([
+        if platform.isAuthorized() {
+            platform.apiCall([
             "method": "POST",
             "url": "/v1.0/account/~/extension/~/ringout",
             "body": platform.ringOutSyntax("4088861168", from: "4088861168")
             ])
+        } else {
+            
+        }
+        
     }
     
     func testM_ApiCallResponse() {

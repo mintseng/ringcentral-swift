@@ -332,7 +332,7 @@ class Platform {
         
     }
     
-    func apiCall(options: [String: AnyObject], completion: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
+    func apiCall(options: [String: Any], completion: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
         var method = ""
         var url = ""
         var headers: [String: String] = ["": ""]
@@ -367,12 +367,26 @@ class Platform {
         
     }
     
+    // fix, pass JSON instead of string
     func testApiCall() {
-        apiCall([
-            "method": "POST",
-            "url": "/v1.0/account/~/extension/~/ringout",
-            "body": ringOutSyntax("4088861168", from: "4088861168")
-        ])
+        var context = Swift.Dictionary<String, Any>()
+        context["method"] = "POST"
+        context["url"] = "/v1.0/account/~/extension/~/ringout"
+        context["body"] = ["to": ["phoneNumber": "14088861168"],
+                         "from": ["phoneNumber": "14088861168"],
+                         "callerId": ["phoneNumber": "13464448343"],
+                         "playPrompt": "true"]
+        
+        
+//        apiCall([
+//            "method": "POST",
+//            "url": "/v1.0/account/~/extension/~/ringout",
+////            "body": ringOutSyntax("4088861168", from: "4088861168")
+//            "body": ["to": ["phoneNumber": "14088861168"],
+//                     "from": ["phoneNumber": "14088861168"],
+//                     "callerId": ["phoneNumber": "13464448343"],
+//                     "playPrompt": "true"]
+//        ])
     }
     
     func ringOutSyntax(to: String, from: String) -> String {

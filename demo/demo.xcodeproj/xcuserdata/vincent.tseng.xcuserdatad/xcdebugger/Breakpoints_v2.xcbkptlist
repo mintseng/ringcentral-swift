@@ -340,12 +340,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "demoTests/demoTests.swift"
-            timestampString = "458594268.6711"
+            timestampString = "458861778.236426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "testL_ApiCall()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "demo/swift-sdk/platform/Platform.swift"
+            timestampString = "459121976.791884"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
+            landmarkName = "testApiCall()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
