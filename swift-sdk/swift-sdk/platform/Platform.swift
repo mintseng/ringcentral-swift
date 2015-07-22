@@ -368,11 +368,12 @@ class Platform {
     }
     
     func testApiCall() {
+        println(ringOutSyntax("4088861168", from: "4088861168"))
         apiCall([
             "method": "POST",
             "url": "/v1.0/account/~/extension/~/ringout",
             "body": ringOutSyntax("4088861168", from: "4088861168")
-        ])
+            ])
     }
     
     func ringOutSyntax(to: String, from: String) -> String {

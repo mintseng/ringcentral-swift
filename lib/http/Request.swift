@@ -15,7 +15,7 @@ class Request: Headers {
     var method: String = ""
     var url: String = ""
     var query: String = ""
-    var body: String = ""
+    var body: AnyObject = ""
     
     //    init(method: String, url: String, query: [String: String] = ["": ""], body: String = "") {
     //        self.method = method
@@ -41,7 +41,7 @@ class Request: Headers {
     //        super.init()
     //    }
     
-    init(method: String, url: String, headers: [String: String], query: [String: String]?, body: String) {
+    init(method: String, url: String, headers: [String: String], query: [String: String]?, body: AnyObject) {
         super.init()
         self.method = method
         self.url = url
@@ -108,10 +108,16 @@ class Request: Headers {
     }
     
     func send() {
+        var bodyString: String
+        if isJson() {
+            bodyString = jsonToString(body as! [String: AnyObject])
+        } else {
+            bodyString = body as! String
+        }
         if let nsurl = NSURL(string: url + self.query) {
             let request = NSMutableURLRequest(URL: nsurl)
             request.HTTPMethod = method
-            request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
+            request.HTTPBody = bodyString.dataUsingEncoding(NSUTF8StringEncoding)
             let list = getHeaders()
             for key in list.keys {
                 request.setValue(list[key], forHTTPHeaderField: key)
@@ -122,10 +128,16 @@ class Request: Headers {
     }
     
     func send(completion: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
+        var bodyString: String
+        if isJson() {
+            bodyString = jsonToString(body as! [String: AnyObject])
+        } else {
+            bodyString = body as! String
+        }
         if let nsurl = NSURL(string: url + self.query) {
             let request = NSMutableURLRequest(URL: nsurl)
             request.HTTPMethod = method
-            request.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
+            request.HTTPBody = bodyString.dataUsingEncoding(NSUTF8StringEncoding)
             let list = getHeaders()
             for key in list.keys {
                 request.setValue(list[key], forHTTPHeaderField: key)
@@ -136,6 +148,24 @@ class Request: Headers {
             }
             task.resume()
         }
+    }
+    
+    func jsonToString(json: [String: AnyObject]) -> String {
+        var result = "{"
+        var delimiter = ""
+        for key in json.keys {
+            result += delimiter + "\"" + key + "\":"
+            var item = json[key]
+            if let check = item as? String {
+                result += "\"" + check + "\""
+            } else {
+                let next = jsonToString(item as! [String: AnyObject])
+                result += next
+            }
+            delimiter = ","
+        }
+        result = result + "}"
+        return result
     }
     
 }

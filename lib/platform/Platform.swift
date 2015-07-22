@@ -138,7 +138,7 @@ class Platform {
         var url = ""
         var headers: [String: String] = ["": ""]
         var query: [String: String]?
-        var body: String = ""
+        var body: AnyObject = ""
         if let m = options["method"] as? String {
             method = m
         }
@@ -151,7 +151,7 @@ class Platform {
         if let q = options["query"] as? [String: String] {
             query = q
         }
-        if let b = options["body"] as? String {
+        if let b = options["body"] {
             body = b
         }
         var request = Request(method: method, url: url, headers: headers, query: query, body: body)
@@ -170,7 +170,7 @@ class Platform {
         var url = ""
         var headers: [String: String] = ["": ""]
         var query: [String: String]?
-        var body: String = ""
+        var body: AnyObject = ""
         if let m = options["method"] as? String {
             method = m
         }
@@ -183,8 +183,8 @@ class Platform {
         if let q = options["query"] as? [String: String] {
             query = q
         }
-        if let b = options["body"] as? String {
-            body = b
+        if let b = options["body"] {
+            body = b as! [String: AnyObject]
         }
         var request = Request(method: method, url: url, headers: headers, query: query, body: body)
         
@@ -204,80 +204,13 @@ class Platform {
         apiCall([
             "method": "POST",
             "url": "/v1.0/account/~/extension/~/ringout",
-            "body": ringOutSyntax("4088861168", from: "4088861168")
+            "body": ["to": ["phoneNumber": "14088861168"],
+                "from": ["phoneNumber": "14088861168"],
+                "callerId": ["phoneNumber": "13464448343"],
+                "playPrompt": "true"]
             ])
-        
-        var context = Swift.Dictionary<String, Any>()
-        context["method"] = "POST"
-        context["url"] = "/v1.0/account/~/extension/~/ringout"
-        context["body"] = ["to": ["phoneNumber": "14088861168"],
-            "from": ["phoneNumber": "14088861168"],
-            "callerId": ["phoneNumber": "13464448343"],
-            "playPrompt": "true"]
+        sleep(5)
 
     }
-    
-    func ringOutSyntax(to: String, from: String) -> String {
-        return "{" +
-            "\"to\": {\"phoneNumber\": \"" +
-            to +
-            "\"}," +
-            "\"from\": {\"phoneNumber\": \"" +
-            from +
-            "\"}," +
-            "\"callerId\": {\"phoneNumber\": \"" +
-            auth!.getUsername() +
-            "\"}," +
-            "\"playPrompt\": true" +
-        "}"
-    }
-    
-    
-    // Manual testing
-    
-    //    func test() {
-    //        CallLog(server: self.server).callLog(self.auth!)
-    //        CallLog(server: self.server).callLogExt(self.auth!)
-    //        CallLog(server: self.server).activeCalls(self.auth!)
-    //        CallLog(server: self.server).activeCallsExt(self.auth!)
-    //
-    //    }
-    //
-    //    func test2() {
-    //        Messaging(server: self.server).sms(self.auth!, text: "testing", to: "14089406669")
-    //    }
-    //
-    //    func test3() {
-    //        Messaging(server: self.server).getMessages(self.auth!)
-    //        Messaging(server: self.server).getMessage(self.auth!, msgId: "2394843412560562429")
-    //    }
-    //
-    //    func test4() {
-    //        RingOut(server: self.server).ringOut(self.auth!, from: "14088861168", to: "14088861168")
-    //    }
-    //
-    //
-    //    // Faulty
-    //    func test5() {
-    //        RingOut(server: self.server).getRingOut(self.auth!, ringId: "131069004")
-    //    }
-    //
-    //    func test6() {
-    //        Presence(server: self.server).getPresence(self.auth!)
-    //    }
-    //
-    //    // Note to self, ADDRESS BOOK DOES NOT WORK
-    //
-    //    func test7() {
-    //        Dictionary(server: self.server).getCountry(auth!)
-    //        Dictionary(server: self.server).getCountries(auth!)
-    //        Dictionary(server: self.server).getLanguage(auth!)
-    //        Dictionary(server: self.server).getLanguages(auth!)
-    //        Dictionary(server: self.server).getState(auth!)
-    //        Dictionary(server: self.server).getTimezone(auth!)
-    //        Dictionary(server: self.server).getTimezones(auth!)
-    //        
-    //    }
-    //    
     
 }

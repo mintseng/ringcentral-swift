@@ -28,8 +28,6 @@ class Auth {
     
     var authenticated: Bool = false
     
-    
-    
     /// Constructor for authorization for the platform
     ///
     /// :param: username RingCentral phone number
@@ -216,39 +214,6 @@ class Auth {
         return (data, response, error)
         
     }
-    
-    
-    //    /// Revokes the refresh_token
-    //    ///
-    //    ///
-    //    func revokeRefreshToken() {
-    //        let url = NSURL(string: server + "/oauth/revoke")
-    //
-    //        // Setting up User info for parsing
-    //        let bodyString = "token=" + refresh_token!
-    //        let plainData = (app_key! + ":" + app_secret! as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-    //        let base64String = plainData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
-    //
-    //        // Setting up request
-    //        let request = NSMutableURLRequest(URL: url!)
-    //        request.HTTPMethod = "POST"
-    //        request.HTTPBody = bodyString.dataUsingEncoding(NSUTF8StringEncoding)
-    //        request.setValue("application/x-www-form-urlencoded;charset=UTF-8", forHTTPHeaderField: "Content-Type")
-    //        request.setValue("application/json", forHTTPHeaderField: "Accept")
-    //        request.setValue("Basic" + " " + base64String, forHTTPHeaderField: "Authorization")
-    //
-    //
-    //
-    //        // Sending HTTP request
-    //        var task: NSURLSessionDataTask = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-    //            (data, response, error) in
-    ////            println(response)
-    //            self.refresh_token = nil
-    //            self.refresh_token_expires_in = 0
-    //            self.refresh_token_expire_time = 0
-    //        }
-    //        task.resume()
-    //    }
     
     func getAccessToken() -> String {
         return self.access_token!

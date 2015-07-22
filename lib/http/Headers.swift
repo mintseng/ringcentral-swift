@@ -11,10 +11,10 @@ import Foundation
 class Headers {
     
     var contentType = "Content-Type"
-    var jsonContentType = "aplication/json;"
-    var multipartContentType = "multipart/mixed;"
-    var urlencodedContentType = "application/x-www-form-urlencoded;"
-    var utf8ContentType = "charset=UTF-8;"
+    var jsonContentType = "application/json"
+    var multipartContentType = "multipart/mixed"
+    var urlencodedContentType = "application/x-www-form-urlencoded"
+    var utf8ContentType = "charset=UTF-8"
     
     var headers: [String: String] = [String:String]()
     
@@ -60,7 +60,8 @@ class Headers {
     }
     
     func isContentType(type: String) -> Bool {
-        for value in getContentType().componentsSeparatedByString(",") {
+        for value in getContentType().componentsSeparatedByString(";") {
+            println(value)
             if value == type {
                 return true
             }
