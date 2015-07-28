@@ -45,6 +45,8 @@ class Request: Headers {
         super.init()
         self.method = method
         self.url = url
+        setHeader("Content-Type", value: "application/json;charset=UTF-8")
+        setHeader("Accept", value: "application/json")
         for header in headers.keys {
             setHeader(header, value: headers[header])
         }
@@ -132,7 +134,7 @@ class Request: Headers {
         if isJson() {
             bodyString = jsonToString(body as! [String: AnyObject])
         } else {
-            bodyString = body as! String
+            bodyString = self.body as! NSString as String
         }
         if let nsurl = NSURL(string: url + self.query) {
             let request = NSMutableURLRequest(URL: nsurl)

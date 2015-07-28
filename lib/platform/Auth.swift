@@ -208,8 +208,7 @@ class Auth {
         self.refresh_token = nil
         self.refresh_token_expires_in = 0
         self.refresh_token_expire_time = 0
-        
-        println(response)
+
         
         return (data, response, error)
         

@@ -156,8 +156,6 @@ class Platform {
         }
         var request = Request(method: method, url: url, headers: headers, query: query, body: body)
         
-        request.setHeader("Content-Type", value: "application/json;charset=UTF-8")
-        request.setHeader("Accept", value: "application/json")
         request.setHeader("Authorization", value: "Bearer" + " " + auth!.getAccessToken())
         request.send()
         
@@ -184,12 +182,14 @@ class Platform {
             query = q
         }
         if let b = options["body"] {
-            body = b as! [String: AnyObject]
+            if let check: [String: AnyObject] = b as? [String : AnyObject] {
+                body = check
+            } else {
+                body = b as! String
+            }
         }
         var request = Request(method: method, url: url, headers: headers, query: query, body: body)
-        
-        request.setHeader("Content-Type", value: "application/json;charset=UTF-8")
-        request.setHeader("Accept", value: "application/json")
+   
         request.setHeader("Authorization", value: "Bearer" + " " + auth!.getAccessToken())
         request.send() {
             (data, response, error) in
@@ -211,6 +211,36 @@ class Platform {
             ])
         sleep(5)
 
+    }
+    
+    func testApiCall2() {
+        apiCall([
+            "method": "POST",
+            "url": "/v1.0/account/~/extension/~/fax",
+            "body": "--Boundary_1_14413901_1361871080888\n" +
+                "Content-Type: application/json\n" +
+                "\n" +
+                "{\n" +
+                "  \"to\":[{\"phoneNumber\":\"13464448343\"}],\n" +
+                "  \"faxResolution\":\"High\",\n" +
+                "  \"sendTime\":\"2013-02-26T09:31:20.882Z\"\n" +
+                "}\n" +
+                "\n" +
+                "--Boundary_1_14413901_1361871080888\n" +
+                "Content-Type: text/plain\n" +
+                "\n" +
+                "Hello, World!\n" +
+                "\n" +
+                "--Boundary_1_14413901_1361871080888--",
+            "headers": ["Content-Type": "multipart/mixed;boundary=Boundary_1_14413901_1361871080888"]
+            ]) {
+                (data, response, error) in
+                println(response)
+                println(error)
+                println(NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary)
+        }
+        
+        sleep(5)
     }
     
 }

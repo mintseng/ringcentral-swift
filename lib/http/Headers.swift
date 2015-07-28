@@ -61,7 +61,6 @@ class Headers {
     
     func isContentType(type: String) -> Bool {
         for value in getContentType().componentsSeparatedByString(";") {
-            println(value)
             if value == type {
                 return true
             }
