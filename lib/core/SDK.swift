@@ -23,10 +23,10 @@ class SDK {
     ///
     /// Example:
     ///
-    ///     init(appKey, appSecret, Sdk.RC_SERVER_PRODUCTION)
+    ///     init(appKey, appSecret, SDK.RC_SERVER_PRODUCTION)
     /// or
     ///
-    ///     init(appKey, appSecret, Sdk.RC_SERVER_SANDBOX)
+    ///     init(appKey, appSecret, SDK.RC_SERVER_SANDBOX)
     ///
     /// :param: appKey      The appKey of your app
     /// :param: appSecet    The appSecret of your app
