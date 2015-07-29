@@ -200,6 +200,7 @@ class Platform {
         
     }
     
+    // ringout
     func testApiCall() {
         apiCall([
             "method": "POST",
@@ -213,6 +214,7 @@ class Platform {
 
     }
     
+    // fax
     func testApiCall2() {
         apiCall([
             "method": "POST",
@@ -239,7 +241,6 @@ class Platform {
                 println(error)
                 println(NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary)
         }
-        
         sleep(5)
     }
     
