@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D6523458DE6F2DF7BB519F3E /* Pods_lib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32CE57A364D60FB716261AE /* Pods_lib.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9041906614A1A19732ED5150 /* Pods_lib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E35CD20E2132F864F10654AE /* Pods_lib.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E0312D2D1B5DBC5E00E788DE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0312D2C1B5DBC5E00E788DE /* main.swift */; };
 		E0312D331B5DBD0400E788DE /* SDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0312D321B5DBD0400E788DE /* SDK.swift */; };
 		E0312D351B5DBD3100E788DE /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0312D341B5DBD3100E788DE /* Platform.swift */; };
@@ -32,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		31FD951EA9CEB906DC6D8CB2 /* Pods-lib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lib/Pods-lib.debug.xcconfig"; sourceTree = "<group>"; };
-		A32CE57A364D60FB716261AE /* Pods_lib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA7AC6EABF4A72AE237659A /* Pods-lib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lib.release.xcconfig"; path = "Pods/Target Support Files/Pods-lib/Pods-lib.release.xcconfig"; sourceTree = "<group>"; };
 		E0312D221B5DBC4100E788DE /* lib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lib; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0312D2C1B5DBC5E00E788DE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -43,6 +42,8 @@
 		E0312D3A1B5DBDCF00E788DE /* Headers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 		E0312D3C1B5DBDD700E788DE /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		E0312D3E1B5DBE0E00E788DE /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		E0ADEDC61B69A548009ADB8F /* lib-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lib-Bridging-Header.h"; sourceTree = "<group>"; };
+		E35CD20E2132F864F10654AE /* Pods_lib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6523458DE6F2DF7BB519F3E /* Pods_lib.framework in Frameworks */,
+				9041906614A1A19732ED5150 /* Pods_lib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +61,8 @@
 		00AC593A28A57BD6BD2F7581 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A32CE57A364D60FB716261AE /* Pods_lib.framework */,
+				E0ADEDC61B69A548009ADB8F /* lib-Bridging-Header.h */,
+				E35CD20E2132F864F10654AE /* Pods_lib.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,6 +79,7 @@
 		E0312D191B5DBC4100E788DE = {
 			isa = PBXGroup;
 			children = (
+				E0ADEDC51B69A2BC009ADB8F /* lib */,
 				E0312D2C1B5DBC5E00E788DE /* main.swift */,
 				E0312D2E1B5DBC8D00E788DE /* core */,
 				E0312D2F1B5DBCBD00E788DE /* http */,
@@ -129,6 +132,13 @@
 				E0312D3E1B5DBE0E00E788DE /* Subscription.swift */,
 			);
 			path = subscription;
+			sourceTree = "<group>";
+		};
+		E0ADEDC51B69A2BC009ADB8F /* lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,7 +328,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31FD951EA9CEB906DC6D8CB2 /* Pods-lib.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "lib-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -326,7 +340,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BAA7AC6EABF4A72AE237659A /* Pods-lib.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "lib-Bridging-Header.h";
 			};
 			name = Release;
 		};

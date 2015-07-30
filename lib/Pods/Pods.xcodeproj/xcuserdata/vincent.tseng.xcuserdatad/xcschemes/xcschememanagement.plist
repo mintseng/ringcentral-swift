@@ -4,17 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-lib-CocoaLumberjack.xcscheme</key>
+		<key>CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-lib-CryptoSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-lib-PubNub.xcscheme</key>
+		<key>CryptoSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,25 +19,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PubNub.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>22C946B24FC2692FD41F38C6</key>
+		<key>002EF801946B52D8E14E2DBF04092ACB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>23148DC7F9F7476F8678687B</key>
+		<key>C8D91AB56804B790916F46D1A1157144</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>302DDC8298243895DEC7726E</key>
+		<key>D7061DA76E21C0A1857A597D47CD47E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D327709440A135F991A56D29</key>
+		<key>DD5C17CD46178B0B73C3A139FD472CB2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

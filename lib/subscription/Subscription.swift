@@ -1,4 +1,6 @@
 import Foundation
+import PubNub
+import CryptoSwift
 
 class Subscription {
     
