@@ -4,14 +4,14 @@ import CryptoSwift
 
 class Subscription {
     
-    private let platform: Platform
+    private let platform: Platform!
     private var pubnub: PubNub?
-    private var eventFilters: [String]
-    private var subscription: ISubscription
+    private var eventFilters: [String] = []
+    private var subscription: ISubscription?
     
     
     init(platform: Platform) {
-        
+        self.platform = platform
     }
     
     struct IDeliveryMode {
@@ -34,11 +34,11 @@ class Subscription {
     }
     
     func addEvents(events: [String]) -> Subscription {
-        
+        return Subscription(platform: platform)
     }
     
     func setevents(events: [String]) -> Subscription {
-        
+        return Subscription(platform: platform)
     }
     
     func register(options: [String: AnyObject]) {
@@ -50,19 +50,19 @@ class Subscription {
     }
     
     func isSubscribed() -> Bool {
-        
+        return false
     }
     
     func on(event: String, callback: (args: AnyObject...) -> ()) -> Subscription {
-        
+        return Subscription(platform: platform)
     }
     
     func off(event: String, callback: (args: AnyObject...) -> ()) -> Subscription {
-        
+        return Subscription(platform: platform)
     }
     
     func emit(event: String) -> AnyObject {
-        
+        return ""
     }
     
     private func getFullEventFilters() -> [String] {
