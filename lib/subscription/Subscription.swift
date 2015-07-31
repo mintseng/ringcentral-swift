@@ -9,14 +9,14 @@ class Subscription {
     private var eventFilters: [String] = []
     private var subscription: ISubscription?
     
-    
     init(platform: Platform) {
         self.platform = platform
+        
     }
     
     struct IDeliveryMode {
-        let transportType: String
-        let encryption: Bool
+        let transportType: String = "PubNub"
+        let encryption: Bool = false
         let address: String
         let subscriperKey: String
         let secretKey: String
@@ -34,18 +34,30 @@ class Subscription {
     }
     
     func addEvents(events: [String]) -> Subscription {
-        return Subscription(platform: platform)
+        for event in events {
+            self.eventFilters.append(event)
+        }
+        return self
     }
     
     func setevents(events: [String]) -> Subscription {
-        return Subscription(platform: platform)
+        self.eventFilters = events
+        return self
     }
-    
+
     func register(options: [String: AnyObject]) {
-        
+        if (isSubscribed()) {
+            return renew(options)
+        } else {
+            return subscribe(options)
+        }
     }
     
     func renew(options: [String: AnyObject]) {
+        
+    }
+    
+    func subscribe(options: [String: AnyObject]) {
         
     }
     
