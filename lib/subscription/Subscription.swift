@@ -18,7 +18,7 @@ class Subscription {
         let transportType: String = "PubNub"
         let encryption: Bool = false
         let address: String = ""
-        let subscriperKey: String = ""
+        let subscriberKey: String = ""
         let secretKey: String = ""
     }
     
@@ -53,7 +53,7 @@ class Subscription {
         return self
     }
 
-    func register(options: [String: AnyObject]) -> {
+    func register(options: [String: AnyObject]) {
         if (isSubscribed()) {
             return renew(options)
         } else {
@@ -61,15 +61,24 @@ class Subscription {
         }
     }
     
+    // getFullEventFilters()
+    
     func renew(options: [String: AnyObject]) {
         
     }
     
     func subscribe(options: [String: AnyObject]) {
+        if let events = options["eventFilters"] {
+            self.eventFilters = events as! [String]
+        }
         
     }
     
     func isSubscribed() -> Bool {
+        if let sub = self.subscription {
+            let dil = sub.deliveryMode
+            return dil.subscriberKey != "" && dil.address != ""
+        }
         return false
     }
     
