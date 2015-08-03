@@ -17,20 +17,28 @@ class Subscription {
     struct IDeliveryMode {
         let transportType: String = "PubNub"
         let encryption: Bool = false
-        let address: String
-        let subscriperKey: String
-        let secretKey: String
+        let address: String = ""
+        let subscriperKey: String = ""
+        let secretKey: String = ""
     }
     
     struct ISubscription {
-        let eventFilters: [String]
-        let expirationTime: String
-        let expiresIn: NSNumber
-        let deliveryMode: IDeliveryMode
-        let id: String
-        let creationTime: String
-        let status: String
-        let uri: String
+        let eventFilters: [String] = []
+        let expirationTime: String = ""
+        let expiresIn: NSNumber = 0
+        let deliveryMode: IDeliveryMode = IDeliveryMode()
+        let id: String = ""
+        let creationTime: String = ""
+        let status: String = ""
+        let uri: String = ""
+    }
+    
+    func getPubNub() -> PubNub? {
+        return pubnub
+    }
+    
+    func getPlatform() -> Platform {
+        return platform
     }
     
     func addEvents(events: [String]) -> Subscription {
@@ -45,7 +53,7 @@ class Subscription {
         return self
     }
 
-    func register(options: [String: AnyObject]) {
+    func register(options: [String: AnyObject]) -> {
         if (isSubscribed()) {
             return renew(options)
         } else {

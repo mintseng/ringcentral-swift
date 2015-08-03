@@ -1,11 +1,3 @@
-//
-//  Request.swift
-//  demo
-//
-//  Created by Vincent Tseng on 7/8/15.
-//  Copyright (c) 2015 Vincent Tseng. All rights reserved.
-//
-
 import Foundation
 
 class Request: Headers {
@@ -16,30 +8,6 @@ class Request: Headers {
     var url: String = ""
     var query: String = ""
     var body: AnyObject = ""
-    
-    //    init(method: String, url: String, query: [String: String] = ["": ""], body: String = "") {
-    //        self.method = method
-    //        self.url = url
-    //
-    //        for key in query.keys {
-    //            self.query = self.query + key + "=" + query[key]! + "&"
-    //        }
-    //
-    //        self.body = body
-    //        super.init()
-    //    }
-    //
-    //    init(method: String, url: String, query: [String: String] = ["": ""], body: String = "") {
-    //        self.method = method
-    //        self.url = url
-    //
-    //        for key in query.keys {
-    //            self.query = self.query + key + "=" + query[key]! + "&"
-    //        }
-    //
-    //        self.body = body
-    //        super.init()
-    //    }
     
     init(method: String, url: String, headers: [String: String], query: [String: String]?, body: AnyObject) {
         super.init()
@@ -61,8 +29,6 @@ class Request: Headers {
         
     }
     
-    
-    
     func getEncodedBody() -> NSData! {
         return body.dataUsingEncoding(NSUTF8StringEncoding)
     }
@@ -82,8 +48,6 @@ class Request: Headers {
     func isDelete() -> Bool {
         return method == "DELETE"
     }
-    
-    // func isLoaded()
     
     func getMethod() -> String {
         return method
