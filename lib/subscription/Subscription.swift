@@ -1,6 +1,5 @@
 import Foundation
 import PubNub
-import CryptoSwift
 
 class Subscription {
     
@@ -72,6 +71,18 @@ class Subscription {
             self.eventFilters = events as! [String]
         }
         
+        platform.apiCall([
+            "method": "POST",
+            "url": platform.server + "/restapi/v1.0/subscription",
+            
+        ])
+        
+    }
+    
+    func destroy() {
+        if let sub = self.subscription {
+            unsubscribe()
+        }
     }
     
     func isSubscribed() -> Bool {
@@ -103,7 +114,9 @@ class Subscription {
     }
     
     private func unsubscribe() {
-        
+        if let channel = subscription?.deliveryMode.address {
+            pubnub?.unsubscribeFromChannelGroups([channel], withPresence: true)
+        }
     }
     
     private func subscribeAtPubnub() {

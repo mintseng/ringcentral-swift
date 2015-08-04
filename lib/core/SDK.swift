@@ -5,8 +5,8 @@ class SDK {
     
     
     // Set constants for SANDBOX and PRODUCTION servers.
-    static var RC_SERVER_PRODUCTION: String = "https://platform.ringcentral.com/restapi"
-    static var RC_SERVER_SANDBOX: String = "https://platform.devtest.ringcentral.com/restapi"
+    static var RC_SERVER_PRODUCTION: String = "https://platform.ringcentral.com"
+    static var RC_SERVER_SANDBOX: String = "https://platform.devtest.ringcentral.com"
     
     // Platform variable, version, and current Subscriptions
     var platform: Platform
@@ -40,7 +40,7 @@ class SDK {
     
     /// Sets version to the version of the current SDK
     private func setVersion() {
-        let url = NSURL(string: server + "/")
+        let url = NSURL(string: server + "/restapi/")
         
         // Sets up the request
         let request = NSMutableURLRequest(URL: url!)
@@ -51,8 +51,7 @@ class SDK {
         var error: NSError?
         let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
         
-        var errors: NSError?
-        let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
+        let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
         
         let dict = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
         self.serverVersion = dict["serverVersion"] as! String

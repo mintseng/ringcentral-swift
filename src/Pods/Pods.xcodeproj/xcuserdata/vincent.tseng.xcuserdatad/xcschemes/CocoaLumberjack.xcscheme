@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB507673BD440C384C7F7FCA"
-               BuildableName = "CryptoSwift.framework"
-               BlueprintName = "CryptoSwift"
+               BlueprintIdentifier = "C0C6FAB13628406C462A2720"
+               BuildableName = "CocoaLumberjack.framework"
+               BlueprintName = "CocoaLumberjack"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
