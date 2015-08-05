@@ -14,22 +14,22 @@ class Subscription {
     }
     
     struct IDeliveryMode {
-        let transportType: String = "PubNub"
-        let encryption: Bool = false
-        let address: String = ""
-        let subscriberKey: String = ""
-        let secretKey: String = ""
+        var transportType: String = "PubNub"
+        var encryption: Bool = false
+        var address: String = ""
+        var subscriberKey: String = ""
+        var secretKey: String = ""
     }
     
     struct ISubscription {
-        let eventFilters: [String] = []
-        let expirationTime: String = ""
-        let expiresIn: NSNumber = 0
-        let deliveryMode: IDeliveryMode = IDeliveryMode()
-        let id: String = ""
-        let creationTime: String = ""
-        let status: String = ""
-        let uri: String = ""
+        var eventFilters: [String] = []
+        var expirationTime: String = ""
+        var expiresIn: NSNumber = 0
+        var deliveryMode: IDeliveryMode = IDeliveryMode()
+        var id: String = ""
+        var creationTime: String = ""
+        var status: String = ""
+        var uri: String = ""
     }
     
     func getPubNub() -> PubNub? {
@@ -63,19 +63,59 @@ class Subscription {
     // getFullEventFilters()
     
     func renew(options: [String: AnyObject]) {
-        
+        if let events = options["eventFilters"] {
+            self.eventFilters = events as! [String]
+        } else {
+            self.eventFilters = [
+                "/restapi/v1.0/account/~/extension/~/presence",
+                "/restapi/v1.0/account/~/extension/~/message-store"
+            ]
+        }
     }
     
     func subscribe(options: [String: AnyObject]) {
         if let events = options["eventFilters"] {
             self.eventFilters = events as! [String]
+        } else {
+            self.eventFilters = [
+                "/restapi/v1.0/account/~/extension/~/presence",
+                "/restapi/v1.0/account/~/extension/~/message-store"
+            ]
         }
         
         platform.apiCall([
             "method": "POST",
-            "url": platform.server + "/restapi/v1.0/subscription",
-            
-        ])
+            "url": "/restapi/v1.0/subscription",
+            "body": [
+                "eventFilters": getFullEventFilters(),
+                "deliveryMode": [
+                    "transportType": "PubNub",
+                    "encryption": "false"
+                ]
+            ]
+            ]) {
+                (data, response, error) in
+                let dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
+                
+                var sub = ISubscription()
+                self.subscription = sub
+                sub.eventFilters =      dictionary["eventFilters"] as! [String]
+                sub.expirationTime =    dictionary["expirationTime"] as! String
+                sub.expiresIn =         dictionary["expiresIn"] as! NSNumber
+                sub.id =                dictionary["id"] as! String
+                sub.creationTime =      dictionary["creationTime"] as! String
+                sub.status =            dictionary["status"] as! String
+                sub.uri =               dictionary["uri"] as! String
+                
+                var del = sub.deliveryMode
+                var dictDelivery =      dictionary["deliveryMode"] as! NSDictionary
+                del.transportType =     dictDelivery["transportType"] as! String
+                del.encryption =        dictDelivery["encryption"] as! Bool
+                del.address =           dictDelivery["address"] as! String
+                del.subscriberKey =     dictDelivery["subscriberKey"] as! String
+                del.secretKey =         dictDelivery["secretKey"] as! String    
+                
+        }
         
     }
     
@@ -110,7 +150,7 @@ class Subscription {
     }
     
     private func updateSubscription(subscription: ISubscription) {
-    
+        self.subscription = subscription
     }
     
     private func unsubscribe() {
