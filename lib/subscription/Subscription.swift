@@ -1,7 +1,7 @@
 import Foundation
 import PubNub
 
-class Subscription {
+class Subscription: NSObject, PNObjectEventListener {
     
     private let platform: Platform!
     private var pubnub: PubNub?
@@ -19,6 +19,7 @@ class Subscription {
         var address: String = ""
         var subscriberKey: String = ""
         var secretKey: String = ""
+        var encryptionKey: String = ""
     }
     
     struct ISubscription {
@@ -65,16 +66,37 @@ class Subscription {
     func renew(options: [String: AnyObject]) {
         if let events = options["eventFilters"] {
             self.eventFilters = events as! [String]
+        } else if let events = options["events"] {
+            self.eventFilters = events as! [String]
         } else {
             self.eventFilters = [
                 "/restapi/v1.0/account/~/extension/~/presence",
                 "/restapi/v1.0/account/~/extension/~/message-store"
             ]
         }
+        
+        platform.apiCall([
+            "method": "PUT",
+            "url": "restapi/v1.0/subscription/" + subscription!.id,
+            "body": [
+                "eventFilters": getFullEventFilters()
+            ]
+        ]) {
+            (data, response, error) in
+            let dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
+            if let error = dictionary["errorCode"] {
+                self.subscribe(options)
+            } else {
+                self.subscription!.expiresIn = dictionary["expiresIn"] as! NSNumber
+                self.subscription!.expirationTime = dictionary["expirationTime"] as! String
+            }
+        }
     }
     
     func subscribe(options: [String: AnyObject]) {
         if let events = options["eventFilters"] {
+            self.eventFilters = events as! [String]
+        } else if let events = options["events"] {
             self.eventFilters = events as! [String]
         } else {
             self.eventFilters = [
@@ -113,8 +135,10 @@ class Subscription {
                 del.encryption =        dictDelivery["encryption"] as! Bool
                 del.address =           dictDelivery["address"] as! String
                 del.subscriberKey =     dictDelivery["subscriberKey"] as! String
-                del.secretKey =         dictDelivery["secretKey"] as! String    
+                del.secretKey =         dictDelivery["secretKey"] as! String
+                del.encryptionKey =     dictDelivery["encryptionKey"] as! String
                 
+                self.subscribeAtPubnub()
         }
         
     }
@@ -157,9 +181,32 @@ class Subscription {
         if let channel = subscription?.deliveryMode.address {
             pubnub?.unsubscribeFromChannelGroups([channel], withPresence: true)
         }
+        self.subscription = nil
+        self.eventFilters = []
+        self.pubnub = nil
+        
+        if let sub = subscription {
+            platform.apiCall([
+                "method": "DELETE",
+                "url": "/restapi/v1.0/subscription/" + sub.id,
+                "body": [
+                    "eventFilters": getFullEventFilters(),
+                    "deliveryMode": [
+                        "transportType": "PubNub",
+                        "encryption": "false"
+                    ]
+                ]
+                ])
+        }
+        
+        
     }
     
     private func subscribeAtPubnub() {
+        let config = PNConfiguration( publishKey: "", subscribeKey: self.subscription!.deliveryMode.subscriberKey)
+        pubnub = PubNub.clientWithConfiguration(config)
+        pubnub?.addListener(self)
+        pubnub?.subscribeToChannels([self.subscription!.deliveryMode.address], withPresence: true)
         
     }
     
@@ -167,5 +214,36 @@ class Subscription {
         
     }
     
+    func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
+        
+        var base64Message = message.data.description
+        
+        var base64Key = self.subscription!.deliveryMode.encryptionKey
+        let key = [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00] as [UInt8]
+        let iv = Cipher.randomIV(AES.blockSize)
+        let decrypted = AES(key: base64ToByteArray(base64Key), iv: [0x00], blockMode: .ECB)?.decrypt(base64ToByteArray(base64Message), padding: PKCS7())
+        var endMarker = NSData(bytes: (decrypted as [UInt8]!), length: decrypted!.count)
+        if let str: String = NSString(data: endMarker, encoding: NSUTF8StringEncoding) as? String  {
+            println(str)
+        } else {
+            println("o darn")
+        }
+    }
+    
+    private func base64ToByteArray(base64String: String) -> [UInt8] {
+        let nsdata: NSData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0))!
+        var bytes = [UInt8](count: nsdata.length, repeatedValue: 0)
+        nsdata.getBytes(&bytes)
+        return bytes
+    }
+    
+    private func byteArrayToBase64(bytes: [UInt8]) -> String {
+        let nsdata = NSData(bytes: bytes, length: bytes.count)
+        let base64Encoded = nsdata.base64EncodedStringWithOptions(nil);
+        return base64Encoded;
+    }
+    
     
 }
+
+

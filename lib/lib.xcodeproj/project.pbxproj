@@ -43,37 +43,6 @@
 		E0312D3C1B5DBDD700E788DE /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		E0312D3E1B5DBE0E00E788DE /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		E0ADEDC61B69A548009ADB8F /* lib-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lib-Bridging-Header.h"; sourceTree = "<group>"; };
-		E0B668461B70509C00A8EB7F /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
-		E0B668471B70509C00A8EB7F /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		E0B668481B70509C00A8EB7F /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
-		E0B668491B70509C00A8EB7F /* BitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitExtension.swift; sourceTree = "<group>"; };
-		E0B6684A1B70509C00A8EB7F /* ChaCha20.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaCha20.swift; sourceTree = "<group>"; };
-		E0B6684B1B70509C00A8EB7F /* Cipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
-		E0B6684C1B70509C00A8EB7F /* CipherBlockMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CipherBlockMode.swift; sourceTree = "<group>"; };
-		E0B6684D1B70509C00A8EB7F /* CRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRC.swift; sourceTree = "<group>"; };
-		E0B6684E1B70509C00A8EB7F /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
-		E0B6684F1B70509C00A8EB7F /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
-		E0B668501B70509C00A8EB7F /* HashBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashBase.swift; sourceTree = "<group>"; };
-		E0B668511B70509C00A8EB7F /* HMAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
-		E0B668521B70509C00A8EB7F /* IntegerConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerConvertible.swift; sourceTree = "<group>"; };
-		E0B668531B70509C00A8EB7F /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
-		E0B668541B70509C00A8EB7F /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
-		E0B668551B70509C00A8EB7F /* NSDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDataExtension.swift; sourceTree = "<group>"; };
-		E0B668561B70509C00A8EB7F /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
-		E0B668571B70509C00A8EB7F /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
-		E0B668581B70509C00A8EB7F /* PKCS5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCS5.swift; sourceTree = "<group>"; };
-		E0B668591B70509C00A8EB7F /* PKCS7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCS7.swift; sourceTree = "<group>"; };
-		E0B6685A1B70509C00A8EB7F /* Poly1305.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poly1305.swift; sourceTree = "<group>"; };
-		E0B6685B1B70509C00A8EB7F /* SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
-		E0B6685C1B70509C00A8EB7F /* SHA2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA2.swift; sourceTree = "<group>"; };
-		E0B6685D1B70509C00A8EB7F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		E0B6685E1B70509C00A8EB7F /* UInt16Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt16Extension.swift; sourceTree = "<group>"; };
-		E0B6685F1B70509C00A8EB7F /* UInt32Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt32Extension.swift; sourceTree = "<group>"; };
-		E0B668601B70509C00A8EB7F /* UInt64Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt64Extension.swift; sourceTree = "<group>"; };
-		E0B668611B70509C00A8EB7F /* UInt8Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt8Extension.swift; sourceTree = "<group>"; };
-		E0B668621B70509C00A8EB7F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		E0B668631B70509C00A8EB7F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		E0B668641B70509C00A8EB7F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E35CD20E2132F864F10654AE /* Pods_lib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -116,7 +85,6 @@
 				E0312D2F1B5DBCBD00E788DE /* http */,
 				E0312D301B5DBCBD00E788DE /* platform */,
 				E0312D311B5DBCBD00E788DE /* subscription */,
-				E0B668441B70509C00A8EB7F /* CryptoSwift */,
 				E0312D231B5DBC4100E788DE /* Products */,
 				1225F5BF25BB0B0CEC699BD3 /* Pods */,
 				00AC593A28A57BD6BD2F7581 /* Frameworks */,
@@ -171,52 +139,6 @@
 			children = (
 			);
 			name = lib;
-			sourceTree = "<group>";
-		};
-		E0B668441B70509C00A8EB7F /* CryptoSwift */ = {
-			isa = PBXGroup;
-			children = (
-				E0B668451B70509C00A8EB7F /* CryptoSwift */,
-				E0B668631B70509C00A8EB7F /* LICENSE */,
-				E0B668641B70509C00A8EB7F /* README.md */,
-			);
-			path = CryptoSwift;
-			sourceTree = "<group>";
-		};
-		E0B668451B70509C00A8EB7F /* CryptoSwift */ = {
-			isa = PBXGroup;
-			children = (
-				E0B668461B70509C00A8EB7F /* AES.swift */,
-				E0B668471B70509C00A8EB7F /* ArrayExtension.swift */,
-				E0B668481B70509C00A8EB7F /* Authenticator.swift */,
-				E0B668491B70509C00A8EB7F /* BitExtension.swift */,
-				E0B6684A1B70509C00A8EB7F /* ChaCha20.swift */,
-				E0B6684B1B70509C00A8EB7F /* Cipher.swift */,
-				E0B6684C1B70509C00A8EB7F /* CipherBlockMode.swift */,
-				E0B6684D1B70509C00A8EB7F /* CRC.swift */,
-				E0B6684E1B70509C00A8EB7F /* Generics.swift */,
-				E0B6684F1B70509C00A8EB7F /* Hash.swift */,
-				E0B668501B70509C00A8EB7F /* HashBase.swift */,
-				E0B668511B70509C00A8EB7F /* HMAC.swift */,
-				E0B668521B70509C00A8EB7F /* IntegerConvertible.swift */,
-				E0B668531B70509C00A8EB7F /* IntExtension.swift */,
-				E0B668541B70509C00A8EB7F /* MD5.swift */,
-				E0B668551B70509C00A8EB7F /* NSDataExtension.swift */,
-				E0B668561B70509C00A8EB7F /* Operators.swift */,
-				E0B668571B70509C00A8EB7F /* Padding.swift */,
-				E0B668581B70509C00A8EB7F /* PKCS5.swift */,
-				E0B668591B70509C00A8EB7F /* PKCS7.swift */,
-				E0B6685A1B70509C00A8EB7F /* Poly1305.swift */,
-				E0B6685B1B70509C00A8EB7F /* SHA1.swift */,
-				E0B6685C1B70509C00A8EB7F /* SHA2.swift */,
-				E0B6685D1B70509C00A8EB7F /* StringExtension.swift */,
-				E0B6685E1B70509C00A8EB7F /* UInt16Extension.swift */,
-				E0B6685F1B70509C00A8EB7F /* UInt32Extension.swift */,
-				E0B668601B70509C00A8EB7F /* UInt64Extension.swift */,
-				E0B668611B70509C00A8EB7F /* UInt8Extension.swift */,
-				E0B668621B70509C00A8EB7F /* Utils.swift */,
-			);
-			path = CryptoSwift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
