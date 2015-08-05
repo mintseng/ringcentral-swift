@@ -9,5 +9,5 @@ var rcsdk = SDK(appKey: app_key, appSecret: app_secret, server: SDK.RC_SERVER_SA
 var platform = rcsdk.getPlatform()
 platform.authorize(username, password: password)
 //platform.testApiCall()
-platform.testApiCall2()
-//platform.testApiCall3()
+//platform.testApiCall2()
+platform.testApiCall3()

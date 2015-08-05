@@ -1,7 +1,5 @@
 import Foundation
 
-// delete setversion
-
 /// Platform used to call HTTP request methods.
 class Platform {
     
@@ -128,11 +126,6 @@ class Platform {
             ])
     }
     
-    //    func apiCall(verb: String, url: String, query: [String: String] = ["": ""], body: String = "") {
-    //        var request = Request(method: verb, url: url, query: query, body: body, auth: auth)
-    //        request.send()
-    //    }
-    
     func apiCall(options: [String: AnyObject]) {
         var method = ""
         var url = ""
@@ -152,15 +145,16 @@ class Platform {
             query = q
         }
         if let b = options["body"] {
-            body = b
+            if let check = b as? NSDictionary {
+                body = check
+            } else {
+                body = b as! String
+            }
         }
         var request = Request(method: method, url: url, headers: headers, query: query, body: body)
         
         request.setHeader("Authorization", value: "Bearer" + " " + auth!.getAccessToken())
         request.send()
-        
-        //        var request = Request(method: options["method"] as! String, url: options["url"] as! String, headers: options["headers"] as! [String: String], query: options["query"] as! [String: String], body: options["body"] as! String)
-        
     }
     
     func apiCall(options: [String: AnyObject], completion: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
@@ -182,22 +176,19 @@ class Platform {
             query = q
         }
         if let b = options["body"] {
-            if let check: [String: AnyObject] = b as? [String : AnyObject] {
+            if let check = b as? NSDictionary {
                 body = check
             } else {
                 body = b as! String
             }
         }
         var request = Request(method: method, url: url, headers: headers, query: query, body: body)
-   
         request.setHeader("Authorization", value: "Bearer" + " " + auth!.getAccessToken())
         request.send() {
             (data, response, error) in
             completion(data: data, response: response, error: error)
         }
-        
-        //        var request = Request(method: options["method"] as! String, url: options["url"] as! String, headers: options["headers"] as! [String: String], query: options["query"] as! [String: String], body: options["body"] as! String)
-        
+
     }
     
     // ringout

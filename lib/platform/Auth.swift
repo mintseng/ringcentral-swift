@@ -60,7 +60,7 @@ class Auth {
         self.app_secret = secret
         
         // URL api call for getting token
-        let url = NSURL(string: server + "/oauth/token")
+        let url = NSURL(string: server + "/restapi/oauth/token")
         
         // Setting up User info for parsing
         let bodyString = "grant_type=password&" + "username=" + self.username + "&" + "password=" + self.password + "&" + "extension=" + self.ext

@@ -80,6 +80,8 @@ class Request: Headers {
         } else {
             bodyString = body as! String
         }
+
+        
         if let nsurl = NSURL(string: url + self.query) {
             let request = NSMutableURLRequest(URL: nsurl)
             request.HTTPMethod = method
@@ -100,6 +102,11 @@ class Request: Headers {
         } else {
             bodyString = self.body as! NSString as String
         }
+        
+        println()
+        println(bodyString)
+        println()
+        
         if let nsurl = NSURL(string: url + self.query) {
             let request = NSMutableURLRequest(URL: nsurl)
             request.HTTPMethod = method
@@ -116,6 +123,8 @@ class Request: Headers {
         }
     }
     
+
+    
     func jsonToString(json: [String: AnyObject]) -> String {
         var result = "{"
         var delimiter = ""
@@ -125,12 +134,26 @@ class Request: Headers {
             if let check = item as? String {
                 result += "\"" + check + "\""
             } else {
-                let next = jsonToString(item as! [String: AnyObject])
-                result += next
+                if let check = item as? [String: AnyObject] {
+                    result += jsonToString(check)
+                } else if let check = item as? [AnyObject] {
+                    result += "["
+                    delimiter = ""
+                    for item in check {
+                        result += "\n"
+                        result += delimiter + "\""
+                        result += item.description + "\""
+                        delimiter = ","
+                    }
+                    result += "]"
+                } else {
+                    result += item!.description
+                }
             }
             delimiter = ","
         }
         result = result + "}"
+        
         return result
     }
     
