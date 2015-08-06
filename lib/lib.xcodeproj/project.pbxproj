@@ -16,17 +16,36 @@
 		E0312D3B1B5DBDCF00E788DE /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0312D3A1B5DBDCF00E788DE /* Headers.swift */; };
 		E0312D3D1B5DBDD700E788DE /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0312D3C1B5DBDD700E788DE /* Response.swift */; };
 		E0312D3F1B5DBE0E00E788DE /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0312D3E1B5DBE0E00E788DE /* Subscription.swift */; };
+		E0B66A671B72E2BD00A8EB7F /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B66A661B72E2BD00A8EB7F /* CryptoSwift.framework */; };
+		E0B66A6A1B72E34000A8EB7F /* CryptoSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E0B66A661B72E2BD00A8EB7F /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E0B66A6B1B72E35C00A8EB7F /* CryptoTokenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B66A641B72E2A600A8EB7F /* CryptoTokenKit.framework */; };
+		E0B66A6C1B72E36300A8EB7F /* CryptoTokenKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E0B66A641B72E2A600A8EB7F /* CryptoTokenKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E0B66A6D1B72E36700A8EB7F /* Pods_lib.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E35CD20E2132F864F10654AE /* Pods_lib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E0312D201B5DBC4100E788DE /* CopyFiles */ = {
+		E0312D201B5DBC4100E788DE /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = usr/share/man/man1;
+			dstSubfolderSpec = 10;
+			files = (
+				E0B66A6D1B72E36700A8EB7F /* Pods_lib.framework in Copy Frameworks */,
+				E0B66A6C1B72E36300A8EB7F /* CryptoTokenKit.framework in Copy Frameworks */,
+				E0B66A6A1B72E34000A8EB7F /* CryptoSwift.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		E0B66A681B72E30900A8EB7F /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -43,6 +62,8 @@
 		E0312D3C1B5DBDD700E788DE /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		E0312D3E1B5DBE0E00E788DE /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		E0ADEDC61B69A548009ADB8F /* lib-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lib-Bridging-Header.h"; sourceTree = "<group>"; };
+		E0B66A641B72E2A600A8EB7F /* CryptoTokenKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoTokenKit.framework; path = System/Library/Frameworks/CryptoTokenKit.framework; sourceTree = SDKROOT; };
+		E0B66A661B72E2BD00A8EB7F /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = "../../../Library/Developer/Xcode/DerivedData/lib-gcqzleazyubhgqekdwrdragwauor/Build/Products/Debug/CryptoSwift.framework"; sourceTree = "<group>"; };
 		E35CD20E2132F864F10654AE /* Pods_lib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -51,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0B66A6B1B72E35C00A8EB7F /* CryptoTokenKit.framework in Frameworks */,
+				E0B66A671B72E2BD00A8EB7F /* CryptoSwift.framework in Frameworks */,
 				9041906614A1A19732ED5150 /* Pods_lib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,6 +84,8 @@
 		00AC593A28A57BD6BD2F7581 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0B66A661B72E2BD00A8EB7F /* CryptoSwift.framework */,
+				E0B66A641B72E2A600A8EB7F /* CryptoTokenKit.framework */,
 				E0ADEDC61B69A548009ADB8F /* lib-Bridging-Header.h */,
 				E35CD20E2132F864F10654AE /* Pods_lib.framework */,
 			);
@@ -151,8 +176,9 @@
 				C86944BE525F285C5A67C399 /* Check Pods Manifest.lock */,
 				E0312D1E1B5DBC4100E788DE /* Sources */,
 				E0312D1F1B5DBC4100E788DE /* Frameworks */,
-				E0312D201B5DBC4100E788DE /* CopyFiles */,
+				E0312D201B5DBC4100E788DE /* Copy Frameworks */,
 				3D3B7C92833DBD18F6E162C7 /* Copy Pods Resources */,
+				E0B66A681B72E30900A8EB7F /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -329,7 +355,11 @@
 			baseConfigurationReference = 31FD951EA9CEB906DC6D8CB2 /* Pods-lib.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks @executable_path/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/lib-gcqzleazyubhgqekdwrdragwauor/Build/Products/Debug",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "lib-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -341,7 +371,11 @@
 			baseConfigurationReference = BAA7AC6EABF4A72AE237659A /* Pods-lib.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks @executable_path/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/lib-gcqzleazyubhgqekdwrdragwauor/Build/Products/Debug",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "lib-Bridging-Header.h";
 			};

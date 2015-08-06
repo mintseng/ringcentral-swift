@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CryptoSwift.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>lib.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>E0312D211B5DBC4100E788DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0B66A2E1B72B14F00A8EB7F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0B66A381B72B14F00A8EB7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -53,9 +53,11 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-lib/CocoaLumberjack.framework'
+  install_framework 'Pods-lib/CryptoSwift.framework'
   install_framework 'Pods-lib/PubNub.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-lib/CocoaLumberjack.framework'
+  install_framework 'Pods-lib/CryptoSwift.framework'
   install_framework 'Pods-lib/PubNub.framework'
 fi

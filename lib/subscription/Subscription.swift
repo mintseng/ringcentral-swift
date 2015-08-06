@@ -1,5 +1,6 @@
 import Foundation
 import PubNub
+import CryptoSwift
 
 class Subscription: NSObject, PNObjectEventListener {
     
@@ -12,9 +13,9 @@ class Subscription: NSObject, PNObjectEventListener {
         self.platform = platform
         
     }
+
     
-    struct IDeliveryMode {
-        var transportType: String = "PubNub"
+    struct IDeliveryMode {        var transportType: String = "PubNub"
         var encryption: Bool = false
         var address: String = ""
         var subscriberKey: String = ""
@@ -220,8 +221,10 @@ class Subscription: NSObject, PNObjectEventListener {
         
         var base64Key = self.subscription!.deliveryMode.encryptionKey
         let key = [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00] as [UInt8]
+        
         let iv = Cipher.randomIV(AES.blockSize)
         let decrypted = AES(key: base64ToByteArray(base64Key), iv: [0x00], blockMode: .ECB)?.decrypt(base64ToByteArray(base64Message), padding: PKCS7())
+        
         var endMarker = NSData(bytes: (decrypted as [UInt8]!), length: decrypted!.count)
         if let str: String = NSString(data: endMarker, encoding: NSUTF8StringEncoding) as? String  {
             println(str)
