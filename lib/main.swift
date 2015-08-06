@@ -10,5 +10,8 @@ var platform = rcsdk.getPlatform()
 platform.authorize(username, password: password)
 //platform.testApiCall()
 //platform.testApiCall2()
-platform.testApiCall3()
-sleep(30)
+//platform.testApiCall3()
+platform.testSubCall()
+while(true) {
+    sleep(1)
+}

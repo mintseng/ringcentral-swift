@@ -259,4 +259,12 @@ class Platform {
         sleep(5)
     }
     
+    func testSubCall() {
+        var sub = Subscription(platform: self)
+        sub.register()
+        println("address")
+        println(sub.subscription?.deliveryMode.address)
+        
+    }
+    
 }

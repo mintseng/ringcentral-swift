@@ -6,15 +6,17 @@ class Subscription: NSObject, PNObjectEventListener {
     private let platform: Platform!
     private var pubnub: PubNub?
     private var eventFilters: [String] = []
-    private var subscription: ISubscription?
+    var subscription: ISubscription?
     
     init(platform: Platform) {
         self.platform = platform
-        
+        println("app_secret")
+        println(self.platform.auth?.app_secret)
     }
 
     
-    struct IDeliveryMode {        var transportType: String = "PubNub"
+    struct IDeliveryMode {
+        var transportType: String = "PubNub"
         var encryption: Bool = false
         var address: String = ""
         var subscriberKey: String = ""
@@ -53,7 +55,7 @@ class Subscription: NSObject, PNObjectEventListener {
         return self
     }
 
-    func register(options: [String: AnyObject]) {
+    func register(options: [String: AnyObject] = [String: AnyObject]()) {
         if (isSubscribed()) {
             return renew(options)
         } else {
@@ -117,10 +119,13 @@ class Subscription: NSObject, PNObjectEventListener {
             ]
             ]) {
                 (data, response, error) in
+                
+                println(response)
+                println(NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary)
+                
                 let dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
                 
                 var sub = ISubscription()
-                self.subscription = sub
                 sub.eventFilters =      dictionary["eventFilters"] as! [String]
                 sub.expirationTime =    dictionary["expirationTime"] as! String
                 sub.expiresIn =         dictionary["expiresIn"] as! NSNumber
@@ -128,15 +133,19 @@ class Subscription: NSObject, PNObjectEventListener {
                 sub.creationTime =      dictionary["creationTime"] as! String
                 sub.status =            dictionary["status"] as! String
                 sub.uri =               dictionary["uri"] as! String
+                self.subscription = sub
                 
-                var del = sub.deliveryMode
+                var del = IDeliveryMode()
                 var dictDelivery =      dictionary["deliveryMode"] as! NSDictionary
                 del.transportType =     dictDelivery["transportType"] as! String
                 del.encryption =        dictDelivery["encryption"] as! Bool
                 del.address =           dictDelivery["address"] as! String
+                println(del.address)
                 del.subscriberKey =     dictDelivery["subscriberKey"] as! String
                 del.secretKey =         dictDelivery["secretKey"] as! String
                 del.encryptionKey =     dictDelivery["encryptionKey"] as! String
+                
+                self.subscription!.deliveryMode = del
                 
                 self.subscribeAtPubnub()
         }
@@ -207,7 +216,9 @@ class Subscription: NSObject, PNObjectEventListener {
         pubnub = PubNub.clientWithConfiguration(config)
         pubnub?.addListener(self)
         pubnub?.subscribeToChannels([self.subscription!.deliveryMode.address], withPresence: true)
-        
+        println("pubnub object")
+        println(self.subscription!.deliveryMode.subscriberKey)
+        println(self.subscription!.deliveryMode.address)
     }
     
     private func notify() {
@@ -215,7 +226,7 @@ class Subscription: NSObject, PNObjectEventListener {
     }
     
     func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
-        
+        println("hi")
         var base64Message = message.data.description
         
         var base64Key = self.subscription!.deliveryMode.encryptionKey
