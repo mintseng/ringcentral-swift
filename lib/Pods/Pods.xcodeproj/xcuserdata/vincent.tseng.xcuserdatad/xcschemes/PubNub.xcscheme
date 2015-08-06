@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0E8EE04D36736386F4618A59"
+               BlueprintIdentifier = "890C1673BF03885C09948A9C"
                BuildableName = "PubNub.framework"
                BlueprintName = "PubNub"
                ReferencedContainer = "container:Pods.xcodeproj">

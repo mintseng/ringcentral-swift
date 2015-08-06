@@ -39,11 +39,11 @@ public enum Cipher {
     public func encrypt(bytes: [UInt8]) -> [UInt8]? {
         switch (self) {
             case .ChaCha20(let key, let iv):
-                var chacha = CryptoSwift.ChaCha20(key: key, iv: iv)
-                return chacha?.encrypt(bytes)
+                var chacha = ChaCha20(key: key, iv: iv)
+                return chacha.encrypt(bytes)
             case .AES(let key, let iv, let blockMode):
-                var aes = CryptoSwift.AES(key: key, iv: iv, blockMode: blockMode)
-                return aes?.encrypt(bytes)
+                var aes = AES(key: key, iv: iv, blockMode: blockMode)
+                return aes.encrypt(bytes)
         }
     }
     
@@ -57,11 +57,11 @@ public enum Cipher {
     public func decrypt(bytes: [UInt8]) -> [UInt8]? {
         switch (self) {
             case .ChaCha20(let key, let iv):
-                var chacha = CryptoSwift.ChaCha20(key: key, iv: iv);
-                return chacha?.decrypt(bytes)
+                var chacha = ChaCha20(key: key, iv: iv);
+                return chacha.decrypt(bytes)
             case .AES(let key, let iv, let blockMode):
-                var aes = CryptoSwift.AES(key: key, iv: iv, blockMode: blockMode);
-                return aes?.decrypt(bytes)
+                var aes = AES(key: key, iv: iv, blockMode: blockMode);
+                return aes.decrypt(bytes)
         }
     }
 

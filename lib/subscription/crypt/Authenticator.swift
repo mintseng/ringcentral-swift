@@ -17,8 +17,8 @@ public enum Authenticator {
     
     :param: key 256-bit key
     */
-    case Poly1305(key: [UInt8])
-    case HMAC(key: [UInt8], variant:CryptoSwift.HMAC.Variant)
+    case Poly13055(key: [UInt8])
+    case HMACC(key: [UInt8], variant:HMAC.Variant)
     
     /**
     Generates an authenticator for message using a one-time key and returns the 16-byte result
@@ -27,10 +27,10 @@ public enum Authenticator {
     */
     public func authenticate(message: [UInt8]) -> [UInt8]? {
         switch (self) {
-        case .Poly1305(let key):
-            return CryptoSwift.Poly1305.authenticate(key: key, message: message)
-        case .HMAC(let key, let variant):
-            return CryptoSwift.HMAC.authenticate(key: key, message: message, variant: variant)
+        case .Poly13055(let key):
+            return Poly1305.authenticate(key: key, message: message)
+        case .HMACC(let key, let variant):
+            return HMAC.authenticate(key: key, message: message, variant: variant)
         }
     }
 }
