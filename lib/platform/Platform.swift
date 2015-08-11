@@ -262,9 +262,8 @@ class Platform {
     func testSubCall() {
         var sub = Subscription(platform: self)
         sub.register()
-        println("address")
-        println(sub.subscription?.deliveryMode.address)
         
     }
+
     
 }

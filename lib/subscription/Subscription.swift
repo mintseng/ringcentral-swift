@@ -1,17 +1,21 @@
 import Foundation
 import PubNub
 
-class Subscription: NSObject, PNObjectEventListener {
+class Subscription: NSResponder, PNObjectEventListener {
     
     private let platform: Platform!
-    private var pubnub: PubNub?
+    var pubnub: PubNub?
     private var eventFilters: [String] = []
     var subscription: ISubscription?
     
     init(platform: Platform) {
         self.platform = platform
-        println("app_secret")
-        println(self.platform.auth?.app_secret)
+        super.init()
+        
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     
@@ -92,6 +96,7 @@ class Subscription: NSObject, PNObjectEventListener {
                 self.subscription!.expiresIn = dictionary["expiresIn"] as! NSNumber
                 self.subscription!.expirationTime = dictionary["expirationTime"] as! String
             }
+
         }
     }
     
@@ -120,13 +125,12 @@ class Subscription: NSObject, PNObjectEventListener {
             ]) {
                 (data, response, error) in
                 
-                println(response)
-                println(NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary)
-                
                 let dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
                 
                 var sub = ISubscription()
                 sub.eventFilters =      dictionary["eventFilters"] as! [String]
+                self.eventFilters =     dictionary["eventFilters"] as! [String]
+                
                 sub.expirationTime =    dictionary["expirationTime"] as! String
                 sub.expiresIn =         dictionary["expiresIn"] as! NSNumber
                 sub.id =                dictionary["id"] as! String
@@ -140,12 +144,16 @@ class Subscription: NSObject, PNObjectEventListener {
                 del.transportType =     dictDelivery["transportType"] as! String
                 del.encryption =        dictDelivery["encryption"] as! Bool
                 del.address =           dictDelivery["address"] as! String
-                println(del.address)
                 del.subscriberKey =     dictDelivery["subscriberKey"] as! String
                 del.secretKey =         dictDelivery["secretKey"] as! String
                 del.encryptionKey =     dictDelivery["encryptionKey"] as! String
                 
                 self.subscription!.deliveryMode = del
+                
+                println("event filters")
+                println(sub.eventFilters)
+                
+                
                 
                 self.subscribeAtPubnub()
         }
@@ -212,13 +220,17 @@ class Subscription: NSObject, PNObjectEventListener {
     }
     
     private func subscribeAtPubnub() {
-        let config = PNConfiguration( publishKey: "", subscribeKey: self.subscription!.deliveryMode.subscriberKey)
-        pubnub = PubNub.clientWithConfiguration(config)
-        pubnub?.addListener(self)
-        pubnub?.subscribeToChannels([self.subscription!.deliveryMode.address], withPresence: true)
-        println("pubnub object")
+        
+        println("subscribing")
         println(self.subscription!.deliveryMode.subscriberKey)
         println(self.subscription!.deliveryMode.address)
+        println(getFullEventFilters())
+        
+        let config = PNConfiguration( publishKey: "", subscribeKey: subscription!.deliveryMode.subscriberKey)
+        pubnub = PubNub.clientWithConfiguration(config)
+        pubnub?.addListener(self)
+        pubnub?.subscribeToChannels([subscription!.deliveryMode.address], withPresence: true)
+        
     }
     
     private func notify() {
@@ -241,6 +253,14 @@ class Subscription: NSObject, PNObjectEventListener {
         } else {
             println("o darn")
         }
+    }
+    
+    func client(client: PubNub!, didReceivePresenceEvent event: PNPresenceEventResult!) {
+        println("presense")
+    }
+    
+    func client(client: PubNub!, didReceiveStatus status: PNSubscribeStatus!) {
+        println("status")
     }
     
     private func base64ToByteArray(base64String: String) -> [UInt8] {
