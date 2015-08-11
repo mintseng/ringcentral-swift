@@ -30,8 +30,15 @@ class ViewControllerPhone: UIViewController {
     }
     
     @IBAction func call() {
-        
-        platform.postRingOut(fromNumber.text, to: number.text!)
+        // ringout
+        platform.apiCall([
+            "method": "POST",
+            "url": "/restapi/v1.0/account/~/extension/~/ringout",
+            "body": ["to": ["phoneNumber": "14088861168"],
+                "from": ["phoneNumber": "14088861168"],
+                "callerId": ["phoneNumber": "13464448343"],
+                "playPrompt": "true"]
+            ])
 //        println(platform.getCallLog(true))
 //        var secondTab = self.tabBarController?.viewControllers![1] as! ViewControllerLog
 //        secondTab.label.text = secondTab.label.text! + "hi"
@@ -44,7 +51,21 @@ class ViewControllerPhone: UIViewController {
     
     @IBAction func pressSMSButton(sender: AnyObject) {
         if message.text! != "" {
-            platform.postSms(message.text!, to: number.text!)
+//            platform.postSms(message.text!, to: number.text!)
+            
+            var toNumber = number.text!
+            
+            var bodyString = "{" +
+                "\"to\": [{\"phoneNumber\": " +
+                "\"" + toNumber + "\"}]," +
+                "\"from\": {\"phoneNumber\": \"" + fromNumber.text! +
+                "\"}," + "\"text\": \"" + message.text! + "\"" + "}"
+            
+            platform.apiCall([
+                "method": "POST",
+                "url": "/restapi/v1.0/account/~/extension/~/sms",
+                "body": bodyString
+                ])
         }
         
     }
@@ -62,6 +83,9 @@ class ViewControllerPhone: UIViewController {
         
         var secondTab = self.tabBarController?.viewControllers![1] as! ViewControllerLog
         secondTab.platform = self.platform
+        
+        platform?.testSubCall()
+        
         
 //        var url = NSURL(string: "https://platform.ringcentral.com/soap/" + "/ags/ws?wsdl")
 //        

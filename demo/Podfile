@@ -1,0 +1,8 @@
+use_frameworks!
+platform :ios, '8.4'
+target 'demo' do
+source 'https://github.com/CocoaPods/Specs.git'
+pod 'PubNub', '~>4.0'
+end
+target 'demoTests' do
+end

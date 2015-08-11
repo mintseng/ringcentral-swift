@@ -22,7 +22,7 @@
 		<key>3BCEC8D72C213B14269EB69742D0060D98C50412</key>
 		<string>../..</string>
 		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
-		<string>../../lib/CryptoSwift/</string>
+		<string>../../lib/CryptoSwift</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/mintseng/swift-sdk.git</string>

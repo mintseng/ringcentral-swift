@@ -18,28 +18,62 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        for call in platform.getCallLog(true)["records"] as! NSArray {
-            var part0: String = (call["startTime"] as! String) + "\n"
-            var part1: String = (call["direction"] as! String) + " (Id: " + (call["id"] as! String) + ")\n"
-            var part2: String = ((call["from"] as! NSDictionary)["phoneNumber"] as! String) + " --> " + ((call["to"] as! NSDictionary)["phoneNumber"] as! String)
-            self.textArray.addObject(part0 + part1 + part2)
-
+        platform.apiCall([
+                "method": "GET",
+                "url": "/restapi/v1.0/account/~/call-log"
+            ]) {
+                (data, response, error) in
+                for call in (NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary)["records"] as! NSArray {
+                    var part0: String = (call["startTime"] as! String) + "\n"
+                    var part1: String = (call["direction"] as! String) + " (Id: " + (call["id"] as! String) + ")\n"
+                    var part2: String = ((call["from"] as! NSDictionary)["phoneNumber"] as! String) + " --> " + ((call["to"] as! NSDictionary)["phoneNumber"] as! String)
+                    self.textArray.addObject(part0 + part1 + part2)
+                }
         }
         
-        var feedback = platform.getMessages()
-        for message in (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray{
-            let direction = message["direction"] as! String
-            var part0: String = direction
-            let number: String
-            if direction == "Outbound" {
-                number = (message["to"] as! NSArray)[0]["phoneNumber"] as! String
-            } else {
-                number = (message["from"] as! NSDictionary) ["phoneNumber"] as! String
-            }
-            var part1: String = (message["subject"] as! String)
-            self.messageArray.addObject(part0 + ": " + number + "\n" + part1)
+//        for call in platform.getCallLog(true)["records"] as! NSArray {
+//            var part0: String = (call["startTime"] as! String) + "\n"
+//            var part1: String = (call["direction"] as! String) + " (Id: " + (call["id"] as! String) + ")\n"
+//            var part2: String = ((call["from"] as! NSDictionary)["phoneNumber"] as! String) + " --> " + ((call["to"] as! NSDictionary)["phoneNumber"] as! String)
+//            self.textArray.addObject(part0 + part1 + part2)
+//
+//        }
+        
+//        var feedback = platform.getMessages()
+        
+        platform.apiCall([
+            "method": "GET",
+            "url": "/restapi/v1.0/account/~/extension/~/message-store",
+            "headers": ["Accept": "application/json"],
+            ]) {
+                (data, response, error) in
+                for message in (NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray{
+                    let direction = message["direction"] as! String
+                    var part0: String = direction
+                    let number: String
+                    if direction == "Outbound" {
+                        number = (message["to"] as! NSArray)[0]["phoneNumber"] as! String
+                    } else {
+                        number = (message["from"] as! NSDictionary) ["phoneNumber"] as! String
+                    }
+                    var part1: String = (message["subject"] as! String)
+                    self.messageArray.addObject(part0 + ": " + number + "\n" + part1)
+                }
         }
         
+//        for message in (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray{
+//            let direction = message["direction"] as! String
+//            var part0: String = direction
+//            let number: String
+//            if direction == "Outbound" {
+//                number = (message["to"] as! NSArray)[0]["phoneNumber"] as! String
+//            } else {
+//                number = (message["from"] as! NSDictionary) ["phoneNumber"] as! String
+//            }
+//            var part1: String = (message["subject"] as! String)
+//            self.messageArray.addObject(part0 + ": " + number + "\n" + part1)
+//        }
+//        
         self.callHistory.rowHeight = UITableViewAutomaticDimension
         self.callHistory.estimatedRowHeight = 44.0
         

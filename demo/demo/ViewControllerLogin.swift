@@ -63,6 +63,8 @@ class ViewControllerLogin: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        
         // code below is made for NSLog stuff, writes out to text
 //        NSLog("view did load")
 //        let yourString = "String contents go here"
