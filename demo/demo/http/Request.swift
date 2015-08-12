@@ -108,10 +108,6 @@ class Request: Headers {
             bodyString = self.body as! NSString as String
         }
         
-        println()
-        println(bodyString)
-        println()
-        
         if let nsurl = NSURL(string: url + self.query) {
             let request = NSMutableURLRequest(URL: nsurl)
             request.HTTPMethod = method

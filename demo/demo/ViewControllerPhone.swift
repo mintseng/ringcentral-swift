@@ -16,6 +16,7 @@ class ViewControllerPhone: UIViewController {
     @IBOutlet var number: UILabel!
     @IBOutlet var fromNumber: UITextField!
     @IBOutlet var message: UITextField!
+    @IBOutlet var status: UILabel!
     
     var platform: Platform!
     
@@ -85,23 +86,38 @@ class ViewControllerPhone: UIViewController {
         secondTab.platform = self.platform
         
         platform?.testSubCall()
+        platform.subscription!.setMethod({
+            (arg) in
+            if let check = (self.stringToDict(arg) as? NSDictionary) {
+                if let body = check["body"] as? NSDictionary {
+                    if let status = body["telephonyStatus"] as? String {
+                        switch status {
+                        case "CallConnected":
+                            self.status.text = "Call Connected"
+                            self.status.backgroundColor = UIColor.greenColor()
+                        case "NoCall":
+                            self.status.text = "No Call"
+                            self.status.backgroundColor = UIColor.redColor()
+                        case "Ringing":
+                            self.status.text = "Ringing"
+                            self.status.backgroundColor = UIColor.yellowColor()
+                            
+                        default:
+                            println("error")
+                        }
+                    }
+                }
+                
+            }
+        })
         
+    }
+    
+    private func stringToDict(string: String) -> NSDictionary {
+        var data: NSData = string.dataUsingEncoding(NSUTF8StringEncoding)!
         
-//        var url = NSURL(string: "https://platform.ringcentral.com/soap/" + "/ags/ws?wsdl")
-//        
-//        var request = NSMutableURLRequest(URL: url!)
-//        request.HTTPMethod = "GET"
-//        request.addValue("Bearer " + platform.auth!.getAccessToken(), forHTTPHeaderField: "Authorization")
-//        request.addValue("application/json", forHTTPHeaderField: "Accept")
-//        
-//        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-//            println(NSString(data: data, encoding: NSUTF8StringEncoding))
-//            println(response)
-//            println(error)
-//            println("End")
-//        }
+        return NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
         
-
         
     }
     

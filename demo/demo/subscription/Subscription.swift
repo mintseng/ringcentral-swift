@@ -7,7 +7,7 @@ class Subscription: NSObject, PNObjectEventListener {
     var pubnub: PubNub?
     private var eventFilters: [String] = []
     var subscription: ISubscription?
-    var function: (() -> Void) = {}
+    var function: ((arg: String) -> Void) = {(arg) in }
     
     init(platform: Platform) {
         self.platform = platform
@@ -155,7 +155,7 @@ class Subscription: NSObject, PNObjectEventListener {
         }
     }
     
-    func setMethod(functionHolder: (() -> Void)) {
+    func setMethod(functionHolder: ((arg: String) -> Void)) {
         self.function = functionHolder
     }
     
@@ -213,17 +213,10 @@ class Subscription: NSObject, PNObjectEventListener {
     }
     
     private func subscribeAtPubnub() {
-        
-        println("subscribing")
-        println(self.subscription!.deliveryMode.subscriberKey)
-        println(self.subscription!.deliveryMode.address)
-        println(getFullEventFilters())
-        
         let config = PNConfiguration( publishKey: "", subscribeKey: subscription!.deliveryMode.subscriberKey)
         self.pubnub = PubNub.clientWithConfiguration(config)
         self.pubnub?.addListener(self)
         self.pubnub?.subscribeToChannels([subscription!.deliveryMode.address], withPresence: true)
-        
     }
     
     private func notify() {
@@ -232,24 +225,18 @@ class Subscription: NSObject, PNObjectEventListener {
     
     func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
         var base64Message = message.data.message as! String
-        
         var base64Key = self.subscription!.deliveryMode.encryptionKey
+        
         let key = [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00] as [UInt8]
-        
         let iv = Cipher.randomIV(AES.blockSize)
-        
         let decrypted = AES(key: base64ToByteArray(base64Key), iv: [0x00], blockMode: .ECB)?.decrypt(base64ToByteArray(base64Message), padding: PKCS7())
         
         var endMarker = NSData(bytes: (decrypted as [UInt8]!), length: decrypted!.count)
         if let str: String = NSString(data: endMarker, encoding: NSUTF8StringEncoding) as? String  {
-            println()
-            println((stringToDict(str)["body"] as! NSDictionary)["telephonyStatus"])
-            println()
+            self.function(arg: str)
         } else {
-            println("o darn")
+            println("error")
         }
-        
-        self.function()
     }
     
     private func base64ToByteArray(base64String: String) -> [UInt8] {
@@ -267,13 +254,8 @@ class Subscription: NSObject, PNObjectEventListener {
     
     private func stringToDict(string: String) -> NSDictionary {
         var data: NSData = string.dataUsingEncoding(NSUTF8StringEncoding)!
-        
         return NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
-        
-        
     }
-    
-    
 }
 
 

@@ -50,7 +50,6 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
 //                println((NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)
                 
                 for message in (NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray {
-                    println(message)
                     let direction = message["direction"] as! String
                     var part0: String = direction
                     let number: String
@@ -127,7 +126,6 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        var cell: UITableViewCell = self.callHistory.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         if tableView == self.callHistory {
-            println("call history")
             let cellIdentifier = "Cell"
             
             var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
