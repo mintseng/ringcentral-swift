@@ -98,7 +98,12 @@ class Request: Headers {
     func send(completion: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
         var bodyString: String
         if isJson() {
-            bodyString = jsonToString(body as! [String: AnyObject])
+            if body is NSDictionary {
+                bodyString = jsonToString(body as! [String: AnyObject])
+            } else {
+                bodyString = body as! String
+            }
+            
         } else {
             bodyString = self.body as! NSString as String
         }

@@ -238,18 +238,20 @@ class Subscription: NSResponder, PNObjectEventListener {
     }
     
     func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
-        println("hi")
-        var base64Message = message.data.description
+        var base64Message = message.data.message as! String
         
         var base64Key = self.subscription!.deliveryMode.encryptionKey
         let key = [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00] as [UInt8]
         
         let iv = Cipher.randomIV(AES.blockSize)
+        
         let decrypted = AES(key: base64ToByteArray(base64Key), iv: [0x00], blockMode: .ECB)?.decrypt(base64ToByteArray(base64Message), padding: PKCS7())
         
         var endMarker = NSData(bytes: (decrypted as [UInt8]!), length: decrypted!.count)
         if let str: String = NSString(data: endMarker, encoding: NSUTF8StringEncoding) as? String  {
-            println(str)
+            println()
+            println((stringToDict(str)["body"] as! NSDictionary)["telephonyStatus"])
+            println()
         } else {
             println("o darn")
         }
@@ -275,6 +277,16 @@ class Subscription: NSResponder, PNObjectEventListener {
         let base64Encoded = nsdata.base64EncodedStringWithOptions(nil);
         return base64Encoded;
     }
+    
+    
+    private func stringToDict(string: String) -> NSDictionary {
+        var data: NSData = string.dataUsingEncoding(NSUTF8StringEncoding)!
+        
+        return NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
+        
+        
+    }
+    
     
     
 }

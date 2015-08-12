@@ -47,7 +47,10 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
             "headers": ["Accept": "application/json"],
             ]) {
                 (data, response, error) in
-                for message in (NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray{
+//                println((NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray)
+                
+                for message in (NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray {
+                    println(message)
                     let direction = message["direction"] as! String
                     var part0: String = direction
                     let number: String
@@ -56,9 +59,18 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
                     } else {
                         number = (message["from"] as! NSDictionary) ["phoneNumber"] as! String
                     }
-                    var part1: String = (message["subject"] as! String)
+//                    var part1: String = (message["subject"] as! String)
+                    var part1: String
+                    
+                    if let person = message["subject"] as? String {
+                        part1 = person
+                    } else {
+                        part1 = "UNKNOWN"
+                    }
+                    
                     self.messageArray.addObject(part0 + ": " + number + "\n" + part1)
                 }
+                
         }
         
 //        for message in (NSJSONSerialization.JSONObjectWithData(feedback.0!, options: nil, error: nil) as! NSDictionary) ["records"]! as! NSArray{
@@ -77,14 +89,17 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
         self.callHistory.rowHeight = UITableViewAutomaticDimension
         self.callHistory.estimatedRowHeight = 44.0
         
-        
-        
+        self.messageHistory.reloadData()
+        self.callHistory.reloadData()
         
     }
     
     @IBAction func press(sender: AnyObject) {
         self.textArray.addObject("Hi")
         filter(filter.text)
+        self.callHistory.reloadData()
+        
+        self.messageHistory.reloadData()
         self.callHistory.reloadData()
     }
     
@@ -106,11 +121,13 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
+        
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        var cell: UITableViewCell = self.callHistory.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         if tableView == self.callHistory {
+            println("call history")
             let cellIdentifier = "Cell"
             
             var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
@@ -141,6 +158,9 @@ class ViewControllerLog: UIViewController, UITableViewDataSource, UITableViewDel
             return cell!
             
         }
+        
+        
+
         
     }
     

@@ -7,6 +7,7 @@ class Subscription: NSObject, PNObjectEventListener {
     var pubnub: PubNub?
     private var eventFilters: [String] = []
     var subscription: ISubscription?
+    var function: (() -> Void) = {}
     
     init(platform: Platform) {
         self.platform = platform
@@ -143,12 +144,6 @@ class Subscription: NSObject, PNObjectEventListener {
                 del.encryptionKey =     dictDelivery["encryptionKey"] as! String
                 
                 self.subscription!.deliveryMode = del
-                
-                println("event filters")
-                println(sub.eventFilters)
-                
-                
-                
                 self.subscribeAtPubnub()
         }
         
@@ -158,6 +153,10 @@ class Subscription: NSObject, PNObjectEventListener {
         if let sub = self.subscription {
             unsubscribe()
         }
+    }
+    
+    func setMethod(functionHolder: (() -> Void)) {
+        self.function = functionHolder
     }
     
     func isSubscribed() -> Bool {
@@ -243,10 +242,14 @@ class Subscription: NSObject, PNObjectEventListener {
         
         var endMarker = NSData(bytes: (decrypted as [UInt8]!), length: decrypted!.count)
         if let str: String = NSString(data: endMarker, encoding: NSUTF8StringEncoding) as? String  {
-            println(str)
+            println()
+            println((stringToDict(str)["body"] as! NSDictionary)["telephonyStatus"])
+            println()
         } else {
             println("o darn")
         }
+        
+        self.function()
     }
     
     private func base64ToByteArray(base64String: String) -> [UInt8] {
@@ -262,7 +265,22 @@ class Subscription: NSObject, PNObjectEventListener {
         return base64Encoded;
     }
     
+    private func stringToDict(string: String) -> NSDictionary {
+        var data: NSData = string.dataUsingEncoding(NSUTF8StringEncoding)!
+        
+        return NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
+        
+        
+    }
+    
     
 }
+
+
+
+
+
+
+
 
 
