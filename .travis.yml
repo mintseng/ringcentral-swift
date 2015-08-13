@@ -6,7 +6,7 @@ branches:
 
 xcode_project: demo/demo.xcodeproj
 xcode_scheme: demo/demoTests
-osx_image: beta-xcode6.3
+osx_image: beta-xcode6.4
 xcode_sdk: iphonesimulator8.3 
 
 script:
