@@ -5,9 +5,9 @@ branches:
  - master
 
 xcode_project: demo/demo.xcodeproj
-xcode_scheme: demo/demoTests
+xcode_scheme: demoTests
 osx_image: beta-xcode6.4
 xcode_sdk: iphonesimulator8.3 
 
 script:
-- xcodebuild clean build test -project demo/demo.xcodeproj -scheme demo/demoTests
+- xcodebuild clean build test -project demo/demo.xcodeproj -scheme demoTests
