@@ -28,6 +28,8 @@ class Auth {
     
     var authenticated: Bool = false
     
+    var refreshing: Bool = false
+    
     /// Constructor for authorization for the platform
     ///
     /// :param: username RingCentral phone number
@@ -87,9 +89,6 @@ class Auth {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        
-        
-        
         // Setting authentication information
         self.authenticated = true
         self.access_token = readdata["access_token"] as? String
@@ -132,14 +131,12 @@ class Auth {
         request.setValue("Basic" + " " + base64String, forHTTPHeaderField: "Authorization")
         
         // Sending HTTP request
-        
         var response: NSURLResponse?
         var error: NSError?
         let data: NSData! = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
         
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errors) as! NSDictionary
-        
         
         // Setting authentication information
         self.authenticated = true

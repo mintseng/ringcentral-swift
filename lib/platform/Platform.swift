@@ -96,6 +96,10 @@ class Platform {
     
     // Generic Method Calls
     
+    /// HTTP request method for GET
+    ///
+    /// :param: url         URL for GET request
+    /// :param: query       List of queries for GET request
     func get(url: String, query: [String: String] = ["": ""]) {
         apiCall([
             "method": "GET",
@@ -104,6 +108,10 @@ class Platform {
             ])
     }
     
+    /// HTTP request method for PUT
+    ///
+    /// :param: url         URL for PUT request
+    /// :param: body        Body for PUT request
     func put(url: String, body: String = "") {
         apiCall([
             "method": "PUT",
@@ -112,6 +120,10 @@ class Platform {
             ])
     }
     
+    /// HTTP request method for POST
+    ///
+    /// :param: url         URL for POST request
+    /// :param: body        Body for POST request
     func post(url: String, body: String = "") {
         apiCall([
             "method": "POST",
@@ -120,6 +132,9 @@ class Platform {
             ])
     }
     
+    /// HTTP request method for DELETE
+    ///
+    /// :param: url         URL for DELETE request
     func delete(url: String) {
         apiCall([
             "method": "DELETE",
@@ -127,6 +142,9 @@ class Platform {
             ])
     }
     
+    /// Generic HTTP request
+    ///
+    /// :param: options     List of options for HTTP request
     func apiCall(options: [String: AnyObject]) {
         var method = ""
         var url = ""
@@ -158,6 +176,10 @@ class Platform {
         request.send()
     }
     
+    /// Generic HTTP request with completion handler
+    ///
+    /// :param: options         List of options for HTTP request
+    /// :param: completion      Completion handler for HTTP request
     func apiCall(options: [String: AnyObject], completion: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
         var method = ""
         var url = ""

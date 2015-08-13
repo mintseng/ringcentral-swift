@@ -1,8 +1,7 @@
 import Foundation
 
-/// Object representation of a Standard Development Kit for RingCentral
+// Object representation of a Standard Development Kit for RingCentral
 class SDK {
-    
     
     // Set constants for SANDBOX and PRODUCTION servers.
     static var RC_SERVER_PRODUCTION: String = "https://platform.ringcentral.com"
@@ -11,12 +10,9 @@ class SDK {
     // Platform variable, version, and current Subscriptions
     var platform: Platform
     var subscription: Subscription?
-    
     let server: String
-    
     var serverVersion: String!
     var versionString: String!
-    
     var logger: Bool = false
     
     /// Constructor for making the SDK object.
@@ -36,7 +32,6 @@ class SDK {
         self.server = server
         setVersion()
     }
-    
     
     /// Sets version to the version of the current SDK
     private func setVersion() {
@@ -59,6 +54,9 @@ class SDK {
         
     }
     
+    /// Returns the server version.
+    ///
+    /// :returns: String of current version
     func getServerVersion() -> String {
         return serverVersion
     }

@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
             endingLineNumber = "241"
-            landmarkName = "testApiCall3()"
+            landmarkName = "testApiCall2()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "264"
             endingLineNumber = "264"
-            landmarkName = "testSubCall()"
+            landmarkName = "testApiCall3()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

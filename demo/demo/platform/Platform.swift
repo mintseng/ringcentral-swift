@@ -128,6 +128,23 @@ class Platform {
     }
     
     func apiCall(options: [String: AnyObject]) {
+        
+        if (auth != nil) {
+            if (auth!.authenticated != true) {
+                if auth!.refreshing {
+                    sleep(1)
+                } else {
+                    auth!.refresh()
+                }
+            }
+        } else {
+            return
+        }
+        
+        if (auth?.authenticated != true) {
+            return
+        }
+        
         var method = ""
         var url = ""
         var headers: [String: String] = ["": ""]
@@ -159,6 +176,23 @@ class Platform {
     }
     
     func apiCall(options: [String: AnyObject], completion: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
+        
+        if (auth != nil) {
+            if (auth!.authenticated != true) {
+                if auth!.refreshing {
+                    sleep(1)
+                } else {
+                    auth!.refresh()
+                }
+            }
+        } else {
+            return
+        }
+        
+        if (auth?.authenticated != true) {
+            return
+        }
+        
         var method = ""
         var url = ""
         var headers: [String: String] = ["": ""]

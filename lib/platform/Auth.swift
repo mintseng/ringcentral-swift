@@ -87,23 +87,16 @@ class Auth {
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &errors) as! NSDictionary
         
-        
-        
-        
         // Setting authentication information
         self.authenticated = true
         self.access_token = readdata["access_token"] as? String
         self.expires_in = readdata["expires_in"] as! Double
-        
         self.refresh_token = readdata["refresh_token"] as? String
         self.refresh_token_expires_in = readdata["refresh_token_expires_in"] as! Double
-        
         self.token_type = readdata["token_type"] as? String
         self.scope = readdata["scope"] as? String
         self.owner_id = readdata["owner_id"] as? String
-        
         let time = NSDate().timeIntervalSince1970
-        
         self.expire_time = time + self.expires_in
         self.refresh_token_expire_time = time + self.refresh_token_expires_in
         
@@ -113,7 +106,7 @@ class Auth {
     
     /// Refreshes the access_token and refresh_token with the current refresh_token
     ///
-    ///
+    /// :returns: tuple for responses
     func refresh() -> (NSData?, NSURLResponse?, NSError?) {
         // URL api call for getting token
         let url = NSURL(string: server + "/oauth/token")
@@ -132,32 +125,24 @@ class Auth {
         request.setValue("Basic" + " " + base64String, forHTTPHeaderField: "Authorization")
         
         // Sending HTTP request
-        
         var response: NSURLResponse?
         var error: NSError?
         let data: NSData! = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
-        
         var errors: NSError?
         let readdata = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errors) as! NSDictionary
-        
         
         // Setting authentication information
         self.authenticated = true
         self.access_token = readdata["access_token"] as? String
         self.expires_in = readdata["expires_in"] as! Double
-        
         self.refresh_token = readdata["refresh_token"] as? String
         self.refresh_token_expires_in = readdata["refresh_token_expires_in"] as! Double
-        
         self.token_type = readdata["token_type"] as? String
         self.scope = readdata["scope"] as? String
         self.owner_id = readdata["owner_id"] as? String
-        
         let time = NSDate().timeIntervalSince1970
-        
         self.expire_time = time + self.expires_in
         self.refresh_token_expire_time = time + self.refresh_token_expires_in
-        
         
         return (data, response, error)
         
@@ -179,7 +164,7 @@ class Auth {
     
     /// Revokes the access_token
     ///
-    ///
+    /// :returns: tuple for response
     func revokeToken() -> (NSData?, NSURLResponse?, NSError?) {
         let url = NSURL(string: server + "/oauth/revoke")
         
@@ -204,36 +189,51 @@ class Auth {
         self.access_token = nil
         self.expires_in = 0
         self.expire_time = 0
-        
         self.refresh_token = nil
         self.refresh_token_expires_in = 0
         self.refresh_token_expire_time = 0
 
-        
         return (data, response, error)
-        
     }
     
+    /// Returns the 'access token'
+    ///
+    /// :returns: String of 'access token'
     func getAccessToken() -> String {
         return self.access_token!
     }
     
+    /// Returns the 'refresh token'
+    ///
+    /// :returns: String of 'refresh token'
     func getRefreshToken() -> String {
         return self.refresh_token!
     }
     
+    /// Returns the 'username'
+    ///
+    /// :returns: String of 'username'
     func getUsername() -> String {
         return self.username
     }
     
+    /// Returns the access token
+    ///
+    /// :returns: String of access token
     func getAppKey() -> String {
         return self.app_key!
     }
     
+    /// Returns the 'app secret'
+    ///
+    /// :returns: String of 'app secret'
     func getAppSecret() -> String {
         return self.app_secret!
     }
     
+    /// Returns the 'extension'
+    ///
+    /// :returns: String of 'extension'
     func getExtension() -> String {
         return self.ext
     }

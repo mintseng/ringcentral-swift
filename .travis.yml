@@ -1,0 +1,6 @@
+language: objective-c
+
+script: 
+- xctool clean build -project demo/demo.xcworkspace -scheme demo/demoTests
+- xctool test -project demo/demo.xcworkspace -scheme demo/demoTests
+
