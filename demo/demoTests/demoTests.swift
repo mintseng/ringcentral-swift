@@ -31,13 +31,13 @@ class demoTests: XCTestCase {
     }
     
     func testA_Sdk() {
-        XCTAssertEqual(rcsdk.serverVersion, "7.2.0.1787")
-        XCTAssertEqual(rcsdk.versionString, "1.0.18")
-        XCTAssertEqual(rcsdk.server, "https://platform.devtest.ringcentral.com/restapi")
+        XCTAssertNotEqual(rcsdk.serverVersion, "")
+        XCTAssertNotEqual(rcsdk.versionString, "")
+        XCTAssertEqual(rcsdk.server, "https://platform.devtest.ringcentral.com")
     }
     
     func testB_Platform() {
-        XCTAssertEqual(platform.server, "https://platform.devtest.ringcentral.com/restapi")
+        XCTAssertEqual(platform.server, "https://platform.devtest.ringcentral.com")
         XCTAssertEqual(platform.appKey, "eI3RKs1oSBSY2kReFnviIw")
         XCTAssertEqual(platform.appSecret, "Gv9DgBZVTkaQNbbyEx-SQQBsnUKECmT5GrmGXbHTmpUQ")
     }
