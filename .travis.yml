@@ -10,4 +10,4 @@ osx_image: beta-xcode6.4
 xcode_sdk: iphonesimulator
 
 script:
-xcodebuild -workspace demo/demo.xcworkspace -scheme demoTests -sdk iphonesimulator test
+- xctool -workspace demo/demo.xcworkspace -scheme demoTests -sdk iphonesimulator test
