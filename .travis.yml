@@ -4,10 +4,10 @@ branches:
  only:
  - master
 
-xcode_project: demo/demo.xcodeproj
+xcode_project: demo/demo.xcworkspace
 xcode_scheme: demoTests
 osx_image: beta-xcode6.4
-xcode_sdk: iphonesimulator8.3 
+xcode_sdk: iphonesimulator
 
 script:
-- xctool clean build test -project demo/demo.xcodeproj -scheme demo/demoTests
+xcodebuild -workspace demo/demo.xcworkspace -scheme demoTests -sdk iphonesimulator test
