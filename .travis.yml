@@ -10,4 +10,4 @@ osx_image: beta-xcode6.4
 xcode_sdk: iphonesimulator8.3 
 
 script:
-- xcodebuild clean build test -project demo/demo.xcodeproj -scheme demoTests
+- xctool clean build test -project demo/demo.xcodeproj -scheme demo/demoTests
