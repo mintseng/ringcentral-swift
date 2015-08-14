@@ -6,8 +6,8 @@ branches:
 
 xcode_project: demo/demo.xcworkspace
 xcode_scheme: demoTests
-osx_image: beta-xcode6.4
+osx_image: xcode6.4
 xcode_sdk: iphonesimulator
 
 script:
-- xcodebuild clean build test -workspace demo/demo.xcworkspace -scheme demoTests -sdk iphonesimulator test
+- xcodebuild clean build test -workspace demo/demo.xcworkspace -scheme demoTests -sdk iphonesimulator
